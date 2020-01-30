@@ -21,7 +21,7 @@ export function Sticker({
   ...props
 }) {
   return (
-    <StyledSticker>
+    <StyledSticker {...props}>
       <span>
         {children}
       </span>
@@ -34,7 +34,6 @@ Sticker.propTypes = {
   theme: PropTypes.string.isRequired,
 };
 
-
 Sticker.defaultProps = {
-  theme: 'cio',
+  children: null,
 };

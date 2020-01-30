@@ -49,11 +49,11 @@ const font = {
   mwr: 'Merriweather, serif',
   pnb: 'proximaNovaBold, sans-serif',
   pnr: 'proximaNovaRegular, sans-serif',
-}
+};
 
 module.exports = {
-  color, 
+  color,
   spacing,
   fontSize,
   font,
-}
+};

@@ -18,4 +18,4 @@ export const CCOSticker = () => (
   <Sticker theme='cco'>
     cco lookin sticker
   </Sticker>
-)
+);
