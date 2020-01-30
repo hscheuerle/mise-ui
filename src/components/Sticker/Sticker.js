@@ -12,7 +12,7 @@ const StyledSticker = styled.div`
 
   span {
     color: ${color.white};
-    font: 14px ${props => props.theme === 'cio' ? font.pnr : font.mwr};
+    font: 14px ${props => props.theme === 'cio' ? font.gdn : font.cwf};
   }
 `;
 

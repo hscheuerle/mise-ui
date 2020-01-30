@@ -1,18 +1,7 @@
 import { css } from 'styled-components';
 export const fonts = css`
-/*****
 
-The fonts listed below are loaded from Adobe Fonts (formerly Typekit) and are
-covered by Adobe Fonts' web font license.
-
-"ATK Kids" Web Project on Adobe Fonts
-- Chippewa Falls
-- GoodDog New
-
-https://helpx.adobe.com/fonts/using/font-licensing.html#WebfontsfromAdobeFonts
-
-*****/
-@import url("https://use.typekit.net/plm8czk.css"); // imports both Chippewa Falls and GoodDog New
+/* NOTE: Merriweather, Good Dog New, and Chippewa Falls are loaded through ./storybook/preview-head.html */
 
 @font-face {
   font-family: 'proximaNovaRegular';
@@ -30,6 +19,4 @@ https://helpx.adobe.com/fonts/using/font-licensing.html#WebfontsfromAdobeFonts
   url('https://d3cizcpymoenau.cloudfront.net/fonts/clarendon.woff') format('woff');
   font-display: swap;
 }
-
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i&display=swap');
 `;

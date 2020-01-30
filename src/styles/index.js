@@ -49,6 +49,8 @@ const font = {
   mwr: 'Merriweather, serif',
   pnb: 'proximaNovaBold, sans-serif',
   pnr: 'proximaNovaRegular, sans-serif',
+  cwf: 'chippewa-falls, sans-serif',
+  gdn: 'gooddog-new, sans-serif',
 };
 
 module.exports = {
