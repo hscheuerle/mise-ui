@@ -1,4 +1,4 @@
-export const color = {
+const color = {
   white: '#ffffff',
   black: '#000000',
   tomato: '#d73a15',
@@ -24,7 +24,7 @@ export const color = {
   sand: '#fff5c2',
 };
 
-export const spacing = {
+const spacing = {
   xsm: '0.8rem',
   sm: '1.6rem',
   md: '2.4rem',
@@ -34,7 +34,7 @@ export const spacing = {
   xxxlg: '7.2rem',
 };
 
-export const fontSize = {
+const fontSize = {
   xsm: '1rem',
   sm: '1.4rem',
   md: '1.6rem',
@@ -42,4 +42,20 @@ export const fontSize = {
   xl: '2.3rem',
   xxl: '3.2rem',
   xxxl: '3.7rem',
+};
+
+const font = {
+  clb: 'Clarendon Bold,serif',
+  mwr: 'Merriweather, serif',
+  pnb: 'proximaNovaBold, sans-serif',
+  pnr: 'proximaNovaRegular, sans-serif',
+  cwf: 'chippewa-falls, sans-serif',
+  gdn: 'gooddog-new, sans-serif',
+};
+
+module.exports = {
+  color,
+  spacing,
+  fontSize,
+  font,
 };
