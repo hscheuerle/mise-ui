@@ -22,6 +22,10 @@ const ColorGroup = styled.div`
     color: ${color.eclipse};
     font: ${fontSize.md}/1.5 ${font.pnb};
   }
+
+  p {
+    font: 1.4rem/1 ${font.pnr};
+  }
 `;
 
 const ColorTable = styled.table`
