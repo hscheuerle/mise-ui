@@ -7,11 +7,11 @@ const SpacingGroup = styled.div`
   margin: 0 auto;
   padding-bottom: 4rem;
   padding-top: 2rem;
-  width: 40rem;
+  width: 60rem;
 
   h2 {
     color: ${color.eclipse};
-    font: ${fontSize.md}/1.5 ${font.pnb};
+    font: ${fontSize.lg}/1.5 ${font.pnb};
   }
 
   p {
@@ -21,13 +21,13 @@ const SpacingGroup = styled.div`
 
 const SpacingTable = styled.table`
   border-collapse: collapse;
-  font: 1.4rem/1.5 ${font.pnr};
+  font: 1.6rem/1.5 ${font.pnr};
   margin: 0 auto;
-  width: 40rem;
+  width: 60rem;
 
   th {
     background-color: ${color.whiteSmoke};
-    font: 1.4rem/1 ${font.pnb};
+    font: 1.6rem/1 ${font.pnb};
     text-align: left;
   }
 

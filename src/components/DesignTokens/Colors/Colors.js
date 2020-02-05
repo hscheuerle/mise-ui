@@ -16,11 +16,11 @@ const ColorGroup = styled.div`
   padding-bottom: 4rem;
   padding-top: 2rem;
   text-align: left;
-  width: 40rem;
+  width: 60rem;
 
   h2 {
     color: ${color.eclipse};
-    font: ${fontSize.md}/1.5 ${font.pnb};
+    font: ${fontSize.lg}/1.5 ${font.pnb};
   }
 
   p {
@@ -30,9 +30,9 @@ const ColorGroup = styled.div`
 
 const ColorTable = styled.table`
   border-collapse: collapse;
-  font: 1.4rem/1.5 ${font.pnr};
+  font: 1.6rem/1.5 ${font.pnr};
   margin: 0 auto;
-  width: 40rem;
+  width: 60rem;
 
   th {
     background-color: ${color.whiteSmoke};
@@ -53,7 +53,7 @@ const ColorSwatch = styled.div`
 `;
 
 const ColorName = styled.td`
-  font: 1.4rem/1.5 ${font.pnr};
+  font: 1.6rem/1.5 ${font.pnr};
   margin-right: 1.6rem;
 `;
 
@@ -76,6 +76,7 @@ export default function Colors({
     'cioColor': cioColor,
   }
   const colors = brand[colorGroup];
+  console.log('colors:', typeof colors);
   Object.keys(colors).forEach((name) => {
     if (colors[name]) {
       colorsArray.push(
