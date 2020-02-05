@@ -7,7 +7,7 @@ const TypographyGroup = styled.div`
   margin: 0 auto;
   padding-bottom: 4rem;
   padding-top: 2rem;
-  width: 60rem;
+  min-width: 60rem;
 
   h2 {
     color: ${color.eclipse};
@@ -102,13 +102,14 @@ export default function Typography({
           <TokenName>{keys}</TokenName>
           <TokenName>{tokenValue}</TokenName>
           <td style={{ fontFamily: `${tokenValue}` }}>{tokenValue}</td>
+          <td>Notes here</td>
         </>
       )
       return tokensArray;
     });
   } else {
     const tokens = tokenGroups[tokenGroup];
-    
+
     Object.keys(tokens).forEach((token) => {
       const tokenValue = tokens[token];
 
@@ -118,6 +119,7 @@ export default function Typography({
             <TokenName>{token}</TokenName>
             <TokenName>{tokenValue}</TokenName>
             <td style={{ fontSize: `${tokenValue}` }}>{token}</td>
+            <td>Notes here</td>
           </>
         );
       }
@@ -133,6 +135,7 @@ export default function Typography({
             <th>Token</th>
             <th>Value</th>
             <th>Example</th>
+            <th>Notes</th>
           </tr>
         </thead>
         <tbody>

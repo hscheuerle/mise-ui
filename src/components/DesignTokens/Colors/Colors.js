@@ -8,7 +8,7 @@ const ColorGroup = styled.div`
   padding-bottom: 4rem;
   padding-top: 2rem;
   text-align: left;
-  width: 60rem;
+  min-width: 60rem;
 
   h2 {
     color: ${color.eclipse};
@@ -24,7 +24,7 @@ const ColorTable = styled.table`
   border-collapse: collapse;
   font: 1.6rem/1.5 ${font.pnr};
   margin: 0 auto;
-  width: 60rem;
+  min-width: 60rem;
 
   th {
     background-color: ${color.whiteSmoke};
@@ -118,7 +118,7 @@ export default function Colors({
 
   const tokensArray = [];
   const tokens = tokenGroups[tokenGroup];
-  
+
   tokens.map(keys => {
     const tokenValue = color[keys];
     tokensArray.push(
