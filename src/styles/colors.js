@@ -24,6 +24,13 @@ const color = {
   sand: '#fff5c2',
 };
 
+const global = {
+  white: '#ffffff',
+  black: '#000000',
+  tomato: '#d73a15',
+  rust: '#a72e12',
+};
+
 const atkColor = {
   tomato: '#d73a15',
   rust: '#a72e12',

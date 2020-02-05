@@ -8,6 +8,6 @@ export default {
 
 export const AllSpacing = () => {
   return (
-    <Spacing heading="Spacing values" description="Lorem ipsum dolor sit amet" />
+    <Spacing heading="Spacing values" description="Margins and padding values" />
   );
 }
