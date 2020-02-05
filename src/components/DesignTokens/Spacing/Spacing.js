@@ -47,15 +47,17 @@ export default function Spacing({
   heading,
   description,
 }) {
-  const spacingArray = [];
-  Object.keys(spacing).forEach((name) => {
-    if (spacing[name]) {
-      spacingArray.push(
+  const tokensArray = [];
+  const tokens = spacing;
+  Object.keys(tokens).forEach((token) => {
+    const tokenValue = tokens[token];
+    if (tokenValue) {
+      tokensArray.push(
         <>
-          <td>{name}</td>
-          <td>{spacing[name]}</td>
+          <td>{token}</td>
+          <td>{tokenValue}</td>
           <td>
-            <span style={{width: `${spacing[name]}`, display: 'inline-block', backgroundColor: '#c2c2c2', height: 1 + 'rem'}}></span>
+            <span style={{width: `${tokenValue}`, display: 'inline-block', backgroundColor: '#c2c2c2', height: 1 + 'rem'}}></span>
           </td>
         </>
       );
@@ -75,7 +77,7 @@ export default function Spacing({
           </tr>
         </thead>
         <tbody>
-          {spacingArray.map((el, i) => (
+          {tokensArray.map((el, i) => (
             <tr key={i}>{el}</tr>
           ))}
         </tbody>

@@ -64,27 +64,29 @@ const ColorRow = styled.tr`
 `;
 
 export default function Colors({
-  colorGroup,
+  tokenGroup,
   heading,
   description,
 }) {
-  const colorsArray = [];
-  let brand = {
+  const tokensArray = [];
+  let tokenGroups = {
     'color': color,
     'atkColor': atkColor,
     'ccoColor': ccoColor,
     'cioColor': cioColor,
   }
-  const colors = brand[colorGroup];
-  console.log('colors:', typeof colors);
-  Object.keys(colors).forEach((name) => {
-    if (colors[name]) {
-      colorsArray.push(
+  const tokens = tokenGroups[tokenGroup];
+
+  Object.keys(tokens).forEach((token) => {
+    const tokenValue = tokens[token];
+
+    if (tokenValue) {
+      tokensArray.push(
         <>
-          <ColorName>{name}</ColorName>
-          <ColorName>{colors[name]}</ColorName>
+          <ColorName>{token}</ColorName>
+          <ColorName>{tokenValue}</ColorName>
           <td>
-            <ColorSwatch style={{ backgroundColor: colors[name] }} />
+            <ColorSwatch style={{ backgroundColor: tokenValue }} />
           </td>
         </>
       );
@@ -92,7 +94,7 @@ export default function Colors({
   });
 
   return (
-    <ColorGroup colorGroup={colorGroup}>
+    <ColorGroup tokenGroup={tokenGroup}>
       <h2>{heading}</h2>
       <p>{description}</p>
       <ColorTable>
@@ -104,7 +106,7 @@ export default function Colors({
           </tr>
         </thead>
         <tbody>
-          {colorsArray.map((el, i) => (
+          {tokensArray.map((el, i) => (
             <ColorRow key={i}>{el}</ColorRow>
           ))}
         </tbody>
@@ -114,7 +116,7 @@ export default function Colors({
 }
 
 Colors.propTypes = {
-  colorGroup: PropTypes.string,
+  tokenGroup: PropTypes.string,
   heading: PropTypes.string,
   description: PropTypes.string,
 };

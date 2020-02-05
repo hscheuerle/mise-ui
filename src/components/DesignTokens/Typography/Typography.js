@@ -56,17 +56,20 @@ export default function Typography({
     'font': font,
   };
   const tokens = tokenGroups[tokenGroup];
-  //tokens are one object, name is the value of each token (maybe change name to value?)
-  Object.keys(tokens).forEach((name) => {
-    if (tokens[name]) {
+
+  Object.keys(tokens).forEach((token) => {
+    const tokenValue = tokens[token];
+
+    if (tokenValue) {
       tokensArray.push(
         <>
-          {console.log('hi', tokenGroup)}
-          <TokenName>{name}</TokenName>
-          <TokenName>{tokens[name]}</TokenName>
-          <td style={{ fontFamily: `${tokens[name]}` }}>
-            { tokenGroup === font ? name : tokens[name] }
-          </td>
+          <TokenName>{token}</TokenName>
+          <TokenName>{tokenValue}</TokenName>
+          {tokenGroup === 'font' ? (
+            <td style={{ fontFamily: `${tokenValue}` }}>{tokenValue}</td>
+          ) : (
+            <td style={{ fontSize: `${tokenValue}` }}>{token}</td>
+          )}
         </>
       );
     }
