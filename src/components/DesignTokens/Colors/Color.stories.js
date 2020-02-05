@@ -8,26 +8,11 @@ export default {
 
 export const All = () => {
   return (
-    <Colors tokenGroup="color" heading="All colors" description="Lorem ipsum dolor sit amet" />
-  );
-}
-
-export const ATK = () => {
-  return (
     <>
+      <Colors tokenGroup="globalColor" heading="Global colors" description="Lorem ipsum dolor sit amet" />
       <Colors tokenGroup="atkColor" heading="ATK Colors" description="Lorem ipsum dolor sit amet" />
+      <Colors tokenGroup="ccoColor" heading="CCO Colors" description="Lorem ipsum dolor sit amet" />
+      <Colors tokenGroup="cioColor" heading="CIO Colors" description="Lorem ipsum dolor sit amet" />
     </>
-  );
-}
-
-export const CCO = () => {
-  return (
-    <Colors tokenGroup="ccoColor" heading="CCO Colors" description="Lorem ipsum dolor sit amet" />
-  );
-}
-
-export const CIO = () => {
-  return (
-    <Colors tokenGroup="cioColor" heading="CIO Colors" description="Lorem ipsum dolor sit amet" />
   );
 }

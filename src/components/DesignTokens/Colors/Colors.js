@@ -5,6 +5,7 @@ import { atkColor,
          ccoColor,
          cioColor,
          color,
+         globalColor,
          spacing,
          font,
          fontSize,
@@ -71,6 +72,7 @@ export default function Colors({
   const tokensArray = [];
   let tokenGroups = {
     'color': color,
+    'globalColor': globalColor,
     'atkColor': atkColor,
     'ccoColor': ccoColor,
     'cioColor': cioColor,

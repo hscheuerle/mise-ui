@@ -24,11 +24,11 @@ const color = {
   sand: '#fff5c2',
 };
 
-const global = {
-  white: '#ffffff',
-  black: '#000000',
+const globalColor = {
   tomato: '#d73a15',
   rust: '#a72e12',
+  black: '#000000',
+  white: '#ffffff',
 };
 
 const atkColor = {
@@ -69,6 +69,7 @@ const cioColor = {
 
 export {
   color,
+  globalColor,
   atkColor,
   ccoColor,
   cioColor,

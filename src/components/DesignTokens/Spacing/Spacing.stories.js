@@ -6,7 +6,7 @@ export default {
   component: Spacing,
 };
 
-export const AllSpacing = () => {
+export const All = () => {
   return (
     <Spacing heading="Spacing values" description="Margins and padding values" />
   );
