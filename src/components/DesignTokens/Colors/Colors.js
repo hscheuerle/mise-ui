@@ -1,18 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { atkColor,
-         ccoColor,
-         cioColor,
-         color,
-         globalColor,
-         spacing,
-         font,
-         fontSize,
-        } from '../../../styles';
+import { color, spacing, font, fontSize, } from '../../../styles';
 
 const ColorGroup = styled.div`
-  border-bottom: 1px solid ${color.silver};
   margin: 0 auto;
   padding-bottom: 4rem;
   padding-top: 2rem;
@@ -38,12 +29,12 @@ const ColorTable = styled.table`
   th {
     background-color: ${color.whiteSmoke};
     font: 1.4rem/1 ${font.pnb};
+    padding: ${spacing.sm};
     text-align: left;
   }
 
-  th,
   td {
-    padding: ${spacing.xsm};
+    padding: ${spacing.lg} ${spacing.sm};
   }
 `;
 
@@ -58,8 +49,13 @@ const ColorName = styled.td`
   margin-right: 1.6rem;
 `;
 
+const ColorValue = styled.td`
+  font: 1.6rem/1.5 ${font.pnr};
+  margin-right: 1.6rem;
+`;
+
 const ColorRow = styled.tr`
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 3px solid #EFEFEF;
   padding-left: ${spacing.md};
   padding-right: ${spacing.md};
 `;
@@ -69,30 +65,72 @@ export default function Colors({
   heading,
   description,
 }) {
-  const tokensArray = [];
+
+  const atkColor = [
+    'tomato',
+    'rust',
+    'mint',
+    'darkerMint',
+    'turquoise',
+    'seaSalt',
+    'whiteSmoke',
+    'white',
+    'black',
+    'eclipse',
+    'regentGray',
+    'silver',
+    'nobel',
+  ];
+
+  const globalColor = [
+    'tomato',
+    'rust',
+    'black',
+    'white',
+  ];
+
+  const ccoColor = [
+    'white',
+    'black',
+    'denim',
+    'malibu',
+    'arapawa',
+    'cornflower',
+    'whiteSmoke',
+    'silver',
+  ];
+
+  const cioColor = [
+    'linen',
+    'squirrel',
+    'cork',
+    'bone',
+    'dijon',
+    'sand',
+  ];
+
   let tokenGroups = {
-    'color': color,
     'globalColor': globalColor,
     'atkColor': atkColor,
     'ccoColor': ccoColor,
     'cioColor': cioColor,
   }
+
+  const tokensArray = [];
   const tokens = tokenGroups[tokenGroup];
-
-  Object.keys(tokens).forEach((token) => {
-    const tokenValue = tokens[token];
-
-    if (tokenValue) {
-      tokensArray.push(
-        <>
-          <ColorName>{token}</ColorName>
-          <ColorName>{tokenValue}</ColorName>
-          <td>
-            <ColorSwatch style={{ backgroundColor: tokenValue }} />
-          </td>
-        </>
-      );
-    }
+  
+  tokens.map(keys => {
+    const tokenValue = color[keys];
+    tokensArray.push(
+      <>
+        <ColorName>{keys}</ColorName>
+        <ColorValue>{tokenValue}</ColorValue>
+        <td>
+          <ColorSwatch style={{ backgroundColor: tokenValue }} />
+        </td>
+      </>
+    )
+    return tokensArray;
   });
 
   return (

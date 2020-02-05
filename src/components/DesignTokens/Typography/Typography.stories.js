@@ -8,7 +8,12 @@ export default {
 
 export const Fonts = () => {
   return (
-    <Typography tokenGroup="font" heading="Fonts" description="Lorem ipsum dolor sit amet" />
+    <>
+      <Typography brand="atkFonts" tokenGroup="font" heading="ATK fonts" description="Lorem ipsum dolor sit amet" />
+      <Typography brand="ccoFonts" tokenGroup="font" heading="CCO fonts" description="Lorem ipsum dolor sit amet" />
+      <Typography brand="cioFonts" tokenGroup="font" heading="CIO fonts" description="Lorem ipsum dolor sit amet" />
+      <Typography brand="kidsFonts" tokenGroup="font" heading="Kids fonts" description="Lorem ipsum dolor sit amet" />
+    </>
   );
 }
 

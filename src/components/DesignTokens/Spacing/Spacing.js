@@ -49,6 +49,7 @@ export default function Spacing({
 }) {
   const tokensArray = [];
   const tokens = spacing;
+
   Object.keys(tokens).forEach((token) => {
     const tokenValue = tokens[token];
     if (tokenValue) {

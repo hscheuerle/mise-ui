@@ -46,36 +46,85 @@ const TypographyTable = styled.table`
 const TokenName = styled.td``;
 
 export default function Typography({
+  brand,
   tokenGroup,
   heading,
   description,
 }) {
-  const tokensArray = [];
+
+  const atkFonts = [
+    'pnb',
+    'pnr',
+    'mwr',
+  ];
+
+  const ccoFonts = [
+    'clb',
+    'pnr',
+    'pnb',
+    'mwr',
+  ];
+
+  const cioFonts = [
+    'mwr',
+    'pnr',
+    'pnb',
+  ];
+
+  const kidsFonts = [
+    'cwf',
+    'gdn',
+    'pnr',
+    'pnb',
+  ];
+
+  let brands = {
+    'atkFonts': atkFonts,
+    'ccoFonts': ccoFonts,
+    'cioFonts': cioFonts,
+    'kidsFonts': kidsFonts,
+  }
+
   let tokenGroups = {
     'fontSize': fontSize,
     'font': font,
   };
-  const tokens = tokenGroups[tokenGroup];
 
-  Object.keys(tokens).forEach((token) => {
-    const tokenValue = tokens[token];
+  const tokensArray = [];
 
-    if (tokenValue) {
+  if (tokenGroup === 'font') {
+    const tokens = brands[brand];
+
+    tokens.map(keys => {
+      const tokenValue = font[keys];
       tokensArray.push(
         <>
-          <TokenName>{token}</TokenName>
+          <TokenName>{keys}</TokenName>
           <TokenName>{tokenValue}</TokenName>
-          {tokenGroup === 'font' ? (
-            <td style={{ fontFamily: `${tokenValue}` }}>{tokenValue}</td>
-          ) : (
-            <td style={{ fontSize: `${tokenValue}` }}>{token}</td>
-          )}
+          <td style={{ fontFamily: `${tokenValue}` }}>{tokenValue}</td>
         </>
-      );
-    }
-  });
+      )
+      return tokensArray;
+    });
+  } else {
+    const tokens = tokenGroups[tokenGroup];
+    
+    Object.keys(tokens).forEach((token) => {
+      const tokenValue = tokens[token];
+
+      if (tokenValue) {
+        tokensArray.push(
+          <>
+            <TokenName>{token}</TokenName>
+            <TokenName>{tokenValue}</TokenName>
+            <td style={{ fontSize: `${tokenValue}` }}>{token}</td>
+          </>
+        );
+      }
+    });
+  }
   return (
-    <TypographyGroup>
+    <TypographyGroup tokenGroup={tokenGroup} brand={brand}>
       <h2>{heading}</h2>
       <p>{description}</p>
       <TypographyTable>
@@ -97,6 +146,7 @@ export default function Typography({
 }
 
 Typography.propTypes = {
+  brand: PropTypes.string,
   tokenGroup: PropTypes.string,
   heading: PropTypes.string,
   description: PropTypes.string,
