@@ -66,9 +66,10 @@ const ColorRow = styled.tr`
 `;
 
 export default function Colors({
-  tokenGroup,
-  heading,
   description,
+  heading,
+  notes,
+  tokenGroup,
 }) {
 
   const atkColor = [
@@ -114,11 +115,23 @@ export default function Colors({
     'sand',
   ];
 
+  const socialColor = [
+    'email',
+    'emailHover',
+    'facebook',
+    'facebookHover',
+    'pinterest',
+    'pinterestHover',
+    'twitter',
+    'twitterHover',
+  ];
+
   let tokenGroups = {
     'globalColor': globalColor,
     'atkColor': atkColor,
     'ccoColor': ccoColor,
     'cioColor': cioColor,
+    'socialColor': socialColor,
   }
 
   const tokensArray = [];
@@ -133,7 +146,7 @@ export default function Colors({
         <td>
           <ColorSwatch style={{ backgroundColor: tokenValue }} />
         </td>
-        <td>Notes here</td>
+        <td>{notes}</td>
       </>
     )
     return tokensArray;
@@ -162,7 +175,8 @@ export default function Colors({
 }
 
 Colors.propTypes = {
-  tokenGroup: PropTypes.string,
-  heading: PropTypes.string,
   description: PropTypes.string,
+  heading: PropTypes.string,
+  notes: PropTypes.string,
+  tokenGroup: PropTypes.string,
 };

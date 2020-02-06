@@ -22,4 +22,12 @@ export const color = {
   bone: '#d9ccA7',
   dijon: '#eed681',
   sand: '#fff5c2',
+  email: '#3d3d3d',
+  emailHover: '#94856b',
+  facebook: '#527aa1',
+  facebookHover: '#43637a',
+  pinterest: '#cf5553',
+  pinterestHover: '#893b3b',
+  twitter: '#79aed1',
+  twitterHover: '#557d93',
 };

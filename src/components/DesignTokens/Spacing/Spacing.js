@@ -46,6 +46,7 @@ const SpacingTable = styled.table`
 export default function Spacing({
   heading,
   description,
+  notes,
 }) {
   const tokensArray = [];
   const tokens = spacing;
@@ -60,7 +61,7 @@ export default function Spacing({
           <td>
             <span style={{width: `${tokenValue}`, display: 'inline-block', backgroundColor: '#c2c2c2', height: 1 + 'rem'}}></span>
           </td>
-          <td>Notes here</td>
+          <td>{notes}</td>
         </>
       );
     }
@@ -90,6 +91,7 @@ export default function Spacing({
 };
 
 Spacing.propTypes = {
-  heading: PropTypes.string,
   description: PropTypes.string,
+  heading: PropTypes.string,
+  notes: PropTypes.string,
 };

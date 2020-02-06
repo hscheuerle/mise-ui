@@ -50,9 +50,10 @@ const TokenName = styled.td``;
 
 export default function Typography({
   brand,
-  tokenGroup,
-  heading,
   description,
+  heading,
+  notes,
+  tokenGroup,
 }) {
 
   const atkFonts = [
@@ -105,7 +106,7 @@ export default function Typography({
           <TokenName>{keys}</TokenName>
           <TokenName>{tokenValue}</TokenName>
           <td style={{ fontFamily: `${tokenValue}` }}>{tokenValue}</td>
-          <td>Notes here</td>
+          <td>{notes}</td>
         </>
       )
       return tokensArray;
@@ -122,7 +123,7 @@ export default function Typography({
             <TokenName>{token}</TokenName>
             <TokenName>{tokenValue}</TokenName>
             <td style={{ fontSize: `${tokenValue}` }}>{token}</td>
-            <td>Notes here</td>
+            <td>{notes}</td>
           </>
         );
       }
@@ -153,7 +154,8 @@ export default function Typography({
 
 Typography.propTypes = {
   brand: PropTypes.string,
-  tokenGroup: PropTypes.string,
-  heading: PropTypes.string,
   description: PropTypes.string,
+  heading: PropTypes.string,
+  notes: PropTypes.string,
+  tokenGroup: PropTypes.string,
 };

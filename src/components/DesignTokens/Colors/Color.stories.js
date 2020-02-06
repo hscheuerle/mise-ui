@@ -24,6 +24,7 @@ export const All = () => {
       <Colors tokenGroup="atkColor" heading="ATK Colors" description="Lorem ipsum dolor sit amet" />
       <Colors tokenGroup="ccoColor" heading="CCO Colors" description="Lorem ipsum dolor sit amet" />
       <Colors tokenGroup="cioColor" heading="CIO Colors" description="Lorem ipsum dolor sit amet" />
+      <Colors tokenGroup="socialColor" heading="Social Colors" description="Lorem ipsum" />
     </>
   );
 }
