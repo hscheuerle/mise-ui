@@ -7,7 +7,7 @@ const SpacingGroup = styled.div`
   margin: 0 auto;
   padding-bottom: 4rem;
   padding-top: 2rem;
-  width: 60rem;
+  max-width: 80rem;
 
   h2 {
     color: ${color.eclipse};
@@ -23,7 +23,7 @@ const SpacingTable = styled.table`
   border-collapse: collapse;
   font: 1.6rem/1.5 ${font.pnr};
   margin: 0 auto;
-  width: 60rem;
+  width: 100%;
 
   th {
     background-color: ${color.whiteSmoke};
@@ -60,6 +60,7 @@ export default function Spacing({
           <td>
             <span style={{width: `${tokenValue}`, display: 'inline-block', backgroundColor: '#c2c2c2', height: 1 + 'rem'}}></span>
           </td>
+          <td>Notes here</td>
         </>
       );
     }
@@ -75,6 +76,7 @@ export default function Spacing({
             <th>Token</th>
             <th>Value</th>
             <th>Example</th>
+            <th>Notes</th>
           </tr>
         </thead>
         <tbody>

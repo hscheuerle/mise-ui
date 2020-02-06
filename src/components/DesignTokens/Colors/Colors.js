@@ -8,7 +8,7 @@ const ColorGroup = styled.div`
   padding-bottom: 4rem;
   padding-top: 2rem;
   text-align: left;
-  min-width: 60rem;
+  max-width: 80rem;
 
   h2 {
     color: ${color.eclipse};
@@ -24,7 +24,7 @@ const ColorTable = styled.table`
   border-collapse: collapse;
   font: 1.6rem/1.5 ${font.pnr};
   margin: 0 auto;
-  min-width: 60rem;
+  width: 100%;
 
   th {
     background-color: ${color.whiteSmoke};
@@ -33,13 +33,18 @@ const ColorTable = styled.table`
     text-align: left;
   }
 
+  th,
   td {
-    padding: ${spacing.lg} ${spacing.sm};
+    padding: ${spacing.xsm};
+  }
+
+  td {
+    padding-right: ${spacing.md};
   }
 `;
 
 const ColorSwatch = styled.div`
-  border: 1px solid ${color.whiteSmoke};
+  border: 2px solid ${color.whiteSmoke};
   height: 3rem;
   width: 6rem;
 `;
@@ -55,7 +60,7 @@ const ColorValue = styled.td`
 `;
 
 const ColorRow = styled.tr`
-  border-bottom: 3px solid #EFEFEF;
+  border-bottom: 2px solid #EFEFEF;
   padding-left: ${spacing.md};
   padding-right: ${spacing.md};
 `;
@@ -128,6 +133,7 @@ export default function Colors({
         <td>
           <ColorSwatch style={{ backgroundColor: tokenValue }} />
         </td>
+        <td>Notes here</td>
       </>
     )
     return tokensArray;
@@ -136,13 +142,13 @@ export default function Colors({
   return (
     <ColorGroup tokenGroup={tokenGroup}>
       <h2>{heading}</h2>
-      <p>{description}</p>
       <ColorTable>
         <thead>
           <tr>
             <th>Token</th>
             <th>Value</th>
             <th>Example</th>
+            <th>Notes</th>
           </tr>
         </thead>
         <tbody>
