@@ -65,7 +65,7 @@ const ColorRow = styled.tr`
   padding-right: ${spacing.md};
 `;
 
-export default function Colors({
+export default function Color({
   description,
   heading,
   notes,
@@ -174,7 +174,7 @@ export default function Colors({
   );
 }
 
-Colors.propTypes = {
+Color.propTypes = {
   description: PropTypes.string,
   heading: PropTypes.string,
   notes: PropTypes.string,
