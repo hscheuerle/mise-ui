@@ -141,7 +141,7 @@ export default function Color({
     const tokenValue = color[keys];
     tokensArray.push(
       <>
-        <ColorName>{keys}</ColorName>
+        <ColorName>{`color.${keys}`}</ColorName>
         <ColorValue>{tokenValue}</ColorValue>
         <td>
           <ColorSwatch style={{ backgroundColor: tokenValue }} />

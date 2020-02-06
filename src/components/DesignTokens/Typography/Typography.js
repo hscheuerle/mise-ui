@@ -104,7 +104,7 @@ export default function Typography({
       const tokenValue = font[keys];
       tokensArray.push(
         <>
-          <TokenName>{keys}</TokenName>
+          <TokenName>{`${tokenGroup}.${keys}`}</TokenName>
           <TokenName>{tokenValue}</TokenName>
           <td style={{ fontFamily: `${tokenValue}` }}>{tokenValue}</td>
           <td>{notes}</td>
@@ -120,7 +120,7 @@ export default function Typography({
       if (tokenValue) {
         tokensArray.push(
           <>
-            <TokenName>{token}</TokenName>
+            <TokenName>{`${tokenGroup}.${token}`}</TokenName>
             <TokenName>{tokenValue}</TokenName>
             <td style={{[tokenGroup]: tokenValue}}>{token}</td>
             <td>{notes}</td>

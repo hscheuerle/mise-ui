@@ -56,7 +56,7 @@ export default function Spacing({
     if (tokenValue) {
       tokensArray.push(
         <>
-          <td>{token}</td>
+          <td>{`spacing.${token}`}</td>
           <td>{tokenValue}</td>
           <td>
             <span style={{width: `${tokenValue}`, display: 'inline-block', backgroundColor: '#c2c2c2', height: 1 + 'rem'}}></span>
