@@ -36,3 +36,12 @@ export const FontSizes = () => {
     </>
   );
 }
+
+export const LineHeights = () => {
+  return (
+    <>
+      <Import>{`import { lineHeight } from '../../styles'`};</Import>
+      <Typography tokenGroup="lineHeight" heading="Line heights" />
+    </>
+  );
+}

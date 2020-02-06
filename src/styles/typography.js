@@ -17,7 +17,14 @@ const font = {
   gdn: 'gooddog-new, sans-serif',
 };
 
+const lineHeight = {
+  sm: '1.13',
+  md: '1.25',
+  lg: '1.63',
+};
+
 export {
   fontSize,
   font,
+  lineHeight,
 };

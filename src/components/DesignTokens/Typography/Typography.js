@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { color, spacing, font, fontSize } from '../../../styles';
+import { color, spacing, font, fontSize, lineHeight } from '../../../styles';
 
 const TypographyGroup = styled.div`
   margin: 0 auto;
@@ -92,6 +92,7 @@ export default function Typography({
   let tokenGroups = {
     'fontSize': fontSize,
     'font': font,
+    'lineHeight': lineHeight,
   };
 
   const tokensArray = [];
@@ -116,13 +117,12 @@ export default function Typography({
 
     Object.keys(tokens).forEach((token) => {
       const tokenValue = tokens[token];
-
       if (tokenValue) {
         tokensArray.push(
           <>
             <TokenName>{token}</TokenName>
             <TokenName>{tokenValue}</TokenName>
-            <td style={{ fontSize: `${tokenValue}` }}>{token}</td>
+            <td style={{[tokenGroup]: tokenValue}}>{token}</td>
             <td>{notes}</td>
           </>
         );
