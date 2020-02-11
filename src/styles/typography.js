@@ -23,8 +23,20 @@ const lineHeight = {
   lg: '1.63',
 };
 
+const letterSpacing = {
+  xxsm: '0.2px',
+  xsm: '0.8px',
+  sm: '1.0px',
+  md: '1.6px',
+  lg: '1.9px',
+  xlg: '2.6px',
+  xxlg: '3px',
+  xxxlg: '6px',
+};
+
 export {
   fontSize,
   font,
   lineHeight,
+  letterSpacing,
 };

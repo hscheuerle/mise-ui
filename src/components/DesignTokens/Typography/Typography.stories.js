@@ -45,3 +45,12 @@ export const LineHeights = () => {
     </>
   );
 }
+
+export const LetterSpacings = () => {
+  return (
+    <>
+      <Import>{`import { letterSpacing } from '../../styles'`};</Import>
+      <Typography tokenGroup="letterSpacing" heading="Letter spacings" />
+    </>
+  );
+}
