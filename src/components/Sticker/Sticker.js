@@ -21,6 +21,26 @@ const StyledSticker = styled.span`
   white-space: nowrap;
 `;
 
+/**
+  * A sticker surfaces ‘make or break’ information in order to help the user
+  make a smarter decision between cards in the grid. Examples: “vegetarian” or
+  “gluten free” or “popular” “editor’s pick”
+
+  * It is not interactive, only informative, so there is no hover state
+
+  * There are two types of stickers, priority and basic. Priority stickers are
+  * reserved for messages like “new” or “price drop”, and have a red (`tomato`)
+  * background. Basic stickers have a `transparentBlack` background.
+
+  * It can have or not have an icon (collections icon, video icon)
+
+  * A desktop card can have two stickers, max; one sticker max on mobile
+
+  * Text does not wrap
+
+  * Line height of the text and the height of pill should both be set to 1.2rem to vertically center text.
+  */
+
 export function Sticker({
   text,
   isPriority,
@@ -35,7 +55,9 @@ export function Sticker({
 }
 
 Sticker.propTypes = {
+  /** The text inside the sticker. Must be less than N characters. */
   text: PropTypes.string,
+  /** True if it is a priority sticker, false if it is a basic sticker */
   isPriority: PropTypes.bool,
 };
 
