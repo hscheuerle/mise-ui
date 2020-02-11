@@ -80,6 +80,7 @@ export default function Color({
     'tomato',
     'rust',
     'black',
+    'transparentBlack',
     'white',
   ];
 

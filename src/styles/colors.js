@@ -1,6 +1,7 @@
 export const color = {
   white: '#ffffff',
   black: '#000000',
+  transparentBlack: 'rgba(0, 0, 0, 0.7)',
   tomato: '#d73a15',
   rust: '#a72e12',
   whiteSmoke: '#f5f5f5',

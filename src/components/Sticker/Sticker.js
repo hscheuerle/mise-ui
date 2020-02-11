@@ -1,39 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { color, font } from '../../styles';
+import { color, font, fontSize, letterSpacing, spacing } from '../../styles';
 
-const StyledSticker = styled.div`
-  background-color: ${props => props.theme === 'cio' ? 'rgb(93, 161, 29)': color.denim};
-  border-radius: 10px;
-  padding: 0.5rem 1rem;
-  margin: 1rem auto;
+const stickerHeight = '1.2rem';
+
+const StyledSticker = styled.span`
+  background-color: ${props => props.isPriority ? color.tomato : color.black};
+  border-radius: 0.5rem;
+  color: ${color.white};
   display: inline-block;
-
-  span {
-    color: ${color.white};
-    font: 14px ${props => props.theme === 'cio' ? font.gdn : font.cwf};
-  }
+  font: ${fontSize.xxsm}/${stickerHeight} ${font.pnb};
+  height: ${stickerHeight};
+  letter-spacing: ${letterSpacing.sm};
+  margin-bottom: ${spacing.xsm};
+  margin-left: ${spacing.xsm};
+  padding-left: ${spacing.xsm};
+  padding-right: ${spacing.xsm};
+  text-transform: uppercase;
+  white-space: nowrap;
 `;
 
 export function Sticker({
-  children,
-  ...props
+  text,
+  isPriority,
 }) {
   return (
-    <StyledSticker {...props}>
-      <span>
-        {children}
-      </span>
+    <StyledSticker
+      isPriority={isPriority}
+    >
+      {text}
     </StyledSticker>
   )
 }
 
 Sticker.propTypes = {
-  children: PropTypes.node,
-  theme: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  isPriority: PropTypes.bool,
 };
 
 Sticker.defaultProps = {
-  children: null,
+  text: '',
+  isPriority: false,
 };
