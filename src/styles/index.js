@@ -1,5 +1,5 @@
 import { color } from './colors';
-import { fontSize, font, lineHeight, } from './typography';
+import { fontSize, font, lineHeight, letterSpacing } from './typography';
 import { spacing } from './spacing';
 
 export {
@@ -8,4 +8,5 @@ export {
   font,
   spacing,
   lineHeight,
+  letterSpacing,
 };

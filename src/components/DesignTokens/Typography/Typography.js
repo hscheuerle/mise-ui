@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
+import { color, font, fontSize, letterSpacing, lineHeight, spacing } from '../../../styles';
 
 const TokenGroup = styled.div`
   margin: 0 auto;
-  padding-bottom: ${spacing.xlg};
-  padding-top: ${spacing.md};
+  padding: ${spacing.md} ${spacing.md} ${spacing.xlg} ${spacing.md};
   max-width: 80rem;
 
   h2 {
@@ -91,9 +90,11 @@ export default function Typography({
     'fontSize': fontSize,
     'font': font,
     'lineHeight': lineHeight,
+    'letterSpacing': letterSpacing,
   };
 
-  //TODO: add documentation for line-height usage guidelines when it's available
+  //TODO: add documentation for line-height and letter-spacing usage guidelines
+  //when it's available
 
   const tokensArray = [];
 

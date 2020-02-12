@@ -5,8 +5,7 @@ import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 
 const TokenGroup = styled.div`
   margin: 0 auto;
-  padding-bottom: ${spacing.xlg};
-  padding-top: ${spacing.md};
+  padding: ${spacing.md} ${spacing.md} ${spacing.xlg} ${spacing.md};
   max-width: 80rem;
 
   h2 {

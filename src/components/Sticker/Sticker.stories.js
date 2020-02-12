@@ -6,16 +6,16 @@ export default {
   component: Sticker,
 };
 
-export const Default = () => (
-  <Sticker theme='cio'>
-    <span>
-      cio lookin sticker
-    </span>
-  </Sticker>
+export const Basic = () => (
+  <Sticker
+    isPriority={false}
+    text="Editor's pick"
+  />
 );
 
-export const CCOSticker = () => (
-  <Sticker theme='cco'>
-    cco lookin sticker
-  </Sticker>
+export const Priority = () => (
+  <Sticker
+    isPriority={true}
+    text="New"
+  />
 );

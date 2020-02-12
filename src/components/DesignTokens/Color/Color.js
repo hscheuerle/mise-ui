@@ -5,8 +5,7 @@ import { color, font, fontSize, lineHeight, spacing } from '../../../styles';
 
 const TokenGroup = styled.div`
   margin: 0 auto;
-  padding-bottom: ${spacing.xlg};
-  padding-top: ${spacing.md};
+  padding: ${spacing.md} ${spacing.md} ${spacing.xlg} ${spacing.md};
   max-width: 80rem;
 
   h2 {
@@ -35,13 +34,8 @@ const TokenTable = styled.table`
     padding: ${spacing.xsm};
   }
 
-  td {
-    font: 1.6rem/1.5 ${font.pnr};
-    margin-right: 1.6rem;
-  }
-
   tr {
-    border-bottom: 2px solid ${color.miseUiGrayBorder};
+    border-bottom: 1px solid ${color.miseUiGrayBorder};
     padding-left: ${spacing.md};
     padding-right: ${spacing.md};
   }
@@ -80,6 +74,7 @@ export default function Color({
     'tomato',
     'rust',
     'black',
+    'transparentBlack',
     'white',
   ];
 
