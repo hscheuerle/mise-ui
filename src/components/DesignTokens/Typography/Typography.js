@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing } from '../../../styles';
+import TokenTable from '../TokenTable';
 
 const TokenGroup = styled.div`
   margin: 0 auto;
@@ -15,33 +16,6 @@ const TokenGroup = styled.div`
 
   p {
     font: ${fontSize.sm}/${lineHeight.md} ${font.pnr};
-  }
-`;
-
-const TokenTable = styled.table`
-  border-collapse: collapse;
-  font: ${fontSize.md}/${lineHeight.lg} ${font.pnr};
-  width: 100%;
-
-  th {
-    background-color: ${color.whiteSmoke};
-    font: ${fontSize.sm}/${lineHeight.sm} ${font.pnb};
-    text-align: left;
-  }
-
-  th,
-  td {
-    padding: ${spacing.xsm};
-  }
-
-  tr {
-    border-bottom: 1px solid ${color.miseUiGrayBorder};
-    padding-left: ${spacing.md};
-    padding-right: ${spacing.md};
-  }
-
-  .notes {
-    font-size: ${fontSize.xsm};
   }
 `;
 
@@ -134,21 +108,7 @@ export default function Typography({
     <TokenGroup tokenGroup={tokenGroup} brand={brand}>
       <h2>{heading}</h2>
       <p>{description}</p>
-      <TokenTable>
-        <thead>
-          <tr>
-            <th>Token</th>
-            <th>Value</th>
-            <th>Example</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tokensArray.map((el, i) => (
-            <tr key={i}>{el}</tr>
-          ))}
-        </tbody>
-      </TokenTable>
+      <TokenTable tokens={tokensArray} />
     </TokenGroup>
   );
 }
