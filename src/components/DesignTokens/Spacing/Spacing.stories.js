@@ -1,6 +1,6 @@
 import React from 'react';
 import Spacing from './Spacing';
-import { ImportCode } from '../utils';
+import { ImportCode } from '../components';
 
 export default {
   title: 'Design Tokens|Spacing',

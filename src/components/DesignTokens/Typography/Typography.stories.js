@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from './Typography';
-import { ImportCode } from '../utils';
+import { ImportCode } from '../components';
 
 export default {
   title: 'Design Tokens|Typography',
