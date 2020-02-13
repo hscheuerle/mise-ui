@@ -1,15 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import Spacing from './Spacing';
-import { color, fontSize, spacing } from '../../../styles';
-
-const Import = styled.code`
-  background: ${color.whiteSmoke};
-  display: block;
-  font-size: ${fontSize.sm};
-  text-align: center;
-  padding: ${spacing.sm};
-`;
+import { ImportCode } from '../utils';
 
 export default {
   title: 'Design Tokens|Spacing',
@@ -19,7 +10,7 @@ export default {
 export const All = () => {
   return (
     <>
-      <Import>{`import { spacing } from '../../styles'`};</Import>
+      <ImportCode>{`import { spacing } from '../../styles'`};</ImportCode>
       <Spacing heading="Spacing values" description="Margins and padding values" />
     </>
   );

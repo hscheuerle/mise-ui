@@ -1,15 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import Typography from './Typography';
-import { color, fontSize, spacing } from '../../../styles';
-
-const Import = styled.code`
-  background: ${color.whiteSmoke};
-  display: block;
-  font-size: ${fontSize.sm};
-  text-align: center;
-  padding: ${spacing.sm};
-`;
+import { ImportCode } from '../utils';
 
 export default {
   title: 'Design Tokens|Typography',
@@ -19,7 +10,7 @@ export default {
 export const Fonts = () => {
   return (
     <>
-      <Import>{`import { font } from '../../styles'`};</Import>
+      <ImportCode>{`import { font } from '../../styles'`};</ImportCode>
       <Typography brand="atkFonts" tokenGroup="font" heading="ATK" description="Lorem ipsum dolor sit amet" />
       <Typography brand="ccoFonts" tokenGroup="font" heading="CCO" description="Lorem ipsum dolor sit amet" />
       <Typography brand="cioFonts" tokenGroup="font" heading="CIO" description="Lorem ipsum dolor sit amet" />
@@ -31,7 +22,7 @@ export const Fonts = () => {
 export const FontSizes = () => {
   return (
     <>
-      <Import>{`import { fontSize } from '../../styles'`};</Import>
+      <ImportCode>{`import { fontSize } from '../../styles'`};</ImportCode>
       <Typography tokenGroup="fontSize" heading="Font sizes" description="Lorem ipsum dolor sit amet" />
     </>
   );
@@ -40,7 +31,7 @@ export const FontSizes = () => {
 export const LineHeights = () => {
   return (
     <>
-      <Import>{`import { lineHeight } from '../../styles'`};</Import>
+      <ImportCode>{`import { lineHeight } from '../../styles'`};</ImportCode>
       <Typography tokenGroup="lineHeight" heading="Line heights" />
     </>
   );
@@ -49,7 +40,7 @@ export const LineHeights = () => {
 export const LetterSpacings = () => {
   return (
     <>
-      <Import>{`import { letterSpacing } from '../../styles'`};</Import>
+      <ImportCode>{`import { letterSpacing } from '../../styles'`};</ImportCode>
       <Typography tokenGroup="letterSpacing" heading="Letter spacings" />
     </>
   );

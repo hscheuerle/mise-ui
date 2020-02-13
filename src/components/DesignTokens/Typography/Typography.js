@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { color, font, fontSize, letterSpacing, lineHeight, spacing } from '../../../styles';
-import TokenTable from '../TokenTable';
+import { TokenTable } from '../utils';
 
 const TokenGroup = styled.div`
   margin: 0 auto;
