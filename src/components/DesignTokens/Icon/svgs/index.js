@@ -1,9 +1,9 @@
-import Atk from './ATK';
-import Cio from './CIO';
-import Cco from './CCO';
+import BreadcrumbArrow from './BreadcrumbArrow';
+import FavoriteRibbon from './FavoriteRibbon'
+import VideoPlay from './VideoPlay';
 
 export {
-  Atk,
-  Cio,
-  Cco,
+  BreadcrumbArrow,
+  FavoriteRibbon,
+  VideoPlay,
 };
