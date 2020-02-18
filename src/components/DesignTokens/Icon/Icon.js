@@ -12,23 +12,34 @@ function Icon(props) {
 }
 
 Icon.propTypes = {
+  /** children are typically svgs */
   children: PropTypes.node.isRequired,
+  // but what about hover states?
+  fill: PropTypes.string,
+  stroke: PropTypes.string,
 };
 
-export const ATK = props => (
-  <Icon {...props}>
-    <Icons.Atk />
+export const BreadcrumbArrow = props => (
+  <Icon>
+    <Icons.BreadcrumbArrow
+      fill={props.fill}
+    />
   </Icon>
-);
+)
 
-export const CIO = props => (
-  <Icon {...props}>
-    <Icons.Cio />
+export const FavoriteRibbon = props => (
+  <Icon>
+    <Icons.FavoriteRibbon
+      fill={props.fill}
+      stroke={props.stroke}
+    />
   </Icon>
-);
+)
 
-export const CCO = props => (
-  <Icon {...props}>
-    <Icons.Cco />
+export const VideoPlay = props => (
+  <Icon>
+    <Icons.VideoPlay
+      fill={props.fill}
+    />
   </Icon>
-);
+)
