@@ -1,5 +1,5 @@
 import React from "react";
-import * as Icons from './Icon';
+import * as Icons from '../Icon';
 import styled from 'styled-components';
 import { font, fontSize, lineHeight, spacing } from '../../../styles';
 import { ImportCode } from '../components';

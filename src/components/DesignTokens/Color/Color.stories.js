@@ -1,5 +1,5 @@
 import React from 'react';
-import Color from './Color';
+import Color from '../Color';
 import { ImportCode } from '../components';
 
 export default {
