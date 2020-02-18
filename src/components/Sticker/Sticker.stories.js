@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sticker } from './Sticker';
+import { Sticker } from '../Sticker';
 
 export default {
   title: 'Components|Sticker',
