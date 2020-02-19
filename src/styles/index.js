@@ -1,12 +1,13 @@
 import { color } from './colors';
 import { fontSize, font, lineHeight, letterSpacing } from './typography';
-import { spacing } from './spacing';
+import { grid, spacing } from './layout';
 
 export {
   color,
   fontSize,
   font,
-  spacing,
+  grid,
   lineHeight,
   letterSpacing,
+  spacing,
 };
