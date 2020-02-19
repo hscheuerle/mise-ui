@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { color, font, fontSize, letterSpacing, spacing } from '../../styles';
 
-const stickerHeight = '1.5rem';
+const stickerHeight = '1.8rem';
 
 const StyledSticker = styled.span`
   background-color: ${props => props.isPriority ? color.tomato : color.black};
-  border-radius: 0.5rem;
+  border-radius: 0.6rem;
   color: ${color.white};
   display: inline-block;
   font: ${fontSize.xsm}/${stickerHeight} ${font.pnb};
