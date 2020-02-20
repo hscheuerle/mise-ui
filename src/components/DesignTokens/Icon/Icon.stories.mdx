@@ -1,0 +1,39 @@
+import * as Icons from '../Icon';
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+
+<Meta title="Design Tokens|Icons" component={Icons}/>
+
+# Icon
+enter description of icons here
+<Preview>
+  {
+      Object.keys(Icons).map((icon) => (
+        <div key={icon} style={{maxWidth:'40px'}}>
+          <h2 style={{fontSize: '14px'}}>{icon}</h2>
+          <style>{`
+            svg {
+              max-height:35px;
+              max-width:35px;
+            }
+          `}
+          </style>
+          {React.createElement(Icons[icon])}
+        </div>
+      ))
+    }
+</Preview>
+
+## SVG Guidelines
+SVGs can contain a ton of junk that bloats the file size and slows down rendering. Here are a few things you should do before adding the SVG to the repo: 
+
+1. Run the SVG through an SVG Optimizer (https://jakearchibald.github.io/svgomg/).
+
+2. Remove any inline width and height attributes on the SVG. Instead replace with `viewBox="0 0 width height"`. This allows the SVG to scale better. 
+
+3. We want to be a11y friendly! Don't forget to make sure your SVG contains the following attributes:
+    - `role="img"`
+    - `aria-label="description of the overall image"`
+    - `aria-hidden="true"` (if purely decorative)
+    - `focusable="false"` (if purely decorative)
+
+Note: Since the background of our Storybook is white it may be difficult to view your SVG; if so, you will need to change any fill/stroke attributes that are white or transparent.
