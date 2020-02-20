@@ -6,7 +6,7 @@ import { color, font, fontSize, letterSpacing, spacing } from '../../styles';
 const stickerHeight = '1.8rem';
 
 const StyledSticker = styled.span`
-  background-color: ${props => props.isPriority ? color.tomato : color.black};
+  background-color: ${props => props.isPriority ? color.tomato : color.transparentBlack};
   border-radius: 0.6rem;
   color: ${color.white};
   display: inline-block;
