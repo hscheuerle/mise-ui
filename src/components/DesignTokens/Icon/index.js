@@ -26,6 +26,7 @@ export const BreadcrumbArrow = props => (
 export const FavoriteRibbon = props => (
   <Icon>
     <Icons.FavoriteRibbon
+      className={props.className}
     />
   </Icon>
 )
