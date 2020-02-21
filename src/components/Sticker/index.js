@@ -58,11 +58,13 @@ Stickers scale down to a smaller size (`height: 1.2rem;` `font-size: 0.8rem;`) f
 */
 
 export function Sticker({
+  className,
   text,
   isPriority,
 }) {
   return (
     <StyledSticker
+      className={className}
       isPriority={isPriority}
     >
       {text}
@@ -71,6 +73,9 @@ export function Sticker({
 }
 
 Sticker.propTypes = {
+  /** className must be passed down to apply additional styles in parent
+  components, such as for resizing */
+  className: PropTypes.string,
   /** The text inside the sticker. Must be less than N characters. */
   text: PropTypes.string,
   /** True if it is a priority sticker, false if it is a basic sticker */
@@ -78,6 +83,7 @@ Sticker.propTypes = {
 };
 
 Sticker.defaultProps = {
+  className: '',
   text: '',
   isPriority: false,
 };

@@ -42,6 +42,10 @@ export const globalStyles = css`
   li {
     list-style-type: none;
   }
+
+  img {
+    max-width: 100%;
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`
