@@ -100,7 +100,11 @@ export function Card({
       <TextWrapper>
         <Title>{title}</Title>
         { isAuthenticated ? (
-          <StyledFavoriteRibbon className={className} />
+          <StyledFavoriteRibbon
+            ariaLabel="Save to favorites"
+            className={className}
+            role="button"
+          />
         ) : null }
       </TextWrapper>
       <Attributions>{attributions}</Attributions>
