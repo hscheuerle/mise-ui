@@ -65,11 +65,13 @@ const StickerGroup = styled.div`
   bottom: 0;
 `;
 
+const stickerHeightMobile = '1.2rem';
 const StyledSticker = styled(Sticker)`
 
   ${breakpoint('mobile', 'tablet')`
-    height: 1.2rem;
-    line-height: 1.2rem;
+    border-radius: 0.5rem;
+    line-height: ${stickerHeightMobile};
+    height: ${stickerHeightMobile};
     font-size: ${fontSize.xxsm};
   `}
 `;
