@@ -27,6 +27,8 @@ export const FavoriteRibbon = props => (
   <Icon>
     <Icons.FavoriteRibbon
       className={props.className}
+      role={props.role}
+      ariaLabel={props.ariaLabel}
     />
   </Icon>
 )
