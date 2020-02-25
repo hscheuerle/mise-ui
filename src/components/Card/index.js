@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../styles';
+import { Badge } from '../Badge';
 import { Sticker } from '../Sticker';
 import { FavoriteRibbon } from '../DesignTokens/Icon';
 
@@ -76,6 +77,12 @@ const StyledSticker = styled(Sticker)`
   `}
 `;
 
+const StyledBadge = styled(Badge)`
+  position: absolute;
+  top: ${spacing.xsm};
+  left: ${spacing.xsm};
+`;
+
 export function Card({
   attributions,
   className,
@@ -91,6 +98,7 @@ export function Card({
         { hasImage ? (
           <img src="https://placekitten.com/272/272" alt={imageAlt} />
         ) : null }
+        <StyledBadge className={className} type="atk" fill={color.tomato} />
         { hasStickers ? (
           <StickerGroup>
             <StyledSticker className={className} isPriority text='new' />
