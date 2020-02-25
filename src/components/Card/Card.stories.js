@@ -11,6 +11,7 @@ export default {
 export const LoggedIn = () => (
   <Card
     attributions={text("Attribution text", "Mar / Apr 2020  •  Andrew Janjigian")}
+    badgeType="atk"
     isAuthenticated
     hasImage
     hasStickers
@@ -22,6 +23,7 @@ export const LoggedIn = () => (
 export const LoggedOut = () => (
   <Card
     attributions={text("Attribution text", "Mar / Apr 2020  •  Andrew Janjigian")}
+    badgeType="cco"
     hasImage
     hasStickers
     imageAlt={text("Image alt text", "Gray cat pulling up the edge of a rug")}
