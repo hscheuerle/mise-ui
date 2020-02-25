@@ -9,10 +9,10 @@ const StyledBadge = styled.div`
   height: 2.5rem;
 `
 
-const determineType = (type) => ({
-  "atk": <ATKBrandIcon />,
-  "cio": <CIOBrandIcon />,
-  "cco": <CCOBrandIcon />,
+const determineType = (type, fill) => ({
+  "atk": <ATKBrandIcon fill={fill} />,
+  "cio": <CIOBrandIcon fill={fill} />,
+  "cco": <CCOBrandIcon fill={fill} />,
 })[type]
 
 /**
@@ -22,15 +22,24 @@ const determineType = (type) => ({
  *  Badges on a card do not go anywhere, but the badges that appear in the browse bar *are* interactive and function as facets
  */
 export function Badge({
-  type
+  className,
+  fill,
+  type,
 }) {
   return (
-    <StyledBadge>
-      {determineType(type)}
+    <StyledBadge className={className}>
+      {determineType(type, fill)}
     </StyledBadge>
   );
 }
 
 Badge.propTypes = {
-  type: PropTypes.oneOf(['atk', 'cio', 'cco'])
+  className: PropTypes.string,
+  fill: PropTypes.string,
+  type: PropTypes.oneOf(['atk', 'cio', 'cco']).isRequired,
+}
+
+Badge.defaultProps = {
+  className: '',
+  fill: `${color.transparentBlack}`,
 }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../styles';
+import { Badge } from '../Badge';
 import { Sticker } from '../Sticker';
 import { FavoriteRibbon } from '../DesignTokens/Icon';
 
@@ -76,8 +77,21 @@ const StyledSticker = styled(Sticker)`
   `}
 `;
 
+const StyledBadge = styled(Badge)`
+  position: absolute;
+  top: ${spacing.xsm};
+  left: ${spacing.xsm};
+`;
+
+const badgeColor = {
+  'atk': `${color.tomato}`,
+  'cco': `${color.denim}`,
+  'cio': `${color.squirrel}`,
+};
+
 export function Card({
   attributions,
+  badgeType,
   className,
   hasImage,
   isAuthenticated,
@@ -91,6 +105,7 @@ export function Card({
         { hasImage ? (
           <img src="https://placekitten.com/272/272" alt={imageAlt} />
         ) : null }
+        <StyledBadge className={className} type={badgeType} fill={badgeColor[badgeType]} />
         { hasStickers ? (
           <StickerGroup>
             <StyledSticker className={className} isPriority text='new' />
@@ -116,6 +131,7 @@ export function Card({
 
 Card.propTypes = {
   attributions: PropTypes.string,
+  badgeType: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
   isAuthenticated: PropTypes.bool,
   hasStickers: PropTypes.bool,
   imageAlt: PropTypes.string.isRequired,
