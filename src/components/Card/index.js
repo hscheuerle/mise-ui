@@ -131,7 +131,7 @@ export function Card({
 
 Card.propTypes = {
   attributions: PropTypes.string,
-  badgeType: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
+  badgeType: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids']).isRequired,
   isAuthenticated: PropTypes.bool,
   hasStickers: PropTypes.bool,
   imageAlt: PropTypes.string.isRequired,
