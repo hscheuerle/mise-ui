@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { color } from '../../styles';
-import { ATKBrandIcon, CIOBrandIcon, CCOBrandIcon } from './svgs';
+import { ATKBrandIcon, CIOBrandIcon, CCOBrandIcon, KidsBrandIcon } from './svgs';
 
-const StyledBadge = styled.div`
+const StyledBadge = styled.svg`
   width: 2.5rem;
   height: 2.5rem;
 `
@@ -13,6 +13,7 @@ const determineType = (type, fill) => ({
   "atk": <ATKBrandIcon fill={fill} />,
   "cio": <CIOBrandIcon fill={fill} />,
   "cco": <CCOBrandIcon fill={fill} />,
+  "kids": <KidsBrandIcon fill={fill} />,
 })[type]
 
 /**
@@ -27,16 +28,23 @@ export function Badge({
   type,
 }) {
   return (
-    <StyledBadge className={className}>
+    <StyledBadge
+      role="img"
+      aria-label={`${type} brand icon`}
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 25 25"
+    >
       {determineType(type, fill)}
     </StyledBadge>
   );
 }
 
 Badge.propTypes = {
+  ariaLabel: PropTypes.string,
   className: PropTypes.string,
   fill: PropTypes.string,
-  type: PropTypes.oneOf(['atk', 'cio', 'cco']).isRequired,
+  type: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids']).isRequired,
 }
 
 Badge.defaultProps = {
