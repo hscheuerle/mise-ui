@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CCOBrandIcon = ({ fill }) => (
-  <svg role="img" aria-label="cco brand icon" data-name="Brand icon" className="cco-brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+  <>
     <defs>
       <clipPath id="a"><path data-name="Clip 2" d="M0 0h14.1v16.226H0z" fill="none"/></clipPath><clipPath id="b"><path data-name="Clip 5" d="M0 0h3.614v3.635H0z" fill="none"/></clipPath>
     </defs>
@@ -19,7 +19,7 @@ const CCOBrandIcon = ({ fill }) => (
         </g>
       </g>
     </g>
-  </svg>
+  </>
 );
 
 export default CCOBrandIcon;
