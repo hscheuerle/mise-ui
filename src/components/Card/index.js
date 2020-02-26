@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../styles';
-import { Badge } from '../Badge';
 import Sticker from '../Sticker';
+import Badge from '../Badge';
 import { Cookbook, FavoriteRibbon, Lock } from '../DesignTokens/Icon';
 
 const StyledCard = styled.article`

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from '../index.js';
+import Badge from '../../Badge';
 import { create } from 'react-test-renderer';
 
 describe('components', () => {

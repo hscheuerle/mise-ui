@@ -35,11 +35,12 @@ const determineType = (type, fill) => {
  * Logo badges appear on cards in mixed brand scenarios, like search and do not appear when only one brand’s content is showing
  *  Badges on a card do not go anywhere, but the badges that appear in the browse bar *are* interactive and function as facets
  */
-export function Badge({
+
+const Badge = ({
   className,
   fill,
   type,
-}) {
+}) => {
   return (
     <StyledBadge
       role="img"
@@ -64,3 +65,5 @@ Badge.defaultProps = {
   className: '',
   fill: `${color.transparentBlack}`,
 }
+
+export default Badge;
