@@ -5,6 +5,7 @@ import { color } from '../../../../styles';
 
 const StyledFavoriteRibbon = styled.svg`
   cursor: pointer;
+  width: 1.7rem;
 
   [class*="ribbon"] {
     fill: transparent;

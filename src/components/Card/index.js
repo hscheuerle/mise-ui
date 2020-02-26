@@ -5,7 +5,7 @@ import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../styles';
 import { Badge } from '../Badge';
 import Sticker from '../Sticker';
-import { FavoriteRibbon } from '../DesignTokens/Icon';
+import { FavoriteRibbon, Lock } from '../DesignTokens/Icon';
 
 const StyledCard = styled.article`
   position: relative;
@@ -46,18 +46,22 @@ const TextWrapper = styled.div`
 const StyledFavoriteRibbon = styled(FavoriteRibbon)`
   flex-shrink: 0;
   margin-top: ${spacing.xxsm};
-  width: 1.5rem;
   stroke: currentColor;
   fill: transparent;
 `;
 
 const Attributions = styled.p`
   font: 1.2rem/${lineHeight.md} ${font.pnr};
-  padding-bottom: ${spacing.sm};
+  margin-bottom: ${spacing.sm};
 
   ${breakpoint('tablet')`
     font-size: ${fontSize.sm};
   `}
+`;
+
+const StyledLock = styled(Lock)`
+  width: 0.8rem;
+  margin-right: ${spacing.xsm};
 `;
 
 const StickerGroup = styled.div`
@@ -95,6 +99,7 @@ export function Card({
   className,
   hasImage,
   isAuthenticated,
+  hasAccess,
   hasStickers,
   imageAlt,
   title,
@@ -124,7 +129,12 @@ export function Card({
           />
         ) : null }
       </TextWrapper>
-      <Attributions>{attributions}</Attributions>
+      <div className="attributions-wrapper">
+        <Attributions>
+          { !hasAccess ? <StyledLock className={className} fill={`${color.nobel}`} /> : null }
+          {attributions}
+        </Attributions>
+      </div>
     </StyledCard>
   )
 }
@@ -132,7 +142,10 @@ export function Card({
 Card.propTypes = {
   attributions: PropTypes.string,
   badgeType: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids']).isRequired,
+  //* Is the user logged in? */
   isAuthenticated: PropTypes.bool,
+  //* Does the user have access to the card content? */
+  hasAccess: PropTypes.bool,
   hasStickers: PropTypes.bool,
   imageAlt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
