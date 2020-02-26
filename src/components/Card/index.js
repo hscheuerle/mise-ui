@@ -109,7 +109,7 @@ export function Card({
         { hasStickers ? (
           <StickerGroup>
             <StyledSticker className={className} isPriority text='new' />
-            <StyledSticker className={className} text='popular' />
+            <StyledSticker className={className} iconType="collection" text='popular' />
           </StickerGroup>
         ) : null }
       </ImageWrapper>

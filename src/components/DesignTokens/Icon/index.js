@@ -28,7 +28,7 @@ export const FavoriteRibbon = props => (
     <Icons.FavoriteRibbon
       className={props.className}
       role={props.role}
-      ariaLabel={props.ariaLabel}
+      aria-label={props.ariaLabel}
     />
   </Icon>
 )
@@ -36,6 +36,15 @@ export const FavoriteRibbon = props => (
 export const VideoPlay = props => (
   <Icon>
     <Icons.VideoPlay
+      fill={props.fill}
+    />
+  </Icon>
+)
+
+export const Collection = props => (
+  <Icon>
+    <Icons.Collection
+      fill={props.fill}
     />
   </Icon>
 )

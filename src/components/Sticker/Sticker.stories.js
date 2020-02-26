@@ -10,6 +10,7 @@ export default {
 
 export const Basic = () => (
   <Sticker
+    iconType="collection"
     isPriority={false}
     text={text("Basic sticker text", "Editors’ pick")}
   />
