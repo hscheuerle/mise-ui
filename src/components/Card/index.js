@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../styles';
 import { Badge } from '../Badge';
-import { Sticker } from '../Sticker';
+import Sticker from '../Sticker';
 import { FavoriteRibbon } from '../DesignTokens/Icon';
 
 const StyledCard = styled.article`

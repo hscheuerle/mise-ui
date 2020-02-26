@@ -1,6 +1,6 @@
 import React from 'react';
-import { Sticker } from '../Sticker';
-import { withKnobs, text } from "@storybook/addon-knobs";
+import Sticker from '../Sticker';
+import { withKnobs, text, select } from "@storybook/addon-knobs";
 
 export default {
   title: 'Components|Sticker',
@@ -10,7 +10,7 @@ export default {
 
 export const Basic = () => (
   <Sticker
-    iconType="collection"
+    iconType={select('icon type', { 'collection' : 'collection', 'play': 'play', 'none': null }, 'collection')}
     isPriority={false}
     text={text("Basic sticker text", "Editors’ pick")}
   />

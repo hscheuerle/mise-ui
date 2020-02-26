@@ -71,23 +71,20 @@ Stickers scale down to a smaller size (`height: 1.2rem;` `font-size: 0.8rem;`) f
 
 */
 
-export function Sticker({
+const Sticker = ({
   className,
   text,
   iconType,
-  fill,
   isPriority,
-}) {
-  return (
-    <StyledSticker
-      className={className}
-      isPriority={isPriority}
-    >
-      {determineIconType(iconType, fill)}
-      <span>{text}</span>
-    </StyledSticker>
-  )
-}
+}) => (
+  <StyledSticker
+    className={className}
+    isPriority={isPriority}
+  >
+    {determineIconType(iconType)}
+    <span>{text}</span>
+  </StyledSticker>
+);
 
 Sticker.propTypes = {
   /** className must be passed down to apply additional styles in parent
@@ -107,3 +104,5 @@ Sticker.defaultProps = {
   text: '',
   isPriority: false,
 };
+
+export default Sticker;
