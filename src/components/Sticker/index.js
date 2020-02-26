@@ -2,24 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { color, font, fontSize, letterSpacing, spacing } from '../../styles';
+import { Collection, VideoPlay } from '../DesignTokens/Icon';
 
 const stickerHeight = '1.8rem';
 
 const StyledSticker = styled.span`
-  background-color: ${props => props.isPriority ? color.tomato : color.transparentBlack};
-  border-radius: 0.6rem;
-  color: ${color.white};
-  display: inline-block;
-  font: ${fontSize.xsm}/${stickerHeight} ${font.pnb};
-  height: ${stickerHeight};
-  letter-spacing: ${letterSpacing.sm};
+  display: inline-flex;
+  align-items: center;
   margin-bottom: ${spacing.xsm};
   margin-left: ${spacing.xsm};
   padding-left: ${spacing.xsm};
   padding-right: ${spacing.xsm};
+  height: ${stickerHeight};
+  border-radius: 0.6rem;
+  background-color: ${props => props.isPriority ? color.tomato : color.transparentBlack};
+  color: ${color.white};
+  font: ${fontSize.xsm}/${stickerHeight} ${font.pnb};
+  letter-spacing: ${letterSpacing.sm};
   text-transform: uppercase;
   white-space: nowrap;
+
+  svg {
+    margin-right: ${spacing.xxsm};
+    width: 1rem;
+    height: 1rem;
+  }
 `;
+
+const determineIconType = (iconType) => ({
+  "collection": <Collection fill={`${color.white}`} />,
+  "play": <VideoPlay fill={`${color.white}`} />,
+})[iconType]
+
 
 /**
 
@@ -60,6 +74,8 @@ Stickers scale down to a smaller size (`height: 1.2rem;` `font-size: 0.8rem;`) f
 export function Sticker({
   className,
   text,
+  iconType,
+  fill,
   isPriority,
 }) {
   return (
@@ -67,7 +83,8 @@ export function Sticker({
       className={className}
       isPriority={isPriority}
     >
-      {text}
+      {determineIconType(iconType, fill)}
+      <span>{text}</span>
     </StyledSticker>
   )
 }
@@ -76,6 +93,8 @@ Sticker.propTypes = {
   /** className must be passed down to apply additional styles in parent
   components, such as for resizing */
   className: PropTypes.string,
+  /** Stickers can optionally include one icon */
+  iconType: PropTypes.oneOf(['collection', 'play']),
   /** The text inside the sticker. Must be less than N characters. */
   text: PropTypes.string,
   /** True if it is a priority sticker, false if it is a basic sticker */
@@ -84,6 +103,7 @@ Sticker.propTypes = {
 
 Sticker.defaultProps = {
   className: '',
+  iconType: null,
   text: '',
   isPriority: false,
 };
