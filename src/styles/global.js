@@ -23,7 +23,7 @@ export const globalStyles = css`
     min-height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin: 0;
+    margin: 1rem;
     padding: 0;
   }
 
