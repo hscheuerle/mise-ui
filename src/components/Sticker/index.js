@@ -26,6 +26,7 @@ const StyledSticker = styled.span`
     margin-right: ${spacing.xxsm};
     width: 1rem;
     height: 1rem;
+    max-height: 60%;
   }
 `;
 

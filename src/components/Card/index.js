@@ -87,12 +87,6 @@ const StyledBadge = styled(Badge)`
   left: ${spacing.xsm};
 `;
 
-const badgeColor = {
-  'atk': `${color.tomato}`,
-  'cco': `${color.denim}`,
-  'cio': `${color.squirrel}`,
-};
-
 export function Card({
   attributions,
   badgeType,
@@ -110,7 +104,7 @@ export function Card({
         { hasImage ? (
           <img src="https://placekitten.com/272/272" alt={imageAlt} />
         ) : null }
-        <StyledBadge className={className} type={badgeType} fill={badgeColor[badgeType]} />
+        <StyledBadge className={className} type={badgeType} />
         { hasStickers ? (
           <StickerGroup>
             <StyledSticker className={className} isPriority text='new' />
