@@ -12,19 +12,21 @@ export const LoggedIn = () => (
   <Card
     attributions={text("Attribution text", "Mar / Apr 2020  •  Andrew Janjigian")}
     badgeType="atk"
+    cta={text("CTA text", "Buy the Winner")}
+    ctaUrl="https://www.amazon.com/dp/B01JCNEJSO/?tag=ciosearchresult-20"
     isAuthenticated
     hasAccess
     hasImage
     hasStickers
     imageAlt={text("Image alt text", "Gray cat pulling up the edge of a rug")}
-    title={text("Title", "Congee (Chinese Rice Porridge) with Stir-Fried Ground Pork")}
+    title={text("Title", "Plastic Food Storage Containers")}
   />
 );
 
 export const LoggedOut = () => (
   <Card
     attributions={text("Attribution text", "Mar / Apr 2020  •  Andrew Janjigian")}
-    badgeType="cco"
+    badgeType="cio"
     hasImage
     hasStickers
     imageAlt={text("Image alt text", "Gray cat pulling up the edge of a rug")}

@@ -59,6 +59,20 @@ const Attributions = styled.p`
   `}
 `;
 
+const Cta = styled.a`
+  color: ${color.tomato};
+  font: 1.2rem/${lineHeight.sm} ${font.pnb};
+  transition: color .1s ease-in-out;
+
+  &:hover {
+    color: ${color.rust};
+  }
+
+  ${breakpoint('tablet')`
+    font-size: ${fontSize.md};
+  `}
+`;
+
 const StyledLock = styled(Lock)`
   width: 0.8rem;
   margin-right: ${spacing.xsm};
@@ -89,6 +103,8 @@ const StyledBadge = styled(Badge)`
 
 export function Card({
   attributions,
+  cta,
+  ctaUrl,
   badgeType,
   className,
   hasImage,
@@ -129,6 +145,15 @@ export function Card({
           {attributions}
         </Attributions>
       </div>
+      { cta ? (
+        <Cta
+          href={ctaUrl}
+          target="_blank"
+          title={`${title}. ${cta} (opens in new window)`}
+        >
+          {cta}
+        </Cta>
+      ) : null }
     </StyledCard>
   )
 }
@@ -140,6 +165,8 @@ Card.propTypes = {
   isAuthenticated: PropTypes.bool,
   //* Does the user have access to the card content? */
   hasAccess: PropTypes.bool,
+  cta: PropTypes.string,
+  ctaUrl: PropTypes.string,
   hasStickers: PropTypes.bool,
   imageAlt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

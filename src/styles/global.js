@@ -38,6 +38,10 @@ export const globalStyles = css`
     padding: 0;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   ul,
   li {
     list-style-type: none;
