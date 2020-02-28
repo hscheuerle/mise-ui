@@ -33,6 +33,15 @@ export const FavoriteRibbon = props => (
   </Icon>
 )
 
+export const Lock = props => (
+  <Icon>
+    <Icons.Lock
+      className={props.className}
+      fill={props.fill}
+    />
+  </Icon>
+)
+
 export const VideoPlay = props => (
   <Icon>
     <Icons.VideoPlay

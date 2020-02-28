@@ -13,6 +13,7 @@ export const LoggedIn = () => (
     attributions={text("Attribution text", "Mar / Apr 2020  •  Andrew Janjigian")}
     badgeType="atk"
     isAuthenticated
+    hasAccess
     hasImage
     hasStickers
     imageAlt={text("Image alt text", "Gray cat pulling up the edge of a rug")}

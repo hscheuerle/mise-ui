@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import { color } from '../../styles';
 import { ATKBrandIcon, CIOBrandIcon, CCOBrandIcon, KidsBrandIcon } from './svgs';
 
 const StyledBadge = styled.svg`
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.6rem;
+  height: 1.6rem;
+
+  ${breakpoint('tablet')`
+    width: 2.5rem;
+    height: 2.5rem;
+  `}
 `
 
 const determineType = (type, fill) => ({
