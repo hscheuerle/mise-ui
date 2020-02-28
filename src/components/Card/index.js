@@ -5,7 +5,7 @@ import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../styles';
 import { Badge } from '../Badge';
 import Sticker from '../Sticker';
-import { FavoriteRibbon, Lock } from '../DesignTokens/Icon';
+import { Cookbook, FavoriteRibbon, Lock } from '../DesignTokens/Icon';
 
 const StyledCard = styled.article`
   position: relative;
@@ -92,6 +92,11 @@ const StyledLock = styled(Lock)`
   `}
 `;
 
+const StyledCookbook = styled(Cookbook)`
+  margin-right: ${spacing.xsm};
+  width: 1.6rem;
+`;
+
 const Cta = styled.a`
   color: ${color.tomato};
   font: 1.2rem/${lineHeight.sm} ${font.pnb};
@@ -171,6 +176,9 @@ export function Card({
       <Attributions>
         <div className="attributions__content-type-wrapper">
           { !hasAccess ? <StyledLock className="lock-icon" fill={`${color.nobel}`} /> : null }
+          { contentType === "Cookbook Collection" ? (
+            <StyledCookbook className={className} />
+          ) : null }
           <span>{contentType}</span>
         </div>
         { commentCount > 0 ? (
