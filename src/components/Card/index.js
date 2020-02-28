@@ -50,12 +50,44 @@ const StyledFavoriteRibbon = styled(FavoriteRibbon)`
   fill: transparent;
 `;
 
-const Attributions = styled.p`
-  font: 1.2rem/${lineHeight.md} ${font.pnr};
+const Attributions = styled.div`
+  font: ${fontSize.sm}/${lineHeight.md} ${font.pnr};
   margin-bottom: ${spacing.sm};
+  text-transform: capitalize;
+
+  & > * {
+    margin-right: ${spacing.xsm};
+  }
+
+  .attributions__content-type-wrapper {
+    display: inline-block;
+  }
+
+  ${breakpoint('mobile', 'tablet')`
+    font-size: 1.2rem;
+
+    & > span {
+      display: block;
+    }
+
+    .attributions__bullet {
+      display: none;
+    }
+  `}
 
   ${breakpoint('tablet')`
     font-size: ${fontSize.sm};
+  `}
+`;
+
+const StyledLock = styled(Lock)`
+  display: inline;
+  margin-right: ${spacing.xxsm};
+  width: 0.6rem;
+
+  ${breakpoint('tablet')`
+    margin-right: ${spacing.xsm};
+    width: 0.8rem;
   `}
 `;
 
@@ -71,11 +103,6 @@ const Cta = styled.a`
   ${breakpoint('tablet')`
     font-size: ${fontSize.md};
   `}
-`;
-
-const StyledLock = styled(Lock)`
-  width: 0.8rem;
-  margin-right: ${spacing.xsm};
 `;
 
 const StickerGroup = styled.div`
@@ -103,6 +130,8 @@ const StyledBadge = styled(Badge)`
 
 export function Card({
   attributions,
+  contentType,
+  commentCount,
   cta,
   ctaUrl,
   badgeType,
@@ -139,12 +168,18 @@ export function Card({
           />
         ) : null }
       </TextWrapper>
-      <div className="attributions-wrapper">
-        <Attributions>
-          { !hasAccess ? <StyledLock className={className} fill={`${color.nobel}`} /> : null }
-          {attributions}
-        </Attributions>
-      </div>
+      <Attributions>
+        <div className="attributions__content-type-wrapper">
+          { !hasAccess ? <StyledLock className="lock-icon" fill={`${color.nobel}`} /> : null }
+          <span>{contentType}</span>
+        </div>
+        { commentCount > 0 ? (
+          <>
+            <span className="attributions__bullet">•</span>
+            <span>{commentCount} {commentCount === 1 ? 'Comment' : 'Comments' }</span>
+          </>
+        ) : null }
+      </Attributions>
       { cta ? (
         <Cta
           href={ctaUrl}
@@ -165,6 +200,8 @@ Card.propTypes = {
   isAuthenticated: PropTypes.bool,
   //* Does the user have access to the card content? */
   hasAccess: PropTypes.bool,
+  contentType: PropTypes.string,
+  commentCount: PropTypes.number,
   cta: PropTypes.string,
   ctaUrl: PropTypes.string,
   hasStickers: PropTypes.bool,
