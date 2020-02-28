@@ -57,3 +57,11 @@ export const Collection = props => (
     />
   </Icon>
 )
+
+export const Cookbook = props => (
+  <Icon>
+    <Icons.Cookbook
+      className={props.className}
+    />
+  </Icon>
+)

@@ -28,7 +28,7 @@ export const LoggedIn = () => (
 export const LoggedOut = () => (
   <Card
     badgeType="cio"
-    contentType="recipe"
+    contentType="Cookbook Collection"
     commentCount={1}
     hasImage
     hasStickers

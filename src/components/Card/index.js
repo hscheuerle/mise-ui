@@ -5,10 +5,11 @@ import breakpoint from 'styled-components-breakpoint';
 import { color, font, fontSize, lineHeight, spacing } from '../../styles';
 import { Badge } from '../Badge';
 import Sticker from '../Sticker';
-import { FavoriteRibbon, Lock } from '../DesignTokens/Icon';
+import { Cookbook, FavoriteRibbon, Lock } from '../DesignTokens/Icon';
 
 const StyledCard = styled.article`
   position: relative;
+  padding-bottom: ${spacing.xlg};
   width: 16.2rem;
   color: ${color.eclipse};
 
@@ -19,6 +20,7 @@ const StyledCard = styled.article`
 
 const ImageWrapper = styled.div`
   position: relative;
+  margin-bottom: ${spacing.xsm};
   height: 16.2rem;
 
   ${breakpoint('tablet')`
@@ -27,7 +29,8 @@ const ImageWrapper = styled.div`
 `;
 
 const Title = styled.h3`
-  margin-bottom: ${spacing.xxsm};
+  margin-right: ${spacing.xxsm};
+  margin-bottom: ${spacing.xsm};
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
 
   ${breakpoint('tablet')`
@@ -35,12 +38,10 @@ const Title = styled.h3`
   `}
 `;
 
-const TextWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding-top: ${spacing.xsm};
-  padding-bottom: ${spacing.xsm};
 `;
 
 const StyledFavoriteRibbon = styled(FavoriteRibbon)`
@@ -52,7 +53,7 @@ const StyledFavoriteRibbon = styled(FavoriteRibbon)`
 
 const Attributions = styled.div`
   font: ${fontSize.sm}/${lineHeight.md} ${font.pnr};
-  margin-bottom: ${spacing.sm};
+  margin-bottom: ${spacing.xsm};
   text-transform: capitalize;
 
   & > * {
@@ -89,6 +90,11 @@ const StyledLock = styled(Lock)`
     margin-right: ${spacing.xsm};
     width: 0.8rem;
   `}
+`;
+
+const StyledCookbook = styled(Cookbook)`
+  margin-right: ${spacing.xsm};
+  width: 1.6rem;
 `;
 
 const Cta = styled.a`
@@ -157,8 +163,7 @@ export function Card({
           </StickerGroup>
         ) : null }
       </ImageWrapper>
-
-      <TextWrapper>
+      <TitleWrapper>
         <Title>{title}</Title>
         { isAuthenticated ? (
           <StyledFavoriteRibbon
@@ -167,10 +172,13 @@ export function Card({
             role="button"
           />
         ) : null }
-      </TextWrapper>
+      </TitleWrapper>
       <Attributions>
         <div className="attributions__content-type-wrapper">
           { !hasAccess ? <StyledLock className="lock-icon" fill={`${color.nobel}`} /> : null }
+          { contentType === "Cookbook Collection" ? (
+            <StyledCookbook className={className} />
+          ) : null }
           <span>{contentType}</span>
         </div>
         { commentCount > 0 ? (
