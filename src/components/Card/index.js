@@ -83,13 +83,8 @@ const Attributions = styled.div`
 
 const StyledLock = styled(Lock)`
   display: inline;
-  margin-right: ${spacing.xxsm};
-  width: 0.6rem;
-
-  ${breakpoint('tablet')`
-    margin-right: ${spacing.xsm};
-    width: 0.8rem;
-  `}
+  margin-right: ${spacing.xsm};
+  width: 0.8rem;
 `;
 
 const StyledCookbook = styled(Cookbook)`
@@ -159,7 +154,7 @@ export function Card({
         { hasStickers ? (
           <StickerGroup>
             <StyledSticker className={className} isPriority text='new' />
-            <StyledSticker className={className} iconType="collection" text='popular' />
+            <StyledSticker className={className} text='popular' />
           </StickerGroup>
         ) : null }
       </ImageWrapper>
