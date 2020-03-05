@@ -23,6 +23,31 @@ export const BreadcrumbArrow = props => (
   </Icon>
 )
 
+export const Close = props => (
+  <Icon>
+    <Icons.Close
+      ariaLabel={props.ariaLabel}
+      fill={props.fill}
+    />
+  </Icon>
+)
+
+export const Collection = props => (
+  <Icon>
+    <Icons.Collection
+      fill={props.fill}
+    />
+  </Icon>
+)
+
+export const Cookbook = props => (
+  <Icon>
+    <Icons.Cookbook
+      className={props.className}
+    />
+  </Icon>
+)
+
 export const FavoriteRibbon = props => (
   <Icon>
     <Icons.FavoriteRibbon
@@ -50,18 +75,10 @@ export const VideoPlay = props => (
   </Icon>
 )
 
-export const Collection = props => (
+export const SearchIcon = props => (
   <Icon>
-    <Icons.Collection
+    <Icons.SearchIcon
       fill={props.fill}
-    />
-  </Icon>
-)
-
-export const Cookbook = props => (
-  <Icon>
-    <Icons.Cookbook
-      className={props.className}
     />
   </Icon>
 )
