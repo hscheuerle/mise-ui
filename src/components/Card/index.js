@@ -52,7 +52,7 @@ const StyledFavoriteRibbon = styled(FavoriteRibbon)`
 `;
 
 const Attributions = styled.div`
-  font: ${fontSize.sm}/${lineHeight.md} ${font.pnr};
+  font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
   margin-bottom: ${spacing.xsm};
   text-transform: capitalize;
 
@@ -74,10 +74,6 @@ const Attributions = styled.div`
     .attributions__bullet {
       display: none;
     }
-  `}
-
-  ${breakpoint('tablet')`
-    font-size: ${fontSize.sm};
   `}
 `;
 
