@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 import { color } from '../../styles';
-import { ATKBrandIcon, CIOBrandIcon, CCOBrandIcon, KidsBrandIcon } from './svgs';
+import {
+  ATKBrandIcon,
+  CIOBrandIcon,
+  CCOBrandIcon,
+  KidsBrandIcon,
+  SchoolBrandIcon,
+  ShopBrandIcon
+} from './svgs';
 
 const StyledBadge = styled.svg`
   width: 1.6rem;
@@ -15,12 +22,18 @@ const StyledBadge = styled.svg`
   `}
 `
 
-const determineType = (type, fill) => ({
-  "atk": <ATKBrandIcon fill={fill} />,
-  "cio": <CIOBrandIcon fill={fill} />,
-  "cco": <CCOBrandIcon fill={fill} />,
-  "kids": <KidsBrandIcon fill={fill} />,
-})[type]
+const determineType = (type, fill) => {
+  const types = {
+    "atk": ATKBrandIcon,
+    "cio": CIOBrandIcon,
+    "cco": CCOBrandIcon,
+    "kids": KidsBrandIcon,
+    "school": SchoolBrandIcon,
+    "shop": ShopBrandIcon,
+  };
+  const El = types[type];
+  return El && <El fill={fill} />;
+}
 
 /**
  * Badges exist for brand logos (cc, ci, atk, kids) and also other destination identities like shop.
@@ -50,7 +63,7 @@ Badge.propTypes = {
   ariaLabel: PropTypes.string,
   className: PropTypes.string,
   fill: PropTypes.string,
-  type: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids']).isRequired,
+  type: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop',]).isRequired,
 }
 
 Badge.defaultProps = {
