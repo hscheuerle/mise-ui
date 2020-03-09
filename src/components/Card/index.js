@@ -123,6 +123,11 @@ const StyledBadge = styled(Badge)`
   position: absolute;
   top: ${spacing.xsm};
   left: ${spacing.xsm};
+
+  ${breakpoint('mobile', 'tablet')`
+    width: 1.6rem;
+    height: 1.6rem;
+  `}
 `;
 
 export function Card({
