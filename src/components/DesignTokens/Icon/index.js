@@ -82,3 +82,11 @@ export const SearchIcon = props => (
     />
   </Icon>
 )
+
+export const Plus= props => (
+  <Icon>
+    <Icons.Plus
+      fill={props.fill}
+    />
+  </Icon>
+)
