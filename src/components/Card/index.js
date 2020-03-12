@@ -217,3 +217,5 @@ Card.defaultProps = {
   attributions: '',
   hasStickers: false,
 };
+
+export default Card;

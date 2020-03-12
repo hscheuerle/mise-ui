@@ -85,4 +85,6 @@ ShowHide.propTypes = {
 
 ShowHide.defaultProps = {
   isHidden: false,
-}
+};
+
+export default ShowHide;

@@ -33,3 +33,5 @@ Button.propTypes = {
 Button.defaultProps = {
   onClick: () => {},
 };
+
+export default Button;
