@@ -11,6 +11,8 @@ Mise UI is a [Storybook](https://storybook.js.org) app built with [React](https:
 ### Visual review
 To review work with others, push your branch to `origin/staging`. Netlify will build and deploy to http://staging--mise-ui.netlify.com. The master branch is always viewable here: https://mise-ui.netlify.com
 
+### Workflow
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
