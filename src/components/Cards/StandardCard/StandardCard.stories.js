@@ -1,38 +1,44 @@
 import React from 'react';
-import { Card } from '../Card';
+import { action } from '@storybook/addon-actions';
+import { StandardCard } from '../StandardCard';
 import { withKnobs, text } from "@storybook/addon-knobs";
 
 export default {
   title: 'Components|Cards/StandardCard',
-  component: Card,
+  component: StandardCard,
   decorators: [withKnobs],
 };
 
 export const LoggedIn = () => (
-  <Card
-    attributions={text("Attribution text", "Mar / Apr 2020  •  Andrew Janjigian")}
+  <StandardCard
     badgeType="atk"
-    contentType="review"
+    contentType="Review"
     commentCount={5}
-    cta={text("CTA text", "Buy the Winner")}
+    ctaText={text("CTA text", "Buy the Winner")}
     ctaUrl="https://www.amazon.com/dp/B01JCNEJSO/?tag=ciosearchresult-20"
-    isAuthenticated
-    hasAccess
+    displayFavoritesButton={true}
+    isFavorited={false}
+    displayLockIcon={false}
     hasImage
     hasStickers
     imageAlt={text("Image alt text", "Gray cat pulling up the edge of a rug")}
+    displayCommentCount={true}
+    onClick={action('favorites-click')}
     title={text("Title", "Plastic Food Storage Containers")}
   />
 );
 
 export const LoggedOut = () => (
-  <Card
+  <StandardCard
     badgeType="cio"
     contentType="Cookbook Collection"
     commentCount={1}
+    displayFavoritesButton={false}
+    displayLockIcon={true}
     hasImage
     hasStickers
     imageAlt={text("Image alt text", "Gray cat pulling up the edge of a rug")}
+    displayCommentCount={true}
     title={text("Title", "Congee (Chinese Rice Porridge) with Stir-Fried Ground Pork")}
   />
 );

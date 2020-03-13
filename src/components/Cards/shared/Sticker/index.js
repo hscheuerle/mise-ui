@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { color, font, fontSize, letterSpacing, spacing } from '../../styles';
-import { Collection, VideoPlay } from '../DesignTokens/Icon';
+import { color, font, fontSize, letterSpacing, spacing } from '../../../../styles';
+import { Collection, VideoPlay } from '../../../DesignTokens/Icon';
 
 const stickerHeight = '1.8rem';
 
@@ -30,10 +30,14 @@ const StyledSticker = styled.span`
   }
 `;
 
-const determineIconType = (iconType) => ({
-  "collection": <Collection fill={`${color.white}`} />,
-  "play": <VideoPlay fill={`${color.white}`} />,
-})[iconType]
+const determineIconType = (iconType) => {
+  const iconTypes = {
+    "collection": Collection,
+    "play": VideoPlay,
+  };
+  const El = iconTypes[iconType];
+  return El && <El fill={`${color.white}`} />;
+}
 
 
 /**
