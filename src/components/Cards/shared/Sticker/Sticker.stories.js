@@ -3,7 +3,7 @@ import Sticker from '../Sticker';
 import { withKnobs, text, select } from "@storybook/addon-knobs";
 
 export default {
-  title: 'Components|Sticker',
+  title: 'Components|Cards/shared/Sticker',
   component: Sticker,
   decorators: [withKnobs],
 };

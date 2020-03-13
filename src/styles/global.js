@@ -42,6 +42,19 @@ export const globalStyles = css`
     text-decoration: none;
   }
 
+  button,
+  input[type="button"] {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background:
+    color: currentColor;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    appearance: none;
+  }
+
   ul,
   li {
     list-style-type: none;
