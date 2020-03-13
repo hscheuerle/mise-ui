@@ -75,7 +75,7 @@ export default function Typography({
   if (tokenGroup === 'font') {
     const tokens = brands[brand];
 
-    tokens.map(keys => {
+    tokens.map((keys) => {
       const tokenValue = font[keys];
       tokensArray.push(
         <>

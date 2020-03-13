@@ -98,7 +98,7 @@ export default function Color({
   const tokensArray = [];
   const tokens = tokenGroups[tokenGroup];
 
-  tokens.map(keys => {
+  tokens.map((keys) => {
     const tokenValue = color[keys];
     tokensArray.push(
       <>
