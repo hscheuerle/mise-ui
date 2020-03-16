@@ -48,3 +48,31 @@ export const SearchSiteList = () => {
     </MiseInstantSearch>
   );
 };
+
+export const SearchCuisine = () => {
+  return (
+    <MiseInstantSearch>
+      <StyledWrapper>
+        <SearchRefinementList
+          attribute="search_cuisine_list"
+          operator="and"
+          showHideLabel="CUISINE"
+        />
+      </StyledWrapper>
+    </MiseInstantSearch>
+  );
+};
+
+export const SearchDishType = () => {
+  return (
+    <MiseInstantSearch>
+      <StyledWrapper>
+        <SearchRefinementList
+          attribute="search_dish_type_list"
+          operator="and"
+          showHideLabel="DISH TYPE"
+        />
+      </StyledWrapper>
+    </MiseInstantSearch>
+  );
+};
