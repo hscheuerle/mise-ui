@@ -7,6 +7,7 @@ import Badge from '../../Badge';
 import Attributions from '../shared/Attributions';
 import CtaLink from '../shared/CtaLink';
 import FavoriteButton from '../shared/FavoriteButton';
+import Image from '../shared/Image';
 import Sticker from '../shared/Sticker';
 import Title from '../shared/Title';
 
@@ -80,9 +81,9 @@ export function StandardCard({
   displayCommentCount,
   displayFavoritesButton,
   displayLockIcon,
-  hasImage,
   hasStickers,
   imageAlt,
+  imageUrl,
   isFavorited,
   onClick,
   title,
@@ -90,8 +91,11 @@ export function StandardCard({
   return (
     <StyledStandardCard>
       <ImageWrapper>
-        { hasImage ? (
-          <img src="https://placekitten.com/272/272" alt={imageAlt} />
+        { imageUrl ? (
+          <Image
+            imageAlt={imageAlt}
+            imageUrl={imageUrl}
+          />
         ) : null }
         <StyledBadge
           className={className}
@@ -154,6 +158,7 @@ StandardCard.propTypes = {
   displayLockIcon: PropTypes.bool,
   hasStickers: PropTypes.bool,
   imageAlt: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   isFavorited: PropTypes.bool,
   onClick: PropTypes.func,
   title: PropTypes.string.isRequired,
