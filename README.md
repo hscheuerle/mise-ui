@@ -56,7 +56,7 @@ AvatarList.propTypes = {
 };
 ```
 
-Commit the changes and push to github
+Commit the changes and push to GitHub
 ```
 git commit -am "Improved AvatarList docs"
 git push -u origin `create-avatar-list-component`
