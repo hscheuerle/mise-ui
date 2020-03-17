@@ -27,8 +27,19 @@ const ImageWrapper = styled.div`
   margin-bottom: ${spacing.xsm};
   height: 16.2rem;
 
+  .no-image & {
+    display: flex;
+    align-items: center;
+    margin-bottom: ${spacing.xxsm};
+    height: auto;
+  }
+
   ${breakpoint('tablet')`
     height: 27.2rem;
+
+    .no-image & {
+      height: auto;
+    }
   `}
 `;
 
@@ -47,6 +58,14 @@ const StickerGroup = styled.div`
   display: flex;
   position: absolute;
   bottom: 0;
+
+  .no-image & {
+    position: static;
+
+    & > * {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 const stickerHeightMobile = '1.2rem';
@@ -64,6 +83,12 @@ const StyledBadge = styled(Badge)`
   position: absolute;
   top: ${spacing.xsm};
   left: ${spacing.xsm};
+
+  .no-image & {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
 
   ${breakpoint('mobile', 'tablet')`
     width: 1.6rem;
@@ -89,7 +114,7 @@ export function StandardCard({
   title,
 }) {
   return (
-    <StyledStandardCard>
+    <StyledStandardCard className={imageUrl ? '' : 'no-image'}>
       <ImageWrapper>
         { imageUrl ? (
           <Image
@@ -157,8 +182,8 @@ StandardCard.propTypes = {
   displayCommentCount: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
   hasStickers: PropTypes.bool,
-  imageAlt: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
+  imageAlt: PropTypes.string,
   isFavorited: PropTypes.bool,
   onClick: PropTypes.func,
   title: PropTypes.string.isRequired,
