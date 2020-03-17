@@ -42,3 +42,16 @@ export const LoggedOut = () => (
     title={text("Title", "Congee (Chinese Rice Porridge) with Stir-Fried Ground Pork")}
   />
 );
+
+export const NoImage = () => (
+  <StandardCard
+    badgeType="cio"
+    contentType="Cookbook Collection"
+    commentCount={1}
+    displayFavoritesButton={true}
+    displayLockIcon={true}
+    hasStickers
+    displayCommentCount={true}
+    title={text("Title", "Congee (Chinese Rice Porridge) with Stir-Fried Ground Pork")}
+  />
+);
