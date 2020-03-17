@@ -1,21 +1,16 @@
 import React from 'react';
-import SearchRefinementList from '../SearchRefinementList';
 import styled from 'styled-components';
 import { memoize } from 'lodash.memoize';
 import { orderBy } from 'lodash.orderby';
 
+import LabelFrame from '../LabelFrame';
+import SearchRefinementList from '../SearchRefinementList';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
   title: 'Components|SearchRefinementList',
   component: SearchRefinementList,
 };
-
-// Need some padding in Storybook only. This is so you can view absolutely
-// positioned elements when interacting with the filters.
-const StyledWrapper = styled.div`
-  padding: 0 0 0 3rem;
-`;
 
 export const SearchSiteList = () => {
   // "items" are the values of the 'search_site_list' facet returned by algolia
@@ -38,13 +33,13 @@ export const SearchSiteList = () => {
 
   return (
     <MiseInstantSearch>
-      <StyledWrapper>
+      <LabelFrame label="Component">
         <SearchRefinementList
           attribute="search_site_list"
           showHideLabel="RESULTS FROM"
           transformItems={transformItems}
         />
-      </StyledWrapper>
+      </LabelFrame>
     </MiseInstantSearch>
   );
 };
@@ -52,13 +47,13 @@ export const SearchSiteList = () => {
 export const SearchCuisine = () => {
   return (
     <MiseInstantSearch>
-      <StyledWrapper>
+      <LabelFrame label="Component">
         <SearchRefinementList
           attribute="search_cuisine_list"
           operator="and"
           showHideLabel="CUISINE"
         />
-      </StyledWrapper>
+      </LabelFrame>
     </MiseInstantSearch>
   );
 };
@@ -66,13 +61,13 @@ export const SearchCuisine = () => {
 export const SearchDishType = () => {
   return (
     <MiseInstantSearch>
-      <StyledWrapper>
+      <LabelFrame label="Component">
         <SearchRefinementList
           attribute="search_dish_type_list"
           operator="and"
           showHideLabel="DISH TYPE"
         />
-      </StyledWrapper>
+      </LabelFrame>
     </MiseInstantSearch>
   );
 };

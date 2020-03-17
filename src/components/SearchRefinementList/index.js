@@ -21,19 +21,20 @@ const RefinementList = ({ attribute, items, refine }) => (
           <SearchRefinementFilter
             {...item}
             attribute={attribute}
-            key={item.value}
+            key={`${attribute}-${item.label}`}
             refine={refine}
           />
         ))
       ) : (
         <ShowMoreLess
+          id={`show-more-less--${attribute}`}
           initialCount={3}
           items={
             items.map(item => (
               <SearchRefinementFilter
                 {...item}
                 attribute={attribute}
-                key={item.value}
+                key={`${attribute}-${item.label}`}
                 refine={refine}
               />
             ))

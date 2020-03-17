@@ -90,7 +90,7 @@ const SearchRefinementFilter = ({ attribute, count, isRefined, label: key, refin
     htmlFor: `${attribute}--${key}`,
   };
   return (
-    <SearchRefinementFilterLabel {...wrapperProps}>
+    <SearchRefinementFilterLabel {...wrapperProps} onClick={(e) => { e.preventDefault(); refine(value); }}>
       {
         isRefined ? (
           <SearchRefinementFilterCheck>
@@ -100,7 +100,6 @@ const SearchRefinementFilter = ({ attribute, count, isRefined, label: key, refin
       }
       <SearchRefinementFilterCheckbox
         id={`search-site-list--${key}`}
-        onClick={(e) => { refine(value); }}
         type="checkbox"
       />
       {
@@ -137,7 +136,7 @@ SearchRefinementFilter.propTypes = {
   /** Call this with the value of a filter to refine results based on filter. */
   refine: PropTypes.func.isRequired,
   /** Value of filter to be used for refining results. */
-  value: PropTypes.string.isRequired,
+  value: PropTypes.array.isRequired,
 };
 
 export default SearchRefinementFilter;

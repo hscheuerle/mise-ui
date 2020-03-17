@@ -4,6 +4,8 @@ import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, Hits } from 'react-instantsearch-dom';
 import styled from 'styled-components';
 
+import LabelFrame from '../../../../src/components/LabelFrame';
+
 const searchClient = algoliasearch(
   'Y1FNZXUI30',
   '3ef655917b64bb548c4bf36e9dab9913',
@@ -11,12 +13,11 @@ const searchClient = algoliasearch(
 
 const HitsWrapper = styled.div`
   .ais-Hits-list {
-    border-top: solid 1px black;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 3rem 0 0;
-    margin: 3rem 0 0;
+    padding: 0;
+    margin: 0;
   }
 
   .ais-Hits-item {
@@ -58,9 +59,11 @@ const MiseInstantSearch = ({ children }) => (
     searchClient={searchClient}
   >
     {children}
-    <HitsWrapper>
-      <Hits hitComponent={Hit} />
-    </HitsWrapper>
+    <LabelFrame label="Results">
+      <HitsWrapper>
+        <Hits hitComponent={Hit} />
+      </HitsWrapper>
+    </LabelFrame>
   </InstantSearch>
 );
 
