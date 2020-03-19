@@ -15,7 +15,7 @@ const StyledSticker = styled.span`
   padding-right: ${spacing.xsm};
   height: ${stickerHeight};
   border-radius: 0.6rem;
-  background-color: ${props => props.isPriority ? color.tomato : color.transparentBlack};
+  background-color: ${({ type }) => type === 'priority' ? color.tomato : color.transparentBlack};
   color: ${color.white};
   font: ${fontSize.xsm}/${stickerHeight} ${font.pnb};
   letter-spacing: ${letterSpacing.sm};
@@ -30,13 +30,15 @@ const StyledSticker = styled.span`
   }
 `;
 
-const determineIconType = (iconType) => {
-  const iconTypes = {
+const determineIconType = (contentType) => {
+  const contentTypes = {
     "collection": Collection,
-    "play": VideoPlay,
+    "episode": VideoPlay,
+    "video": VideoPlay,
+    "cooking school course": VideoPlay,
   };
-  const El = iconTypes[iconType];
-  return El && <El fill={`${color.white}`} />;
+  const El = contentTypes[contentType];
+  return El ? <El fill={`${color.white}`} /> : null;
 }
 
 
@@ -77,37 +79,29 @@ Stickers scale down to a smaller size (`height: 1.2rem;` `font-size: 0.8rem;`) f
 */
 
 const Sticker = ({
-  className,
+  contentType,
   text,
-  iconType,
-  isPriority,
+  type,
 }) => (
   <StyledSticker
-    className={className}
-    isPriority={isPriority}
+    type={type}
   >
-    {determineIconType(iconType)}
+    { type === 'editorial' ? determineIconType(contentType) : null }
     <span>{text}</span>
   </StyledSticker>
 );
 
 Sticker.propTypes = {
-  /** className must be passed down to apply additional styles in parent
-  components, such as for resizing */
-  className: PropTypes.string,
-  /** Stickers can optionally include one icon */
-  iconType: PropTypes.oneOf(['collection', 'play']),
+  /** The type of content that the card represents */
+  contentType: PropTypes.string,
   /** The text inside the sticker. Must be less than N characters. */
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
   /** True if it is a priority sticker, false if it is a basic sticker */
-  isPriority: PropTypes.bool,
+  type: PropTypes.oneOf(['editorial', 'priority']).isRequired,
 };
 
 Sticker.defaultProps = {
-  className: '',
-  iconType: null,
-  text: '',
-  isPriority: false,
+  contentType: null,
 };
 
 export default Sticker;

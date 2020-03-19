@@ -12,7 +12,7 @@ export default {
 export const LoggedIn = () => (
   <StandardCard
     badgeType="atk"
-    contentType="Review"
+    contentType="cooking school course"
     commentCount={5}
     ctaText={text("CTA text", "Buy the Winner")}
     ctaUrl="https://www.amazon.com/dp/B01JCNEJSO/?tag=ciosearchresult-20"
@@ -21,7 +21,7 @@ export const LoggedIn = () => (
     imageUrl={text("Image url", "https://placekitten.com/272/272")}
     isFavorited={false}
     displayLockIcon={false}
-    hasStickers
+    stickers={[{type: 'priority', text: 'New'}, {type: 'editorial', text: 'Trending'}]}
     displayCommentCount={true}
     onClick={action('favorites-click')}
     title={text("Title", "Plastic Food Storage Containers")}
@@ -31,11 +31,11 @@ export const LoggedIn = () => (
 export const LoggedOut = () => (
   <StandardCard
     badgeType="cio"
-    contentType="Cookbook Collection"
+    contentType="collection"
     commentCount={1}
     displayFavoritesButton={false}
     displayLockIcon={true}
-    hasStickers
+    stickers={[{type: 'priority', text: 'New'}, {type: 'editorial', text: 'Quick'}]}
     imageAlt={text("Image alt text", "Gray cat pulling up the edge of a rug")}
     imageUrl="https://placekitten.com/272/272"
     displayCommentCount={true}
@@ -50,7 +50,7 @@ export const NoImage = () => (
     commentCount={1}
     displayFavoritesButton={true}
     displayLockIcon={true}
-    hasStickers
+    stickers={[{type: 'editorial', text: 'Make Ahead'}]}
     displayCommentCount={true}
     title={text("Title", "Congee (Chinese Rice Porridge) with Stir-Fried Ground Pork")}
   />

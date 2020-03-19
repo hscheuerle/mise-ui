@@ -10,15 +10,21 @@ export default {
 
 export const Basic = () => (
   <Sticker
-    iconType={select('icon type', { 'collection' : 'collection', 'play': 'play', 'none': null }, 'collection')}
-    isPriority={false}
-    text={text("Basic sticker text", "Editors’ pick")}
+    contentType={select('Content type', {
+      'collection': 'collection',
+      'cooking school course': 'cooking school course',
+      'episode': 'episode',
+      'video': 'video',
+      'none': null },
+    'collection')}
+    type='editorial'
+    text={text("Basic sticker text", "Editor’s pick")}
   />
 );
 
 export const Priority = () => (
   <Sticker
-    isPriority={true}
+    type='priority'
     text={text("Priority sticker text", "New")}
   />
 );
