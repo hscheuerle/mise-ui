@@ -168,13 +168,16 @@ StandardCard.propTypes = {
   displayFavoritesButton: PropTypes.bool,
   contentType: PropTypes.oneOf([
     'Article',
+    'Book',
     'Class',
     'Collection',
     'Cookbook Collection',
     'Episode',
-    'How to',
+    'Equipment Review',
+    'How To',
     'Recipe',
-    'Review',
+    'Taste Test',
+    'Video'
   ]).isRequired,
   commentCount: PropTypes.number,
   ctaText: PropTypes.string,
