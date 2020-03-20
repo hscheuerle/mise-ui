@@ -106,7 +106,7 @@ export function StandardCard({
   displayCommentCount,
   displayFavoritesButton,
   displayLockIcon,
-  hasStickers,
+  stickers,
   imageAlt,
   imageUrl,
   isFavorited,
@@ -126,19 +126,18 @@ export function StandardCard({
           className={className}
           type={badgeType}
         />
-        { hasStickers ? (
+        { stickers ?
           <StickerGroup>
-            <StyledSticker
-              className={className}
-              isPriority
-              text='new'
-            />
-            <StyledSticker
-              className={className}
-              text='popular'
-            />
+            {stickers.map(({ text, type }) => (
+              <StyledSticker
+                key={text}
+                contentType={contentType}
+                type={type}
+                text={text}
+              />
+            ))}
           </StickerGroup>
-        ) : null }
+        : null }
       </ImageWrapper>
       <TitleWrapper>
         <Title title={title} />
@@ -166,25 +165,12 @@ export function StandardCard({
 StandardCard.propTypes = {
   badgeType: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids']).isRequired,
   displayFavoritesButton: PropTypes.bool,
-  contentType: PropTypes.oneOf([
-    'Article',
-    'Book',
-    'Class',
-    'Collection',
-    'Cookbook Collection',
-    'Episode',
-    'Equipment Review',
-    'How To',
-    'Recipe',
-    'Taste Test',
-    'Video'
-  ]).isRequired,
+  contentType: PropTypes.string.isRequired,
   commentCount: PropTypes.number,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
   displayCommentCount: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
-  hasStickers: PropTypes.bool,
   imageUrl: PropTypes.string,
   imageAlt: PropTypes.string,
   isFavorited: PropTypes.bool,
@@ -199,7 +185,6 @@ StandardCard.defaultProps = {
   displayCommentCount: false,
   displayFavoritesButton: false,
   displayLockIcon: false,
-  hasStickers: false,
   isFavorited: false,
   onClick: null,
 };
