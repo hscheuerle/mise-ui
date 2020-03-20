@@ -43,7 +43,8 @@ export const globalStyles = css`
   }
 
   button,
-  input[type="button"] {
+  input[type="button"],
+  input[type="submit"] {
     border: 0;
     margin: 0;
     padding: 0;

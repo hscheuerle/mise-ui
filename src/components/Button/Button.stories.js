@@ -10,12 +10,8 @@ export default {
   decorators: [withKnobs],
 };
 
-export const Text = () => <Button>{text("Text", "Hello Button")}</Button>;
-
-export const Emoji = () => (
-  <Button onClick={action('clicked')}>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
+export const DefaultTextButton = () => (
+  <Button onClick={action('click button')}>
+    {text("Text", "Done")}
   </Button>
 );
