@@ -39,7 +39,6 @@ const RefinementList = ({ attribute, items, refine }) => (
               />
             ))
           }
-          key={`${attribute}-showmore`}
         />
       )
     }
