@@ -53,6 +53,15 @@ const TitleWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  transition: color 0.2s ease;
+`;
+
+const StyledTitle = styled(Title)`
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${color.mint};
+  }
 `;
 
 const StyledFavoriteButton = styled(FavoriteButton)`
@@ -120,48 +129,51 @@ export function StandardCard({
   siteKey,
   siteKeyFavorites,
   title,
+  url,
 }) {
   return (
     <StyledStandardCard className={imageUrl ? '' : 'no-image'}>
-      <ImageWrapper>
-        { imageUrl ? (
-          <Image
-            imageAlt={imageAlt}
-            imageUrl={imageUrl}
-          />
-        ) : null }
-        <StyledBadge
-          className={className}
-          type={siteKey}
-        />
-        { stickers ?
-          <StickerGroup>
-            {stickers.map(({ text, type }) => (
-              <StyledSticker
-                key={text}
-                contentType={contentType}
-                type={type}
-                text={text}
-              />
-            ))}
-          </StickerGroup>
-        : null }
-      </ImageWrapper>
-      <TitleWrapper>
-        <Title title={title} />
-        { displayFavoritesButton ? (
-          <StyledFavoriteButton
-            ariaLabel="Save to favorites"
+      <a href={url}>
+        <ImageWrapper>
+          { imageUrl ? (
+            <Image
+              imageAlt={imageAlt}
+              imageUrl={imageUrl}
+            />
+          ) : null }
+          <StyledBadge
             className={className}
-            role="button"
-            isFavorited={isFavorited}
-            objectId={objectId}
-            onClick={onClick}
-            siteKey={siteKeyFavorites}
-            title={title}
+            type={siteKey}
           />
-        ) : null }
-      </TitleWrapper>
+          { stickers ?
+            <StickerGroup>
+              {stickers.map(({ text, type }) => (
+                <StyledSticker
+                  key={text}
+                  contentType={contentType}
+                  type={type}
+                  text={text}
+                />
+              ))}
+            </StickerGroup>
+          : null }
+        </ImageWrapper>
+        <TitleWrapper>
+          <StyledTitle className={className} title={title} />
+          { displayFavoritesButton ? (
+            <StyledFavoriteButton
+              ariaLabel="Save to favorites"
+              className={className}
+              role="button"
+              isFavorited={isFavorited}
+              object={objectId}
+              onClick={onClick}
+              siteKey={siteKeyFavorites}
+              title={title}
+            />
+          ) : null }
+        </TitleWrapper>
+      </a>
       <Attributions
         commentCount={commentCount}
         contentType={contentType}
@@ -189,6 +201,7 @@ StandardCard.propTypes = {
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
   title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 StandardCard.defaultProps = {

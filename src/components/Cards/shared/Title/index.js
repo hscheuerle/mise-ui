@@ -14,12 +14,21 @@ const StyledTitle = styled.h3`
   `}
 `;
 
-const Title = ({ title }) => (
-  <StyledTitle>{title}</StyledTitle>
+const Title = ({ className, title }) => (
+  <StyledTitle
+    className={className}
+  >
+    {title}
+  </StyledTitle>
 );
 
 Title.propTypes = {
+  className: PropTypes.string,
   title: PropTypes.string.isRequired,
+};
+
+Title.defaultProps = {
+  className: "",
 };
 
 export default Title;

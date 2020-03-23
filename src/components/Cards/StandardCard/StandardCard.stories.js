@@ -25,6 +25,7 @@ export const LoggedIn = () => (
     displayCommentCount={true}
     onClick={action('favorites-click')}
     title={text("Title", "Plastic Food Storage Containers")}
+    url="https://www.americastestkitchen.com/equipment_reviews/1879-plastic-food-storage-containers?ref=new_search_experience_2"
   />
 );
 
@@ -40,6 +41,7 @@ export const LoggedOut = () => (
     imageUrl="https://placekitten.com/272/272"
     displayCommentCount={true}
     title={text("Title", "Congee (Chinese Rice Porridge) with Stir-Fried Ground Pork")}
+    url="https://www.cooksillustrated.com/recipes/12381-congee-chinese-rice-porridge-with-stir-fried-ground-pork?extcode=MASCD00L0&ref=new_search_experience_2"
   />
 );
 
