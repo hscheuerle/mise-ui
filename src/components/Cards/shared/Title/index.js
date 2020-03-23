@@ -5,7 +5,6 @@ import breakpoint from 'styled-components-breakpoint';
 import { font, fontSize, lineHeight, spacing } from '../../../../styles';
 
 const StyledTitle = styled.h3`
-  margin-right: ${spacing.xxsm};
   margin-bottom: ${spacing.xsm};
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
 

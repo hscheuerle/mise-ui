@@ -6,7 +6,8 @@ import { FavoriteRibbon } from '../../../DesignTokens/Icon';
 
 const StyledFavoriteButton = styled.button`
   flex-shrink: 0;
-  margin-top: ${spacing.xxsm};
+  margin-top: -${spacing.xxsm};
+  padding: ${spacing.xsm} 0 ${spacing.xsm} ${spacing.xsm};
   stroke: currentColor;
   fill: transparent;
 
