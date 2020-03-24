@@ -56,6 +56,7 @@ const FavoriteButton = ({
   title,
 }) => (
   <StyledFavoriteButton
+    ariaLabel={'Save to favorites'}
     className="favorite-action"
     data-document-title={title}
     data-favoritable-id={objectId}
@@ -64,7 +65,6 @@ const FavoriteButton = ({
   >
     <FavoriteRibbon
       ariaHidden="true"
-      ariaLabel={'Save to favorites'}
       className="favorite-ribbon"
     />
   </StyledFavoriteButton>

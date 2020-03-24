@@ -24,7 +24,6 @@ const StyledStandardCard = styled.article`
 
 const ImageWrapper = styled.div`
   position: relative;
-  margin-bottom: ${spacing.xsm};
   height: 16.2rem;
   width: 100%;
 
@@ -53,7 +52,7 @@ const TitleWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  transition: color 0.2s ease;
+  padding-top: ${spacing.xsm};
 `;
 
 const StyledTitle = styled(Title)`
@@ -137,6 +136,7 @@ export function StandardCard({
         <ImageWrapper>
           { imageUrl ? (
             <Image
+              aria-hidden="true"
               imageAlt={imageAlt}
               imageUrl={imageUrl}
             />
@@ -193,8 +193,8 @@ StandardCard.propTypes = {
   ctaUrl: PropTypes.string,
   displayCommentCount: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
-  imageUrl: PropTypes.string,
   imageAlt: PropTypes.string,
+  imageUrl: PropTypes.string,
   isFavorited: PropTypes.bool,
   objectId: PropTypes.string,
   onClick: PropTypes.func,
@@ -211,6 +211,8 @@ StandardCard.defaultProps = {
   displayCommentCount: false,
   displayFavoritesButton: false,
   displayLockIcon: false,
+  imageAlt: '',
+  imageUrl: '',
   isFavorited: false,
   objectId: null,
   onClick: null,
