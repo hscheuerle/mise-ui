@@ -2,7 +2,7 @@
 
 exports[`components renders a cco badge 1`] = `
 <svg
-  aria-label="cco brand icon"
+  aria-label="CCO"
   className="sc-AxjAm fBdxjG"
   role="img"
   viewBox="0 0 25 25"
@@ -69,7 +69,7 @@ exports[`components renders a cco badge 1`] = `
 
 exports[`components renders a cio badge 1`] = `
 <svg
-  aria-label="cio brand icon"
+  aria-label="CIO"
   className="sc-AxjAm fBdxjG"
   role="img"
   viewBox="0 0 25 25"
@@ -90,7 +90,7 @@ exports[`components renders a cio badge 1`] = `
 
 exports[`components renders a kids badge 1`] = `
 <svg
-  aria-label="kids brand icon"
+  aria-label="KIDS"
   className="sc-AxjAm fBdxjG"
   role="img"
   viewBox="0 0 25 25"
@@ -149,7 +149,7 @@ exports[`components renders a kids badge 1`] = `
 
 exports[`components renders an atk badge 1`] = `
 <svg
-  aria-label="atk brand icon"
+  aria-label="ATK"
   className="sc-AxjAm fBdxjG"
   role="img"
   viewBox="0 0 25 25"
