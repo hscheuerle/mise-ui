@@ -26,7 +26,7 @@ const StyledFavoriteButton = styled.button`
     stroke: ${color.white};
   }
 
-  ${props => props.isFavorited && css`
+  &.is-favorited {
     [class*="ribbon"] {
       fill: ${color.eclipse};
     }
@@ -45,29 +45,38 @@ const StyledFavoriteButton = styled.button`
         stroke: ${color.eclipse};
       }
     }
-  `}
+  }
 `;
 
-const FavoriteButton = ({ isFavorited, onClick }) => (
+const FavoriteButton = ({
+  objectId,
+  onClick,
+  siteKey,
+  title,
+}) => (
   <StyledFavoriteButton
-    isFavorited={isFavorited}
+    className="favorite-action"
+    data-document-title={title}
+    data-favoritable-id={objectId}
+    data-origin-site={siteKey}
     onClick={onClick}
   >
     <FavoriteRibbon
       ariaHidden="true"
-      ariaLabel={isFavorited ? 'Remove from favorites' : 'Save to favorites'}
+      ariaLabel={'Save to favorites'}
       className="favorite-ribbon"
     />
   </StyledFavoriteButton>
 );
 
 FavoriteButton.propTypes = {
-  isFavorited: PropTypes.bool,
+  objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  siteKey: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 FavoriteButton.defaultProps = {
-  isFavorited: true,
   onClick: null,
 };
 

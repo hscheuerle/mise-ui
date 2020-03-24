@@ -19,7 +19,7 @@ const ShowMoreLessButton = styled.button`
   text-transform: uppercase;
 `;
 
-const ShowMoreLess = ({ initialCount, items, key }) => {
+const ShowMoreLess = ({ initialCount, items, id }) => {
   const [hidden, toggleHidden] = useState(true);
   let initialItems = null;
   let restItems = null;
@@ -37,12 +37,12 @@ const ShowMoreLess = ({ initialCount, items, key }) => {
             </ShowMoreLessInitial>
             <ShowMoreLessRest
               hidden={hidden || null}
-              id={`show-hide--${key}`}
+              id={`show-hide--${id}`}
             >
               {restItems.map(item => item)}
             </ShowMoreLessRest>
             <ShowMoreLessButton
-              aria-controls={`show-hide--${key}`}
+              aria-controls={`show-hide--${id}`}
               aria-expanded={!hidden}
               onClick={() => { toggleHidden(!hidden); }}
             >
@@ -60,12 +60,12 @@ const ShowMoreLess = ({ initialCount, items, key }) => {
 };
 
 ShowMoreLess.propTypes = {
+  /** Unique id for this ShowMoreLess. */
+  id: PropTypes.string.isRequired,
   /** Initial number of 'items' that render before clicking 'Show More'. */
   initialCount: PropTypes.number.isRequired,
   /** The list of 'items' to render. */
   items: PropTypes.array.isRequired,
-  /** Unique idea for this ShowMoreLess. */
-  key: PropTypes.string.isRequired,
 };
 
 export default ShowMoreLess;

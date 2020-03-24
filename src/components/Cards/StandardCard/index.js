@@ -26,12 +26,18 @@ const ImageWrapper = styled.div`
   position: relative;
   margin-bottom: ${spacing.xsm};
   height: 16.2rem;
+  width: 100%;
 
   .no-image & {
     display: flex;
     align-items: center;
     margin-bottom: ${spacing.xxsm};
     height: auto;
+  }
+
+  img {
+    display: block;
+    width: 100%;
   }
 
   ${breakpoint('tablet')`
@@ -97,7 +103,6 @@ const StyledBadge = styled(Badge)`
 `;
 
 export function StandardCard({
-  badgeType,
   className,
   commentCount,
   contentType,
@@ -110,7 +115,10 @@ export function StandardCard({
   imageAlt,
   imageUrl,
   isFavorited,
+  objectId,
   onClick,
+  siteKey,
+  siteKeyFavorites,
   title,
 }) {
   return (
@@ -124,7 +132,7 @@ export function StandardCard({
         ) : null }
         <StyledBadge
           className={className}
-          type={badgeType}
+          type={siteKey}
         />
         { stickers ?
           <StickerGroup>
@@ -147,7 +155,10 @@ export function StandardCard({
             className={className}
             role="button"
             isFavorited={isFavorited}
+            objectId={objectId}
             onClick={onClick}
+            siteKey={siteKeyFavorites}
+            title={title}
           />
         ) : null }
       </TitleWrapper>
@@ -163,7 +174,6 @@ export function StandardCard({
 }
 
 StandardCard.propTypes = {
-  badgeType: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids']).isRequired,
   displayFavoritesButton: PropTypes.bool,
   contentType: PropTypes.string.isRequired,
   commentCount: PropTypes.number,
@@ -174,7 +184,10 @@ StandardCard.propTypes = {
   imageUrl: PropTypes.string,
   imageAlt: PropTypes.string,
   isFavorited: PropTypes.bool,
+  objectId: PropTypes.string,
   onClick: PropTypes.func,
+  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
+  siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
   title: PropTypes.string.isRequired,
 };
 
@@ -186,6 +199,7 @@ StandardCard.defaultProps = {
   displayFavoritesButton: false,
   displayLockIcon: false,
   isFavorited: false,
+  objectId: null,
   onClick: null,
 };
 

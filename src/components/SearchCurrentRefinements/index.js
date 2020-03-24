@@ -7,7 +7,7 @@ import { color, font, fontSize } from '../../styles';
 
 const RefinementsList = styled.ul`
   display: flex;
-  padding: 0;
+  padding: 1.2rem 0 1rem 0;
   margin: 0;
 `;
 
@@ -37,7 +37,7 @@ const CurrentRefinements = ({ items, refine }) => (
     {
       items.map(category => (
         category.items.map(({ label, value }) => (
-          <RefinementListItem key={`clear-refinement--${value}`}>
+          <RefinementListItem key={`clear-refinement--${label}`}>
             <Refinement>
               <RefinementLabel>
                 {label}
