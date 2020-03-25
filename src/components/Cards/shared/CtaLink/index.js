@@ -20,6 +20,7 @@ const StyledCtaLink = styled.a`
 
 const CtaLink = ({ ctaText, ctaUrl }) => (
   <StyledCtaLink
+    aria-label={`${ctaText} (opens in new window)`}
     href={ctaUrl}
     target="_blank"
   >

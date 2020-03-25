@@ -6,7 +6,8 @@ import { FavoriteRibbon } from '../../../DesignTokens/Icon';
 
 const StyledFavoriteButton = styled.button`
   flex-shrink: 0;
-  margin-top: ${spacing.xxsm};
+  margin-top: -${spacing.xxsm};
+  padding: ${spacing.xsm} 0 ${spacing.xsm} ${spacing.xsm};
   stroke: currentColor;
   fill: transparent;
 
@@ -55,6 +56,7 @@ const FavoriteButton = ({
   title,
 }) => (
   <StyledFavoriteButton
+    ariaLabel={'Save to favorites'}
     className="favorite-action"
     data-document-title={title}
     data-favoritable-id={objectId}
@@ -63,7 +65,6 @@ const FavoriteButton = ({
   >
     <FavoriteRibbon
       ariaHidden="true"
-      ariaLabel={'Save to favorites'}
       className="favorite-ribbon"
     />
   </StyledFavoriteButton>

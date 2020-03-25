@@ -40,6 +40,7 @@ export const globalStyles = css`
 
   a {
     text-decoration: none;
+    color: inherit;
   }
 
   button,
