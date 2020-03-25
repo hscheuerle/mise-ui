@@ -196,7 +196,7 @@ StandardCard.propTypes = {
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
   isFavorited: PropTypes.bool,
-  objectId: PropTypes.string,
+  objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
@@ -214,7 +214,6 @@ StandardCard.defaultProps = {
   imageAlt: '',
   imageUrl: '',
   isFavorited: false,
-  objectId: null,
   onClick: null,
 };
 
