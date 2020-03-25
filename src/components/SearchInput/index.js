@@ -92,8 +92,8 @@ class StyledSearchBox extends Component {
   }
 
   onSubmit = (e) => {
-    evt.preventDefault();
-    evt.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
     this.input.blur();
     const { refine } = this.props;
     refine(this.input.value);
