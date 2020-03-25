@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { color } from '../../../../styles';
 
 const Close = ({ariaLabel, fill}) => {
   return (
@@ -22,7 +23,7 @@ Close.propTypes = {
 
 Close.defaultProps = {
   ariaLabel: 'close',
-  fill: '#3d3d3d',
+  fill: `${color.eclipse}`,
 };
 
 export default Close;
