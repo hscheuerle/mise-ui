@@ -9,7 +9,6 @@ export default {
 
 export const Default = ({ ariaLabel }) => (
   <FavoriteButton
-    ariaHidden="true"
     ariaLabel={ariaLabel}
     className="favorite-ribbon"
     isFavorited={false}
@@ -22,7 +21,6 @@ export const Default = ({ ariaLabel }) => (
 
 export const Favorited = ({ ariaLabel }) => (
   <FavoriteButton
-    ariaHidden="true"
     ariaLabel={ariaLabel}
     className="favorite-ribbon"
     isFavorited={true}

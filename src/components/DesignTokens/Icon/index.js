@@ -59,6 +59,14 @@ export const FavoriteRibbon = props => (
   </Icon>
 )
 
+export const Filter = props => (
+  <Icon>
+    <Icons.Filter
+      className={props.className}
+    />
+  </Icon>
+)
+
 export const Lock = props => (
   <Icon>
     <Icons.Lock
