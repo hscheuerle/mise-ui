@@ -1,6 +1,7 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 import styled from 'styled-components';
+import { connectSearchBox } from 'react-instantsearch-dom';
 
 import { color, font, fontSize } from '../../styles';
 import { SearchIcon, Close } from '../DesignTokens/Icon';
@@ -65,27 +66,92 @@ const StyledSearch = styled.form`
   }
 `;
 
-const StyledSearchBox = ({ currentRefinement, refine, placeholder }) => (
-  <StyledSearch noValidate action="" role="search">
-    <SearchIcon fill={color.regentGray} />
-    <input
-      type="search"
-      value={currentRefinement}
-      onChange={event => refine(event.currentTarget.value)}
-      placeholder={placeholder}
-    />
-    <button type="reset" onClick={() => refine('')} hidden={!currentRefinement}>
-      <Close ariaLabel="clear search input" fill={color.regentGray} />
-    </button>
-  </StyledSearch>
-)
+class StyledSearchBox extends Component {
+  constructor(props) {
+    super(props);
+    this.timerId = null;
+  }
+
+  onInputMount = (input) => {
+    this.input = input;
+  }
+
+  onChangeDebounced = (event) => {
+    const { refine, delay } = this.props;
+    const value = event.currentTarget.value;
+
+    clearTimeout(this.timerId);
+    this.timerId = setTimeout(() => refine(value), delay);
+  };
+
+  onReset = () => {
+    const { refine } = this.props;
+    refine('');
+    this.input.value = '';
+    this.input.focus();
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    this.input.blur();
+    const { refine } = this.props;
+    refine(this.input.value);
+    return false;
+  }
+
+  render() {
+    const { currentRefinement, refine, placeholder } = this.props;
+    return (
+      <StyledSearch
+        noValidate
+        action=""
+        onSubmit={this.onSubmit}
+        onReset={this.onReset}
+        role="search"
+      >
+        <SearchIcon
+          fill={color.regentGray}
+        />
+        <input
+          type="search"
+          defaultValue={currentRefinement}
+          ref={this.onInputMount}
+          onChange={this.onChangeDebounced}
+          placeholder={placeholder}
+        />
+        <button type="reset" onClick={() => refine('')} hidden={!currentRefinement}>
+          <Close ariaLabel="clear search input" fill={color.regentGray} />
+        </button>
+      </StyledSearch>
+    );
+  }
+};
 
 StyledSearchBox.propTypes = {
+  currentRefinement: PropTypes.string.isRequired,
+  delay: PropTypes.number,
+  refine: PropTypes.func.isRequired,
+};
+
+StyledSearchBox.defaultProps = {
+  delay: 250,
+};
+
+const SearchBox = connectSearchBox(StyledSearchBox);
+
+const SearchInput = ({ placeholder }) => (
+  <SearchBox
+    placeholder={placeholder}
+  />
+);
+
+SearchInput.propTypes = {
   placeholder: PropTypes.string,
 }
 
-StyledSearchBox.defaultProps = {
+SearchInput.defaultProps = {
   placeholder: 'What are you curious about?'
 }
 
-export default StyledSearchBox;
+export default SearchInput;

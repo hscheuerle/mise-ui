@@ -11,7 +11,7 @@ const StatsWrapper = styled.p`
 
 const Stats = ({ nbHits }) => (
   <StatsWrapper>
-    {`${nbHits} Results`}
+    {`${nbHits.toLocaleString()} Results`}
   </StatsWrapper>
 );
 

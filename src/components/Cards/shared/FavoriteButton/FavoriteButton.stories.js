@@ -9,20 +9,24 @@ export default {
 
 export const Default = ({ ariaLabel }) => (
   <FavoriteButton
-    ariaHidden="true"
     ariaLabel={ariaLabel}
     className="favorite-ribbon"
     isFavorited={false}
+    objectId="123"
     onClick={action('click-button')}
+    siteKey="atk"
+    title=""
   />
 );
 
 export const Favorited = ({ ariaLabel }) => (
   <FavoriteButton
-    ariaHidden="true"
     ariaLabel={ariaLabel}
     className="favorite-ribbon"
     isFavorited={true}
+    objectId="123"
     onClick={action('click-button')}
+    siteKey="atk"
+    title=""
   />
 );

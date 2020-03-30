@@ -1,11 +1,9 @@
 import React from 'react';
-import { connectSearchBox } from 'react-instantsearch-dom';
+
+import LabelFrame from '../LabelFrame';
 import SearchInput from '../SearchInput';
 
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
-
-const ConnectedSearchInput = connectSearchBox(SearchInput);
-
 
 export default {
   title: 'Components|SearchInput',
@@ -14,6 +12,8 @@ export default {
 
 export const Default = () => (
   <MiseInstantSearch>
-    <ConnectedSearchInput />
+    <LabelFrame label="Component">
+      <SearchInput />
+    </LabelFrame>
   </MiseInstantSearch>
 );

@@ -40,10 +40,12 @@ export const globalStyles = css`
 
   a {
     text-decoration: none;
+    color: inherit;
   }
 
   button,
-  input[type="button"] {
+  input[type="button"],
+  input[type="submit"] {
     border: 0;
     margin: 0;
     padding: 0;

@@ -71,16 +71,7 @@ const Attributions = ({
 Attributions.propTypes = {
   className: PropTypes.string,
   commentCount: PropTypes.number,
-  contentType: PropTypes.oneOf([
-    'Article',
-    'Class',
-    'Collection',
-    'Cookbook Collection',
-    'Episode',
-    'How to',
-    'Recipe',
-    'Review',
-  ]).isRequired,
+  contentType: PropTypes.string.isRequired,
   displayLockIcon: PropTypes.bool,
 };
 

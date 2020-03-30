@@ -24,14 +24,19 @@ const StyledStandardCard = styled.article`
 
 const ImageWrapper = styled.div`
   position: relative;
-  margin-bottom: ${spacing.xsm};
   height: 16.2rem;
+  width: 100%;
 
   .no-image & {
     display: flex;
     align-items: center;
     margin-bottom: ${spacing.xxsm};
     height: auto;
+  }
+
+  img {
+    display: block;
+    width: 100%;
   }
 
   ${breakpoint('tablet')`
@@ -47,6 +52,15 @@ const TitleWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  padding-top: ${spacing.xsm};
+`;
+
+const StyledTitle = styled(Title)`
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${color.mint};
+  }
 `;
 
 const StyledFavoriteButton = styled(FavoriteButton)`
@@ -97,7 +111,6 @@ const StyledBadge = styled(Badge)`
 `;
 
 export function StandardCard({
-  badgeType,
   className,
   commentCount,
   contentType,
@@ -106,52 +119,61 @@ export function StandardCard({
   displayCommentCount,
   displayFavoritesButton,
   displayLockIcon,
-  hasStickers,
+  stickers,
   imageAlt,
   imageUrl,
   isFavorited,
+  objectId,
   onClick,
+  siteKey,
+  siteKeyFavorites,
   title,
+  url,
 }) {
   return (
     <StyledStandardCard className={imageUrl ? '' : 'no-image'}>
-      <ImageWrapper>
-        { imageUrl ? (
-          <Image
-            imageAlt={imageAlt}
-            imageUrl={imageUrl}
-          />
-        ) : null }
-        <StyledBadge
-          className={className}
-          type={badgeType}
-        />
-        { hasStickers ? (
-          <StickerGroup>
-            <StyledSticker
-              className={className}
-              isPriority
-              text='new'
+      <a href={url}>
+        <ImageWrapper>
+          { imageUrl ? (
+            <Image
+              aria-hidden="true"
+              imageAlt={imageAlt}
+              imageUrl={imageUrl}
             />
-            <StyledSticker
-              className={className}
-              text='popular'
-            />
-          </StickerGroup>
-        ) : null }
-      </ImageWrapper>
-      <TitleWrapper>
-        <Title title={title} />
-        { displayFavoritesButton ? (
-          <StyledFavoriteButton
-            ariaLabel="Save to favorites"
+          ) : null }
+          <StyledBadge
             className={className}
-            role="button"
-            isFavorited={isFavorited}
-            onClick={onClick}
+            type={siteKey}
           />
-        ) : null }
-      </TitleWrapper>
+          { stickers ?
+            <StickerGroup>
+              {stickers.map(({ text, type }) => (
+                <StyledSticker
+                  key={text}
+                  contentType={contentType}
+                  type={type}
+                  text={text}
+                />
+              ))}
+            </StickerGroup>
+          : null }
+        </ImageWrapper>
+        <TitleWrapper>
+          <StyledTitle className={className} title={title} />
+          { displayFavoritesButton ? (
+            <StyledFavoriteButton
+              ariaLabel="Save to favorites"
+              className={className}
+              role="button"
+              isFavorited={isFavorited}
+              object={objectId}
+              onClick={onClick}
+              siteKey={siteKeyFavorites}
+              title={title}
+            />
+          ) : null }
+        </TitleWrapper>
+      </a>
       <Attributions
         commentCount={commentCount}
         contentType={contentType}
@@ -164,29 +186,22 @@ export function StandardCard({
 }
 
 StandardCard.propTypes = {
-  badgeType: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids']).isRequired,
   displayFavoritesButton: PropTypes.bool,
-  contentType: PropTypes.oneOf([
-    'Article',
-    'Class',
-    'Collection',
-    'Cookbook Collection',
-    'Episode',
-    'How to',
-    'Recipe',
-    'Review',
-  ]).isRequired,
+  contentType: PropTypes.string.isRequired,
   commentCount: PropTypes.number,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
   displayCommentCount: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
-  hasStickers: PropTypes.bool,
-  imageUrl: PropTypes.string,
   imageAlt: PropTypes.string,
+  imageUrl: PropTypes.string,
   isFavorited: PropTypes.bool,
+  objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
+  siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
   title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 StandardCard.defaultProps = {
@@ -196,7 +211,8 @@ StandardCard.defaultProps = {
   displayCommentCount: false,
   displayFavoritesButton: false,
   displayLockIcon: false,
-  hasStickers: false,
+  imageAlt: '',
+  imageUrl: '',
   isFavorited: false,
   onClick: null,
 };
