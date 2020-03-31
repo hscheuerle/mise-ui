@@ -18,7 +18,7 @@ const StyledButton = styled.button`
   letter-spacing: ${letterSpacing.xxlg};
   line-height: 4rem;
   max-width: 100%;
-  padding: 0 ${spacing.xxlg};
+  padding: 0 ${spacing.xlg};
   text-align: center;
   text-align: center;
   text-transform: uppercase;
@@ -31,12 +31,14 @@ const StyledButton = styled.button`
 `;
 
 export function Button({
+  className,
   children,
   onClick,
   type,
 }) {
   return (
     <StyledButton
+      className={className}
       onClick={onClick}
       type={type}
     >
@@ -46,12 +48,14 @@ export function Button({
 }
 
 Button.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node,
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['submit', 'reset', 'button']),
 };
 
 Button.defaultProps = {
+  className: '',
   onClick: () => {},
   type: 'button',
 };
