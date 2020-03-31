@@ -49,7 +49,7 @@ export const globalStyles = css`
     border: 0;
     margin: 0;
     padding: 0;
-    background:
+    background: none;
     color: currentColor;
     font-family: inherit;
     cursor: pointer;
