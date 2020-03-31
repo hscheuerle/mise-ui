@@ -24,28 +24,19 @@ const StyledStandardCard = styled.article`
 
 const ImageWrapper = styled.div`
   position: relative;
-  height: 16.2rem;
+  margin-bottom: ${spacing.xsm};
   width: 100%;
 
   .no-image & {
     display: flex;
     align-items: center;
     margin-bottom: ${spacing.xxsm};
-    height: auto;
   }
 
   img {
     display: block;
     width: 100%;
   }
-
-  ${breakpoint('tablet')`
-    height: 27.2rem;
-
-    .no-image & {
-      height: auto;
-    }
-  `}
 `;
 
 const TitleWrapper = styled.div`
@@ -200,6 +191,7 @@ StandardCard.propTypes = {
   onClick: PropTypes.func,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
+  stickers: PropTypes.array,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 };
@@ -215,6 +207,7 @@ StandardCard.defaultProps = {
   imageUrl: '',
   isFavorited: false,
   onClick: null,
+  stickers: [],
 };
 
 export default StandardCard;
