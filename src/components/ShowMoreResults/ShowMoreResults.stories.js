@@ -8,7 +8,7 @@ const StyledShowMoreResults = styled(CustomShowMoreResults)`
 `;
 
 export default {
-  title: 'Components|CustomShowMoreResults',
+  title: 'Components|ShowMoreResults',
   component: CustomShowMoreResults,
 };
 
