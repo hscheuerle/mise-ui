@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectSearchBox } from 'react-instantsearch-dom';
 
-import { color, font, fontSize } from '../../styles';
+import { color, font, fontSize, spacing, } from '../../styles';
 import { SearchIcon, Close } from '../DesignTokens/Icon';
 
 
@@ -12,18 +12,16 @@ const StyledSearch = styled.form`
   position: relative;
 
   input[type="search"] {
-    background-color: ${color.whiteSmoke};
-    border: none;
+    border: 1px solid ${color.silver};
     height: 100%;
     font: ${fontSize.lg} ${font.mwr};
-    padding-left: 5.2rem;
+    padding-left: 5rem;
     width: 100%;
 
     &::placeholder {
       color: ${color.eclipse};
       font: ${fontSize.lg} ${font.mwr};
       font-style: italic;
-      line-height: 1.44;
       text-align: left;
     }
 
@@ -32,15 +30,14 @@ const StyledSearch = styled.form`
     }
   }
 
-  button {
-    background: none;
-    border: none;
+  button[type="reset"] {
     position: absolute;
+    top: 0;
     right: 0;
-    margin-right: 0.5rem;
-    top: 50%;
-    height: 1.5rem;
-    transform: translate(0%,-50%);
+    bottom: 0;
+    margin: auto ${spacing.sm};
+    width: 1rem;
+    height: 1rem;
   }
 
   svg {
@@ -111,7 +108,7 @@ class StyledSearchBox extends Component {
         role="search"
       >
         <SearchIcon
-          fill={color.regentGray}
+          fill={color.mint}
         />
         <input
           type="search"
