@@ -157,7 +157,7 @@ export function StandardCard({
               className={className}
               role="button"
               isFavorited={isFavorited}
-              object={objectId}
+              objectId={objectId}
               onClick={onClick}
               siteKey={siteKeyFavorites}
               title={title}
