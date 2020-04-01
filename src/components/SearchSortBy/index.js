@@ -4,15 +4,12 @@ import styled from 'styled-components';
 import { connectSortBy } from 'react-instantsearch-dom';
 
 import { ShowHide } from '../ShowHide';
-import { color, font, fontSize } from '../../styles';
+import { color, font, fontSize, spacing, } from '../../styles';
 
-const SearchSortByList = styled.ul`
-  padding: 0;
-  margin: 0;
-`;
+const SearchSortByList = styled.ul``;
 
 const SearchSortByItem = styled.li`
-  margin-bottom: 2rem;
+  margin-bottom: ${spacing.sm};
 
   &:last-child {
     margin-bottom: 0;
@@ -21,10 +18,7 @@ const SearchSortByItem = styled.li`
 
 const SearchSortByButton = styled.button`
   align-items: center;
-  border: none;
   display: flex;
-  margin: 0;
-  padding: 0;
 
   &:hover {
     cursor: pointer;

@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import LabelFrame from '../LabelFrame';
 import SearchSortBy from '../SearchSortBy';
 
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
+
+const SortByWrapper = styled.div`
+  max-width: 30rem;
+`;
 
 export default {
   title: 'Components|SearchSortBy',
@@ -13,7 +18,9 @@ export default {
 export const Default = () => (
   <MiseInstantSearch>
     <LabelFrame label="Component">
-      <SearchSortBy />
+      <SortByWrapper>
+        <SearchSortBy />
+      </SortByWrapper>
     </LabelFrame>
   </MiseInstantSearch>
 );
