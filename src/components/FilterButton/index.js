@@ -17,12 +17,11 @@ const StyledFilter = styled(Filter)`
 
 const FilterButton = ({ className, onClick }) => (
   <StyledFilterButton
+    className={className}
     onClick={onClick}
   >
     Filter
-    <StyledFilter
-      className={className}
-    />
+    <StyledFilter />
   </StyledFilterButton>
 );
 
