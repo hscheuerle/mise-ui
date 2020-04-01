@@ -119,11 +119,11 @@ export function StandardCard({
   siteKey,
   siteKeyFavorites,
   title,
-  url,
+  href,
 }) {
   return (
     <StyledStandardCard className={imageUrl ? '' : 'no-image'}>
-      <a href={url}>
+      <a href={href}>
         <ImageWrapper>
           { imageUrl ? (
             <Image
@@ -193,7 +193,7 @@ StandardCard.propTypes = {
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
   stickers: PropTypes.array,
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
 };
 
 StandardCard.defaultProps = {
