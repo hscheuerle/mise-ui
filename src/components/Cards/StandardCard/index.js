@@ -24,28 +24,18 @@ const StyledStandardCard = styled.article`
 
 const ImageWrapper = styled.div`
   position: relative;
-  height: 16.2rem;
   width: 100%;
 
   .no-image & {
     display: flex;
     align-items: center;
     margin-bottom: ${spacing.xxsm};
-    height: auto;
   }
 
   img {
     display: block;
     width: 100%;
   }
-
-  ${breakpoint('tablet')`
-    height: 27.2rem;
-
-    .no-image & {
-      height: auto;
-    }
-  `}
 `;
 
 const TitleWrapper = styled.div`
@@ -114,6 +104,7 @@ export function StandardCard({
   className,
   commentCount,
   contentType,
+  contentTypeFormatted,
   ctaText,
   ctaUrl,
   displayCommentCount,
@@ -128,11 +119,11 @@ export function StandardCard({
   siteKey,
   siteKeyFavorites,
   title,
-  url,
+  href,
 }) {
   return (
     <StyledStandardCard className={imageUrl ? '' : 'no-image'}>
-      <a href={url}>
+      <a href={href}>
         <ImageWrapper>
           { imageUrl ? (
             <Image
@@ -166,7 +157,7 @@ export function StandardCard({
               className={className}
               role="button"
               isFavorited={isFavorited}
-              object={objectId}
+              objectId={objectId}
               onClick={onClick}
               siteKey={siteKeyFavorites}
               title={title}
@@ -176,7 +167,7 @@ export function StandardCard({
       </a>
       <Attributions
         commentCount={commentCount}
-        contentType={contentType}
+        contentType={contentTypeFormatted || contentType}
         displayLockIcon={displayLockIcon}
         displayCommentCount={displayCommentCount}
       />
@@ -188,6 +179,7 @@ export function StandardCard({
 StandardCard.propTypes = {
   displayFavoritesButton: PropTypes.bool,
   contentType: PropTypes.string.isRequired,
+  contentTypeFormatted: PropTypes.string,
   commentCount: PropTypes.number,
   ctaText: PropTypes.string,
   ctaUrl: PropTypes.string,
@@ -200,12 +192,14 @@ StandardCard.propTypes = {
   onClick: PropTypes.func,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
+  stickers: PropTypes.array,
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
 };
 
 StandardCard.defaultProps = {
   commentCount: null,
+  contentTypeFormatted: null,
   ctaText: '',
   ctaUrl: '',
   displayCommentCount: false,
@@ -215,6 +209,7 @@ StandardCard.defaultProps = {
   imageUrl: '',
   isFavorited: false,
   onClick: null,
+  stickers: [],
 };
 
 export default StandardCard;

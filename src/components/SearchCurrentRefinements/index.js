@@ -7,11 +7,13 @@ import { color, font, fontSize } from '../../styles';
 
 const RefinementsList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   padding: 1.2rem 0 1rem 0;
   margin: 0;
 `;
 
 const RefinementListItem = styled.li`
+  margin-bottom: 0.5rem;
   margin-right: 1.6rem;
 `;
 
@@ -32,15 +34,24 @@ const RefinementClearButton = styled.button`
   width: 0.8rem;
 `;
 
+const labelMap = {
+  atk: 'America\'s Test Kitchen',
+  cco: 'Cook\'s Country',
+  cio: 'Cook\'s Illustrated',
+  kids: 'ATK Kids',
+  school: 'Cooking School',
+  shop: 'ATK Shop',
+};
+
 const CurrentRefinements = ({ items, refine }) => (
   <RefinementsList>
     {
       items.map(category => (
-        category.items.map(({ label, value }) => (
+        category.items.map(({ attribute, label, value }) => (
           <RefinementListItem key={`clear-refinement--${label}`}>
             <Refinement>
               <RefinementLabel>
-                {label}
+                {labelMap[label] || label}
               </RefinementLabel>
               <RefinementClearButton onClick={(e) => { e.preventDefault(); refine(value); }}>
                 <Close fill={color.nobel} />

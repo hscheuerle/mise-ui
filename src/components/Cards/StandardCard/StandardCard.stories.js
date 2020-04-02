@@ -27,7 +27,7 @@ export const LoggedIn = () => (
     objectId=""
     onClick={action('favorites-click')}
     title={text("Title", "Plastic Food Storage Containers")}
-    url="https://www.americastestkitchen.com/equipment_reviews/1879-plastic-food-storage-containers?ref=new_search_experience_2"
+    href="https://www.americastestkitchen.com/equipment_reviews/1879-plastic-food-storage-containers?ref=new_search_experience_2"
   />
 );
 
@@ -46,7 +46,7 @@ export const LoggedOut = () => (
     siteKeyFavorites="cio"
     stickers={[{type: 'priority', text: 'New'}, {type: 'editorial', text: 'Quick'}]}
     title={text("Title", "Congee (Chinese Rice Porridge) with Stir-Fried Ground Pork")}
-    url="https://www.cooksillustrated.com/recipes/12381-congee-chinese-rice-porridge-with-stir-fried-ground-pork?extcode=MASCD00L0&ref=new_search_experience_2"
+    href="https://www.cooksillustrated.com/recipes/12381-congee-chinese-rice-porridge-with-stir-fried-ground-pork?extcode=MASCD00L0&ref=new_search_experience_2"
   />
 );
 
@@ -62,6 +62,6 @@ export const NoImage = () => (
     siteKeyFavorites="cio"
     stickers={[{type: 'editorial', text: 'Make Ahead'}]}
     title={text("Title", "Congee (Chinese Rice Porridge) with Stir-Fried Ground Pork")}
-    url="https://www.cooksillustrated.com/recipes/12381-congee-chinese-rice-porridge-with-stir-fried-ground-pork?extcode=MASCD00L0&ref=new_search_experience_2"
+    href="https://www.cooksillustrated.com/recipes/12381-congee-chinese-rice-porridge-with-stir-fried-ground-pork?extcode=MASCD00L0&ref=new_search_experience_2"
   />
 );
