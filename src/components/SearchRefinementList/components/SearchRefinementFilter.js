@@ -54,81 +54,60 @@ const SearchRefinementFilterCount = styled.span`
   color: ${color.nobel};
 `;
 
-const keyToButton = key => (
-  {
-    'atk': {
-      altFill: color.tomato,
-      label: 'America\'s Test Kitchen',
-    },
-    'cco': {
-      altFill: color.denim,
-      label: 'Cook\'s Country',
-    },
-    'cio': {
-      altFill: color.cork,
-      label: 'Cook\'s Illustrated',
-    },
-    'kids': {
-      altFill: color.jade,
-      label: 'ATK Kids',
-    },
-    'school': {
-      altFill: color.tomato,
-      label: 'Cooking School',
-    },
-    'shop': {
-      altFill: color.tomato,
-      label: 'ATK Shop',
-    },
-  }[key] || {}
+const SearchRefinementFilter = ({
+  altFill,
+  attribute,
+  count,
+  includeCount,
+  isRefined,
+  label,
+  refine,
+  value,
+}) => (
+  <SearchRefinementFilterLabel
+    altFill={altFill}
+    htmlFor={`${attribute}--${label}`}
+    onClick={(e) => { e.preventDefault(); refine(value); }}
+  >
+    {
+      isRefined ? (
+        <SearchRefinementFilterCheck>
+          <Checkmark />
+        </SearchRefinementFilterCheck>
+      ) : null
+    }
+    <SearchRefinementFilterCheckbox
+      id={`search-site-list--${value}`}
+      type="checkbox"
+    />
+    {
+      attribute === 'search_site_list' ? (
+        <Badge
+          className="search-refinement__badge"
+          fill={isRefined ? altFill : color.eclipse}
+          type={value}
+        />
+      ) : null
+    }
+    {
+      includeCount ? (
+        <span>
+          {label} <SearchRefinementFilterCount>{`(${count})`}</SearchRefinementFilterCount>
+        </span>
+      ) : (
+        label
+      )
+    }
+  </SearchRefinementFilterLabel>
 );
 
-const SearchRefinementFilter = ({ attribute, count, isRefined, label: key, refine, value }) => {
-  const { altFill, label } = keyToButton(key);
-  const wrapperProps = {
-    altFill,
-    htmlFor: `${attribute}--${key}`,
-  };
-  return (
-    <SearchRefinementFilterLabel {...wrapperProps} onClick={(e) => { e.preventDefault(); refine(value); }}>
-      {
-        isRefined ? (
-          <SearchRefinementFilterCheck>
-            <Checkmark />
-          </SearchRefinementFilterCheck>
-        ) : null
-      }
-      <SearchRefinementFilterCheckbox
-        id={`search-site-list--${key}`}
-        type="checkbox"
-      />
-      {
-        attribute === 'search_site_list' ? (
-          <Badge
-            className="search-refinement__badge"
-            fill={isRefined ? altFill : color.eclipse}
-            type={key}
-          />
-        ) : null
-      }
-      {
-        label ? (
-          label
-        ) : (
-          <span>
-            {key} <SearchRefinementFilterCount>{`(${count})`}</SearchRefinementFilterCount>
-          </span>
-        )
-      }
-    </SearchRefinementFilterLabel>
-  );
-};
-
 SearchRefinementFilter.propTypes = {
+  altFill: PropTypes.string,
   /** Algolia attribute used to filter results. */
   attribute: PropTypes.string.isRequired,
   /** Number of hits for this filter value. */
-  count: PropTypes.number.isRequired,
+  count: PropTypes.number,
+  includeCount: PropTypes.bool,
   /** Is this filter selected? */
   isRefined: PropTypes.bool.isRequired,
   /** Filter label */
@@ -136,7 +115,13 @@ SearchRefinementFilter.propTypes = {
   /** Call this with the value of a filter to refine results based on filter. */
   refine: PropTypes.func.isRequired,
   /** Value of filter to be used for refining results. */
-  value: PropTypes.array.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
 };
+
+SearchRefinementFilter.defaultProps = {
+  altFill: null,
+  count: null,
+  includeCount: false,
+}
 
 export default SearchRefinementFilter;

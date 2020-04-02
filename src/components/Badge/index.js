@@ -58,7 +58,7 @@ Badge.propTypes = {
   ariaLabel: PropTypes.string,
   className: PropTypes.string,
   fill: PropTypes.string,
-  type: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop',]).isRequired,
+  type: PropTypes.oneOf(['atk', 'cio', 'cco', 'kids', 'school', 'shop']).isRequired,
 }
 
 Badge.defaultProps = {

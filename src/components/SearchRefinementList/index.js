@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import ShowMoreLess from '../ShowMoreLess';
 import SearchRefinementFilter from './components/SearchRefinementFilter';
 import { ShowHide } from '../ShowHide';
+import { color, font, fontSize } from '../../styles';
 
 const SearchRefinementListRefinements = styled.div`
   border: none;
@@ -13,16 +14,56 @@ const SearchRefinementListRefinements = styled.div`
   padding: 0;
 `;
 
-const RefinementList = ({ attribute, items, refine }) => (
+const siteMap = [
+  {
+    altFill: color.tomato,
+    label: 'America\'s Test Kitchen',
+    value: 'atk',
+  },
+  {
+    altFill: color.denim,
+    label: 'Cook\'s Country',
+    value: 'cco',
+  },
+  {
+    altFill: color.cork,
+    label: 'Cook\'s Illustrated',
+    value: 'cio',
+  },
+  {
+    altFill: color.jade,
+    label: 'ATK Kids',
+    value: 'kids',
+  },
+  {
+    altFill: color.tomato,
+    label: 'Cooking School',
+    value: 'school',
+  },
+  {
+    altFill: color.tomato,
+    value: 'shop',
+    label: 'ATK Shop',
+  }
+];
+
+const RefinementList = ({ attribute, currentRefinement, items, refine }) => (
   <SearchRefinementListRefinements>
     {
       attribute === 'search_site_list' ? (
-        items.map(item => (
+        siteMap.map(site => (
           <SearchRefinementFilter
-            {...item}
+            {...site}
             attribute={attribute}
-            key={`${attribute}-${item.label}`}
-            refine={refine}
+            includeCount={false}
+            isRefined={currentRefinement.includes(site.value)}
+            key={`${attribute}-${site.value}`}
+            refine={(value) => {
+              const next = currentRefinement.includes(value)
+                ? currentRefinement.filter(current => current !== value)
+                : currentRefinement.concat(value);
+              refine(next);
+            }}
           />
         ))
       ) : (
@@ -48,10 +89,13 @@ const RefinementList = ({ attribute, items, refine }) => (
 const CustomRefinementList = connectRefinementList(RefinementList);
 
 const SearchRefinementList = (props) => {
-  const { showHideLabel, ...restProps } = props;
+  const { showHideLabel, operator, ...restProps } = props;
   return (
     <ShowHide isFieldset label={showHideLabel}>
-      <CustomRefinementList {...restProps} />
+      <CustomRefinementList
+        operator={operator}
+        {...restProps}
+      />
     </ShowHide>
   );
 };
@@ -59,6 +103,7 @@ const SearchRefinementList = (props) => {
 SearchRefinementList.propTypes = {
   /** Algolia attribute that is used to pull refinement values. */
   attribute: PropTypes.string.isRequired,
+  operator: PropTypes.oneOf(['and', 'or']),
   /** 'Title' of the list that will be put into clickable show/hide button */
   showHideLabel: PropTypes.string.isRequired,
   /** Initial number of refinement filters that are visible in the refinement list. */
@@ -66,6 +111,7 @@ SearchRefinementList.propTypes = {
 };
 
 SearchRefinementList.defaultProps = {
+  operator: 'and',
   transformItems: null,
 };
 
