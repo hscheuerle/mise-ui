@@ -26,7 +26,7 @@ const siteMap = [
     value: 'cco',
   },
   {
-    altFill: color.cork,
+    altFill: color.squirrel,
     label: 'Cook\'s Illustrated',
     value: 'cio',
   },

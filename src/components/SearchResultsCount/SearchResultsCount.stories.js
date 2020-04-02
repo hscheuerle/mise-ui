@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchResultsCount from '../SearchResultsCount';
 
+import LabelFrame from '../LabelFrame';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
@@ -10,6 +11,8 @@ export default {
 
 export const Default = () => (
   <MiseInstantSearch>
-    <SearchResultsCount />
+    <LabelFrame label="Component">
+      <SearchResultsCount />
+    </LabelFrame>
   </MiseInstantSearch>
 );

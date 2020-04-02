@@ -22,10 +22,21 @@ const SearchSortByButton = styled.button`
 
   &:hover {
     cursor: pointer;
+
+    .search-sort-by__circle {
+      background-color: ${color.mint};
+      border-color: ${color.mint};
+    }
+
+    .search-sort-by__label {
+      color: ${color.mint};
+    }
   }
 `;
 
-const SearchSortByCircle = styled.div`
+const SearchSortByCircle = styled.div.attrs({
+  className: 'search-sort-by__circle',
+})`
   ${({ isRefined }) => (isRefined ? `
       background-color: ${color.mint};
       border: solid 1px ${color.mint};
@@ -39,7 +50,9 @@ const SearchSortByCircle = styled.div`
   width: 1.2rem;
 `;
 
-const SearchSortByLabel = styled.span`
+const SearchSortByLabel = styled.span.attrs({
+  className: 'search-sort-by__label',
+})`
   color: ${color.eclipse};
   font: ${fontSize.md}/1.38 ${font.pnr};
   font-size: ${fontSize.md};
