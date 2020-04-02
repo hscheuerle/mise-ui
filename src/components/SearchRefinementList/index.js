@@ -86,19 +86,17 @@ const RefinementList = ({ attribute, currentRefinement, items, refine }) => (
   </SearchRefinementListRefinements>
 );
 
-const CustomRefinementList = connectRefinementList(RefinementList);
-
-const SearchRefinementList = (props) => {
-  const { showHideLabel, operator, ...restProps } = props;
-  return (
+const SearchRefinementList = ({ showHideLabel, operator, items, ...restProps }) => (
+  items.length > 0 && (
     <ShowHide isFieldset label={showHideLabel}>
-      <CustomRefinementList
+      <RefinementList
+        items={items}
         operator={operator}
         {...restProps}
       />
     </ShowHide>
-  );
-};
+  )
+);
 
 SearchRefinementList.propTypes = {
   /** Algolia attribute that is used to pull refinement values. */
@@ -115,4 +113,4 @@ SearchRefinementList.defaultProps = {
   transformItems: null,
 };
 
-export default SearchRefinementList;
+export default connectRefinementList(SearchRefinementList);

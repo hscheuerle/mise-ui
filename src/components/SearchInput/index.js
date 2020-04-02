@@ -117,7 +117,7 @@ StyledSearchBox.propTypes = {
 };
 
 StyledSearchBox.defaultProps = {
-  delay: 150,
+  delay: 200,
   onReset: null,
 };
 

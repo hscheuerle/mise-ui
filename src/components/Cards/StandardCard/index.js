@@ -191,7 +191,7 @@ StandardCard.propTypes = {
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-  siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
+  siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
   stickers: PropTypes.array,
   title: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
@@ -212,4 +212,7 @@ StandardCard.defaultProps = {
   stickers: [],
 };
 
-export default StandardCard;
+export default React.memo(StandardCard, (prevProps, nextProps) => (
+  prevProps.objectId === nextProps.objectId &&
+  prevProps.siteKey === nextProps.siteKey
+));
