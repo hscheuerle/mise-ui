@@ -3,18 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Plus } from '../DesignTokens/Icon/svgs/';
-import { font, fontSize, letterSpacing } from '../../styles';
+import { font, fontSize, letterSpacing, spacing, } from '../../styles';
 
-const ShowHideDivWrapper = styled.div`
-  max-width: 20rem;
-`;
-
-const ShowHideFieldsetWrapper = styled.fieldset`
-  border: 0;
-  margin: 0;
-  max-width: 20rem;
-  padding: 0;
-`;
+const ShowHideDivWrapper = styled.div``;
+const ShowHideFieldsetWrapper = styled.fieldset``;
 
 const ShowHideButton = styled.button`
   align-items: center;
@@ -23,8 +15,8 @@ const ShowHideButton = styled.button`
   font: ${fontSize.md}/1 ${font.pnb};
   justify-content: space-between;
   letter-spacing: ${letterSpacing.md};
-  margin: 0 0 1.6rem;
-  padding: 0;
+  margin: 0 0 ${spacing.xsm};
+  padding: ${spacing.xsm} ${spacing.xxsm} ${spacing.xsm} 0;
   text-transform: uppercase;
   width: 100%;
 
