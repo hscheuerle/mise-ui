@@ -47,7 +47,7 @@ const siteMap = [
   }
 ];
 
-const RefinementList = ({ attribute, currentRefinement, items, refine }) => (
+const RefinementList = ({ attribute, currentRefinement, items, refine, handleClick }) => (
   <SearchRefinementListRefinements>
     {
       attribute === 'search_site_list' ? (
@@ -77,6 +77,7 @@ const RefinementList = ({ attribute, currentRefinement, items, refine }) => (
                 attribute={attribute}
                 key={`${attribute}-${item.label}`}
                 refine={refine}
+                handleClick={handleClick}
               />
             ))
           }
@@ -104,12 +105,15 @@ SearchRefinementList.propTypes = {
   operator: PropTypes.oneOf(['and', 'or']),
   /** 'Title' of the list that will be put into clickable show/hide button */
   showHideLabel: PropTypes.string.isRequired,
+  /** Used to pass click functionality from jarvis etc. */
+  handleClick: PropTypes.func,
   /** Initial number of refinement filters that are visible in the refinement list. */
   transformItems: PropTypes.func,
 };
 
 SearchRefinementList.defaultProps = {
   operator: 'and',
+  handleClick: () => {},
   transformItems: null,
 };
 
