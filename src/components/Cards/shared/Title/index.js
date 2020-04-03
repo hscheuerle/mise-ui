@@ -8,7 +8,7 @@ const StyledTitle = styled.h3`
   margin-bottom: ${spacing.xsm};
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
 
-  ${breakpoint('tablet')`
+  ${breakpoint('lg')`
     font-size: ${fontSize.xl};
   `}
 `;

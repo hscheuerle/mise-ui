@@ -18,7 +18,7 @@ const StyledAttributions = styled.div`
     display: inline-block;
   }
 
-  ${breakpoint('mobile', 'tablet')`
+  ${breakpoint('xs', 'lg')`
     font-size: 1.2rem;
 
     & > span {
