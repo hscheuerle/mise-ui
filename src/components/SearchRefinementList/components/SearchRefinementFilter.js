@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Badge from '../../Badge';
-import { Checkmark } from '../../DesignTokens/Icon/svgs'
+import { Checkmark } from '../../DesignTokens/Icon/svgs';
 import { color, font, fontSize } from '../../../styles';
 
 const SearchRefinementFilterLabel = styled.label.attrs({
@@ -142,7 +142,7 @@ SearchRefinementFilter.defaultProps = {
   altFill: null,
   count: null,
   includeCount: false,
-  handleClick: () => {},
+  handleClick: null,
 };
 
 export default SearchRefinementFilter;
