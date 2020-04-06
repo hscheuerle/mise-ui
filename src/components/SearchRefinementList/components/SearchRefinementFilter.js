@@ -69,13 +69,18 @@ const SearchRefinementFilter = ({
   isRefined,
   label,
   refine,
+  handleClick,
   value,
 }) => (
   <SearchRefinementFilterLabel
     altFill={altFill}
     htmlFor={`${attribute}--${label}`}
     isRefined={isRefined}
-    onClick={(e) => { e.preventDefault(); refine(value); }}
+    onClick={(e) => {
+      e.preventDefault();
+      if (!isRefined) handleClick(e);
+      refine(value);
+    }}
   >
     {
       isRefined ? (
@@ -127,6 +132,8 @@ SearchRefinementFilter.propTypes = {
   label: PropTypes.string.isRequired,
   /** Call this with the value of a filter to refine results based on filter. */
   refine: PropTypes.func.isRequired,
+  /** Used to pass click functionality from jarvis etc. */
+  handleClick: PropTypes.func,
   /** Value of filter to be used for refining results. */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
 };
@@ -134,7 +141,8 @@ SearchRefinementFilter.propTypes = {
 SearchRefinementFilter.defaultProps = {
   altFill: null,
   count: null,
-  includeCount: true,
-}
+  includeCount: false,
+  handleClick: () => {},
+};
 
 export default SearchRefinementFilter;
