@@ -52,7 +52,6 @@ const StyledFavoriteButton = styled.button`
 const FavoriteButton = ({
   isFavorited,
   objectId,
-  onClick,
   siteKey,
   title,
 }) => (
@@ -62,7 +61,6 @@ const FavoriteButton = ({
     data-document-title={title}
     data-favoritable-id={objectId}
     data-origin-site={siteKey}
-    onClick={onClick}
   >
     <FavoriteRibbon
       ariaHidden="true"
@@ -74,14 +72,12 @@ const FavoriteButton = ({
 FavoriteButton.propTypes = {
   isFavorited: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
   siteKey: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 
 FavoriteButton.defaultProps = {
   isFavorited: false,
-  onClick: null,
 };
 
 export default FavoriteButton;
