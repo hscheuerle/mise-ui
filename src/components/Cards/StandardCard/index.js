@@ -142,6 +142,7 @@ function StandardCard({
             <StickerGroup>
               {stickers.map(({ text, type }) => (
                 <StyledSticker
+                  className={className}
                   key={text}
                   contentType={contentType}
                   type={type}

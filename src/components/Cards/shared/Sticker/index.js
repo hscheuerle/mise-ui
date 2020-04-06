@@ -83,11 +83,13 @@ for mobile for most types of cards.
 */
 
 const Sticker = ({
+  className,
   contentType,
   text,
   type,
 }) => (
   <StyledSticker
+    className={className}
     type={type}
   >
     { type === 'editorial' ? determineIconType(contentType) : null }
@@ -96,6 +98,7 @@ const Sticker = ({
 );
 
 Sticker.propTypes = {
+  className: PropTypes.string,
   /** The type of content that the card represents */
   contentType: PropTypes.string,
   /** The text inside the sticker. Must be less than N characters. */
@@ -105,6 +108,7 @@ Sticker.propTypes = {
 };
 
 Sticker.defaultProps = {
+  className: '',
   contentType: null,
 };
 
