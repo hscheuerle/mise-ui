@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchResultsCount from '../SearchResultsCount';
 
 import LabelFrame from '../LabelFrame';
+import SearchResultsCount from './index';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
