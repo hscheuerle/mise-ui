@@ -123,7 +123,10 @@ function StandardCard({
 }) {
   return (
     <StyledStandardCard className={imageUrl ? '' : 'no-image'}>
-      <a href={href}>
+      <a
+        href={href}
+        onClick={onClick}
+      >
         <ImageWrapper>
           { imageUrl ? (
             <Image
@@ -158,7 +161,6 @@ function StandardCard({
               role="button"
               isFavorited={isFavorited}
               objectId={objectId}
-              onClick={onClick}
               siteKey={siteKeyFavorites}
               title={title}
             />
@@ -171,7 +173,15 @@ function StandardCard({
         displayLockIcon={displayLockIcon}
         displayCommentCount={displayCommentCount}
       />
-      { ctaUrl ? <CtaLink ctaText={ctaText} ctaUrl={ctaUrl} /> : null }
+      {
+        ctaUrl && (
+          <CtaLink
+            ctaText={ctaText}
+            ctaUrl={ctaUrl}
+            onClick={onClick}
+          />
+        )
+      }
     </StyledStandardCard>
   );
 }

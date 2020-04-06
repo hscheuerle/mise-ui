@@ -26,7 +26,7 @@ export const LoggedIn = () => (
     siteKeyFavorites="atk"
     stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: 'Trending' }]}
     objectId=""
-    onClick={action('favorites-click')}
+    onClick={action('result-click')}
     title={text('Title', 'Plastic Food Storage Containers')}
     href="https://www.americastestkitchen.com/equipment_reviews/1879-plastic-food-storage-containers?ref=new_search_experience_2"
   />
@@ -42,7 +42,7 @@ export const LoggedOut = () => (
     imageAlt={text('Image alt text', '')}
     imageUrl="https://res.cloudinary.com/hksqkdlah/image/upload/ar_1:1,c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low,w_344/SFS_stir_fried_ground_pork_topping_congee-1_1_la51ps"
     objectId=""
-    onClick={action('favorites-click')}
+    onClick={action('result-click')}
     siteKey="cio"
     siteKeyFavorites="cio"
     stickers={[{ type: 'priority', text: 'New' }, { type: 'editorial', text: 'Quick' }]}
@@ -59,6 +59,7 @@ export const NoImage = () => (
     displayLockIcon
     displayCommentCount
     objectId=""
+    onClick={action('result-click')}
     siteKey="cio"
     siteKeyFavorites="cio"
     stickers={[{ type: 'editorial', text: 'Make Ahead' }]}
