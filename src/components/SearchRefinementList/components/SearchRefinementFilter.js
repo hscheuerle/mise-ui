@@ -13,9 +13,12 @@ const SearchRefinementFilterLabel = styled.label.attrs({
   color: ${color.eclipse};
   display: flex;
   font: ${fontSize.md}/1.38 ${font.pnr};
+  margin: 0 0 1.8rem;
   position: relative;
 
-  margin: 0 0 1.8rem;
+  .search-refinement-list__label-text {
+    ${({ isRefined }) => (isRefined ? `color: ${color.mint}; font-family: ${font.pnb};` : '')}
+  }
 
   &:last-child {
     margin: 0;
@@ -23,6 +26,10 @@ const SearchRefinementFilterLabel = styled.label.attrs({
 
   &:hover {
     cursor: pointer;
+
+    .search-refinement-list__label-text {
+      color: ${color.mint};
+    }
 
     svg {
       circle {
@@ -67,6 +74,7 @@ const SearchRefinementFilter = ({
   <SearchRefinementFilterLabel
     altFill={altFill}
     htmlFor={`${attribute}--${label}`}
+    isRefined={isRefined}
     onClick={(e) => { e.preventDefault(); refine(value); }}
   >
     {
@@ -92,7 +100,12 @@ const SearchRefinementFilter = ({
     {
       includeCount ? (
         <span>
-          {label} <SearchRefinementFilterCount>{`(${count})`}</SearchRefinementFilterCount>
+          <span className="search-refinement-list__label-text">
+            {label}
+          </span>
+          <SearchRefinementFilterCount>
+            {` (${count})`}
+          </SearchRefinementFilterCount>
         </span>
       ) : (
         label
@@ -121,7 +134,7 @@ SearchRefinementFilter.propTypes = {
 SearchRefinementFilter.defaultProps = {
   altFill: null,
   count: null,
-  includeCount: false,
+  includeCount: true,
 }
 
 export default SearchRefinementFilter;
