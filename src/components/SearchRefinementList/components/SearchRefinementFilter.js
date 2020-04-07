@@ -78,7 +78,7 @@ const SearchRefinementFilter = ({
     isRefined={isRefined}
     onClick={(e) => {
       e.preventDefault();
-      if (!isRefined) handleClick(e);
+      if (!isRefined && typeof handleClick === 'function') handleClick(e);
       refine(value);
     }}
   >

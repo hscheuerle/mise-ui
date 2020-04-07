@@ -47,7 +47,13 @@ const siteMap = [
   },
 ];
 
-const RefinementList = ({ attribute, currentRefinement, items, refine, handleClick }) => (
+const RefinementList = ({
+  attribute,
+  currentRefinement,
+  items,
+  refine,
+  handleClick,
+}) => (
   <SearchRefinementListRefinements>
     {
       attribute === 'search_site_list' ? (
@@ -127,7 +133,7 @@ SearchRefinementList.propTypes = {
 
 SearchRefinementList.defaultProps = {
   operator: 'and',
-  handleClick: () => {},
+  handleClick: null,
   transformItems: null,
 };
 

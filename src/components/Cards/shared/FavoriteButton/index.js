@@ -63,7 +63,8 @@ const FavoriteButton = ({
     data-origin-site={siteKey}
   >
     <FavoriteRibbon
-      ariaHidden="true"
+      ariaHidden
+      ariaLabel="Save to favorites"
       className="favorite-ribbon"
     />
   </StyledFavoriteButton>

@@ -29,8 +29,8 @@ const FavoriteRibbon = ({
 
 FavoriteRibbon.propTypes = {
   /** Labels the element for screen readers in cases where a text label is not included */
+  ariaHidden: PropTypes.bool.isRequired,
   ariaLabel: PropTypes.string.isRequired,
-  ariaHidden: PropTypes.string.isRequired,
   className: PropTypes.string,
   fill: PropTypes.string,
 };
