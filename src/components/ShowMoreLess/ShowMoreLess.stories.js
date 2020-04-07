@@ -10,16 +10,17 @@ Item.propTypes = {
 
 export const Default = () => (
   <ShowMoreLess
-    initialCount="4"
+    id="something unique"
+    initialCount={4}
     items={[
-      <Item number="1" />,
-      <Item number="2" />,
-      <Item number="3" />,
-      <Item number="4" />,
-      <Item number="5" />,
-      <Item number="6" />,
-      <Item number="7" />,
-      <Item number="8" />,
+      <Item key={1} number={1} />,
+      <Item key={2} number={2} />,
+      <Item key={3} number={3} />,
+      <Item key={4} number={4} />,
+      <Item key={5} number={5} />,
+      <Item key={6} number={6} />,
+      <Item key={7} number={7} />,
+      <Item key={8} number={8} />,
     ]}
   />
 );

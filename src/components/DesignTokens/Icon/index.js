@@ -17,6 +17,16 @@ export const BreadcrumbArrow = () => (
   </Icon>
 );
 
+export const Checkmark = ({ fill }) => (
+  <Icon>
+    <Icons.Checkmark
+      fill={fill}
+    />
+  </Icon>
+);
+
+Checkmark.propTypes = Icons.Checkmark.propTypes;
+
 export const Close = ({ ariaLabel, fill }) => (
   <Icon>
     <Icons.Close
@@ -26,10 +36,7 @@ export const Close = ({ ariaLabel, fill }) => (
   </Icon>
 );
 
-Close.propTypes = {
-  ariaLabel: PropTypes.string.isRequired,
-  fill: PropTypes.string.isRequired,
-};
+Close.propTypes = Icons.Close.propTypes;
 
 export const Collection = ({ fill }) => (
   <Icon>
@@ -39,9 +46,7 @@ export const Collection = ({ fill }) => (
   </Icon>
 );
 
-Collection.propTypes = {
-  fill: PropTypes.string.isRequired,
-};
+Collection.propTypes = Icons.Collection.propTypes;
 
 export const Cookbook = ({ className }) => (
   <Icon>
@@ -51,49 +56,31 @@ export const Cookbook = ({ className }) => (
   </Icon>
 );
 
-Cookbook.propTypes = {
-  className: PropTypes.string,
-};
+Cookbook.propTypes = Icons.Cookbook.propTypes;
 
-Cookbook.defaultProps = {
-  className: null,
-};
-
-export const FavoriteRibbon = ({ ariaHidden, ariaLabel, className }) => (
+export const FavoriteRibbon = ({ ariaHidden, ariaLabel, className, fill }) => (
   <Icon>
     <Icons.FavoriteRibbon
       className={className}
       ariaHidden={ariaHidden}
       ariaLabel={ariaLabel}
+      fill={fill}
     />
   </Icon>
 );
 
-FavoriteRibbon.propTypes = {
-  ariaHidden: PropTypes.bool.isRequired,
-  ariaLabel: PropTypes.string.isRequired,
-  className: PropTypes.string,
-};
+FavoriteRibbon.propTypes = Icons.FavoriteRibbon.propTypes;
 
-FavoriteRibbon.defaultProps = {
-  className: null,
-};
-
-export const Filter = ({ className }) => (
+export const Filter = ({ className, fill }) => (
   <Icon>
     <Icons.Filter
       className={className}
+      fill={fill}
     />
   </Icon>
 );
 
-Filter.propTypes = {
-  className: PropTypes.string,
-};
-
-Filter.defaultProps = {
-  className: null,
-};
+Filter.propTypes = Icons.Filter.propTypes;
 
 export const Lock = ({ className, fill }) => (
   <Icon>
@@ -104,38 +91,7 @@ export const Lock = ({ className, fill }) => (
   </Icon>
 );
 
-Lock.propTypes = {
-  className: PropTypes.string,
-  fill: PropTypes.string.isRequired,
-};
-
-Lock.defaultProps = {
-  className: null,
-};
-
-export const VideoPlay = ({ fill }) => (
-  <Icon>
-    <Icons.VideoPlay
-      fill={fill}
-    />
-  </Icon>
-);
-
-VideoPlay.propTypes = {
-  fill: PropTypes.string.isRequired,
-};
-
-export const SearchIcon = ({ fill }) => (
-  <Icon>
-    <Icons.SearchIcon
-      fill={fill}
-    />
-  </Icon>
-);
-
-SearchIcon.propTypes = {
-  fill: PropTypes.string.isRequired,
-};
+Lock.propTypes = Icons.Lock.propTypes;
 
 export const Plus = ({ fill }) => (
   <Icon>
@@ -145,18 +101,24 @@ export const Plus = ({ fill }) => (
   </Icon>
 );
 
-Plus.propTypes = {
-  fill: PropTypes.string.isRequired,
-};
+Plus.propTypes = Icons.Plus.propTypes;
 
-export const Checkmark = ({ fill }) => (
+export const SearchIcon = ({ fill }) => (
   <Icon>
-    <Icons.Checkmark
+    <Icons.SearchIcon
       fill={fill}
     />
   </Icon>
 );
 
-Checkmark.propTypes = {
-  fill: PropTypes.string.isRequired,
-};
+SearchIcon.propTypes = Icons.SearchIcon.propTypes;
+
+export const VideoPlay = ({ fill }) => (
+  <Icon>
+    <Icons.VideoPlay
+      fill={fill}
+    />
+  </Icon>
+);
+
+VideoPlay.propTypes = Icons.VideoPlay.propTypes;
