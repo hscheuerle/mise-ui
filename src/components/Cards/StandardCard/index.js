@@ -17,8 +17,8 @@ const StyledStandardCard = styled.article`
   width: 16.2rem;
   color: ${color.eclipse};
 
-  ${breakpoint('tablet')`
     width: 27.2rem;
+  ${breakpoint('lg')`
   `}
 `;
 
@@ -74,8 +74,7 @@ const StickerGroup = styled.div`
 
 const stickerHeightMobile = '1.2rem';
 const StyledSticker = styled(Sticker)`
-
-  ${breakpoint('mobile', 'tablet')`
+  ${breakpoint('xs', 'lg')`
     border-radius: 0.5rem;
     line-height: ${stickerHeightMobile};
     height: ${stickerHeightMobile};
@@ -94,7 +93,7 @@ const StyledBadge = styled(Badge)`
     left: 0;
   }
 
-  ${breakpoint('mobile', 'tablet')`
+  ${breakpoint('xs', 'lg')`
     width: 1.6rem;
     height: 1.6rem;
   `}
@@ -143,6 +142,7 @@ function StandardCard({
             <StickerGroup>
               {stickers.map(({ text, type }) => (
                 <StyledSticker
+                  className={className}
                   key={text}
                   contentType={contentType}
                   type={type}

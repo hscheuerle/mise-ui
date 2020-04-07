@@ -13,7 +13,7 @@ const StyledCtaLink = styled.a`
     color: ${color.rust};
   }
 
-  ${breakpoint('tablet')`
+  ${breakpoint('lg')`
     font-size: ${fontSize.md};
   `}
 `;

@@ -107,8 +107,12 @@ The following commands assume your local repos are stored in `/src`, adjust the 
 -$ yarn link
 -$ npm link ../jarvis/node_modules/react-instantsearch-dom
 -$ npm link ../jarvis/node_modules/react
+-$ npm link ../jarvis/node_modules/styled-components
+-$ npm link ../jarvis/node_modules/styled-components-breakpoint
 -$ cd ../jarvis
 -$ yarn link @atk/mise-ui
+-$ cd node_modules/styled-components
+-$ npm link ../react
 ```
 
 Note that two of the above commands use `yarn` and two use `npm`. The order of the `npm` commands is important. Make sure you link `react-instantsearch-dom` and then `react`. If you see 'Invalid Hook Call' errors, you might need to re-run these commands with the correct order.
