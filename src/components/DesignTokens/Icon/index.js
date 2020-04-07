@@ -71,7 +71,7 @@ export const FavoriteRibbon = ({ ariaHidden, ariaLabel, className }) => (
 
 FavoriteRibbon.propTypes = {
   ariaHidden: PropTypes.bool.isRequired,
-  ariaLabel: PropTypes.bool.isRequired,
+  ariaLabel: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
 
