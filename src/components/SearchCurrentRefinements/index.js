@@ -77,7 +77,10 @@ const CurrentRefinements = ({ items, refine }) => (
                 {labelMap[label] || label}
               </RefinementLabel>
               <RefinementClearButton onClick={(e) => { e.preventDefault(); refine(value); }}>
-                <Close fill={color.nobel} />
+                <Close
+                  ariaLabel={`Remove ${label} refinement`}
+                  fill={color.nobel}
+                />
               </RefinementClearButton>
             </Refinement>
           </RefinementListItem>
