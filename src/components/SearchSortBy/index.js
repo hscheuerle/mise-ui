@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectSortBy } from 'react-instantsearch-dom';
 
-import { ShowHide } from '../ShowHide';
-import { color, font, fontSize, spacing, } from '../../styles';
+import ShowHide from '../ShowHide';
+import { color, font, fontSize, spacing } from '../../styles';
 
 const SearchSortByList = styled.ul``;
 
@@ -22,10 +22,21 @@ const SearchSortByButton = styled.button`
 
   &:hover {
     cursor: pointer;
+
+    .search-sort-by__circle {
+      background-color: ${color.mint};
+      border-color: ${color.mint};
+    }
+
+    .search-sort-by__label {
+      color: ${color.mint};
+    }
   }
 `;
 
-const SearchSortByCircle = styled.div`
+const SearchSortByCircle = styled.div.attrs({
+  className: 'search-sort-by__circle',
+})`
   ${({ isRefined }) => (isRefined ? `
       background-color: ${color.mint};
       border: solid 1px ${color.mint};
@@ -39,7 +50,9 @@ const SearchSortByCircle = styled.div`
   width: 1.2rem;
 `;
 
-const SearchSortByLabel = styled.span`
+const SearchSortByLabel = styled.span.attrs({
+  className: 'search-sort-by__label',
+})`
   color: ${color.eclipse};
   font: ${fontSize.md}/1.38 ${font.pnr};
   font-size: ${fontSize.md};
@@ -61,6 +74,11 @@ const SortBy = ({ items, refine }) => (
     }
   </SearchSortByList>
 );
+
+SortBy.propTypes = {
+  items: PropTypes.array.isRequired,
+  refine: PropTypes.func.isRequired,
+};
 
 const CustomSortBy = connectSortBy(SortBy);
 
@@ -86,9 +104,9 @@ SearchSortBy.propTypes = {
 SearchSortBy.defaultProps = {
   defaultRefinement: 'everest_search_development',
   items: [
-    { 'value': 'everest_search_development', label: 'Relevance' },
-    { 'value': 'everest_search_popularity_desc_development', label: 'Popularity' },
-    { 'value': 'everest_search_published_date_desc_development', label: 'Publish Date' },
+    { value: 'everest_search_development', label: 'Relevance' },
+    { value: 'everest_search_popularity_desc_development', label: 'Popularity' },
+    { value: 'everest_search_published_date_desc_development', label: 'Publish Date' },
   ],
 };
 

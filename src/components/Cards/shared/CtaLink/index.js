@@ -13,16 +13,17 @@ const StyledCtaLink = styled.a`
     color: ${color.rust};
   }
 
-  ${breakpoint('tablet')`
+  ${breakpoint('lg')`
     font-size: ${fontSize.md};
   `}
 `;
 
-const CtaLink = ({ ctaText, ctaUrl }) => (
+const CtaLink = ({ ctaText, ctaUrl, onClick }) => (
   <StyledCtaLink
     aria-label={`${ctaText} (opens in new window)`}
     href={ctaUrl}
     target="_blank"
+    onClick={onClick}
   >
     {ctaText}
   </StyledCtaLink>
@@ -31,6 +32,11 @@ const CtaLink = ({ ctaText, ctaUrl }) => (
 CtaLink.propTypes = {
   ctaText: PropTypes.string.isRequired,
   ctaUrl: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+};
+
+CtaLink.defaultProps = {
+  onClick: null,
 };
 
 export default CtaLink;

@@ -50,35 +50,35 @@ const StyledFavoriteButton = styled.button`
 `;
 
 const FavoriteButton = ({
+  isFavorited,
   objectId,
-  onClick,
   siteKey,
   title,
 }) => (
   <StyledFavoriteButton
-    ariaLabel={'Save to favorites'}
-    className="favorite-action"
+    ariaLabel={isFavorited ? `Remove ${title} from favorites` : `Save ${title} to favorites`}
+    className={`favorite-action ${isFavorited ? 'favorited' : ''}`}
     data-document-title={title}
     data-favoritable-id={objectId}
     data-origin-site={siteKey}
-    onClick={onClick}
   >
     <FavoriteRibbon
-      ariaHidden="true"
+      ariaHidden
+      ariaLabel=""
       className="favorite-ribbon"
     />
   </StyledFavoriteButton>
 );
 
 FavoriteButton.propTypes = {
+  isFavorited: PropTypes.bool,
   objectId: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
   siteKey: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 
 FavoriteButton.defaultProps = {
-  onClick: null,
+  isFavorited: false,
 };
 
 export default FavoriteButton;

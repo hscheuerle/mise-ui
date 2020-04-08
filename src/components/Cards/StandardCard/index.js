@@ -13,16 +13,18 @@ import Title from '../shared/Title';
 
 const StyledStandardCard = styled.article`
   position: relative;
-  padding-bottom: ${spacing.xlg};
+  padding-bottom: ${spacing.md};
   width: 16.2rem;
   color: ${color.eclipse};
 
-  ${breakpoint('tablet')`
+  ${breakpoint('lg')`
+    padding-bottom: ${spacing.lg};
     width: 27.2rem;
   `}
 `;
 
 const ImageWrapper = styled.div`
+  background: ${color.white};
   position: relative;
   width: 100%;
 
@@ -74,8 +76,7 @@ const StickerGroup = styled.div`
 
 const stickerHeightMobile = '1.2rem';
 const StyledSticker = styled(Sticker)`
-
-  ${breakpoint('mobile', 'tablet')`
+  ${breakpoint('xs', 'lg')`
     border-radius: 0.5rem;
     line-height: ${stickerHeightMobile};
     height: ${stickerHeightMobile};
@@ -94,13 +95,13 @@ const StyledBadge = styled(Badge)`
     left: 0;
   }
 
-  ${breakpoint('mobile', 'tablet')`
+  ${breakpoint('xs', 'lg')`
     width: 1.6rem;
     height: 1.6rem;
   `}
 `;
 
-export function StandardCard({
+function StandardCard({
   className,
   commentCount,
   contentType,
@@ -123,8 +124,12 @@ export function StandardCard({
 }) {
   return (
     <StyledStandardCard className={imageUrl ? '' : 'no-image'}>
-      <a href={href}>
-        <ImageWrapper>
+      <a
+        className="standard-card__anchor"
+        href={href}
+        onClick={onClick}
+      >
+        <ImageWrapper className="standard-card__image-wrapper">
           { imageUrl ? (
             <Image
               aria-hidden="true"
@@ -136,10 +141,11 @@ export function StandardCard({
             className={className}
             type={siteKey}
           />
-          { stickers ?
+          { stickers ? (
             <StickerGroup>
               {stickers.map(({ text, type }) => (
                 <StyledSticker
+                  className={className}
                   key={text}
                   contentType={contentType}
                   type={type}
@@ -147,18 +153,16 @@ export function StandardCard({
                 />
               ))}
             </StickerGroup>
-          : null }
+          ) : null }
         </ImageWrapper>
-        <TitleWrapper>
+        <TitleWrapper className="standard-card__title-wrapper">
           <StyledTitle className={className} title={title} />
           { displayFavoritesButton ? (
             <StyledFavoriteButton
-              ariaLabel="Save to favorites"
               className={className}
               role="button"
               isFavorited={isFavorited}
               objectId={objectId}
-              onClick={onClick}
               siteKey={siteKeyFavorites}
               title={title}
             />
@@ -171,13 +175,22 @@ export function StandardCard({
         displayLockIcon={displayLockIcon}
         displayCommentCount={displayCommentCount}
       />
-      { ctaUrl ? <CtaLink ctaText={ctaText} ctaUrl={ctaUrl} /> : null }
+      {
+        ctaUrl && (
+          <CtaLink
+            ctaText={ctaText}
+            ctaUrl={ctaUrl}
+            onClick={onClick}
+          />
+        )
+      }
     </StyledStandardCard>
-  )
+  );
 }
 
 StandardCard.propTypes = {
   displayFavoritesButton: PropTypes.bool,
+  className: PropTypes.string,
   contentType: PropTypes.string.isRequired,
   contentTypeFormatted: PropTypes.string,
   commentCount: PropTypes.number,
@@ -191,13 +204,14 @@ StandardCard.propTypes = {
   objectId: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
-  siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']).isRequired,
+  siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
   stickers: PropTypes.array,
   title: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
 };
 
 StandardCard.defaultProps = {
+  className: null,
   commentCount: null,
   contentTypeFormatted: null,
   ctaText: '',
@@ -209,7 +223,11 @@ StandardCard.defaultProps = {
   imageUrl: '',
   isFavorited: false,
   onClick: null,
+  siteKeyFavorites: null,
   stickers: [],
 };
 
-export default StandardCard;
+export default React.memo(StandardCard, (prevProps, nextProps) => (
+  prevProps.objectId === nextProps.objectId
+  && prevProps.siteKey === nextProps.siteKey
+));

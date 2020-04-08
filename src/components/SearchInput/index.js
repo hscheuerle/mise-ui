@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectCurrentRefinements, connectSearchBox } from 'react-instantsearch-dom';
 
-import { color, font, fontSize, spacing, } from '../../styles';
+import { color, font, fontSize, spacing } from '../../styles';
 import { SearchIcon, Close } from '../DesignTokens/Icon';
 
 const StyledSearchInputContainer = styled.div`
@@ -71,18 +71,24 @@ class StyledSearchBox extends Component {
   };
 
   onSubmit = (evt) => {
+    const { handleSubmit } = this.props;
     evt.preventDefault();
     evt.stopPropagation();
     clearTimeout(this.timerId);
     this.input.blur();
+    if (handleSubmit) handleSubmit();
     const { refine } = this.props;
     refine(this.input.value);
+  }
+
+  onFocus = () => {
+    const { handleFocus } = this.props;
+    if (handleFocus) handleFocus();
   }
 
   render() {
     const {
       currentRefinement,
-      refine,
       placeholder,
     } = this.props;
 
@@ -98,27 +104,32 @@ class StyledSearchBox extends Component {
           fill={color.mint}
         />
         <input
+          className="search-input__input"
           type="search"
           defaultValue={currentRefinement}
           ref={this.onInputMount}
           onChange={this.onChangeDebounced}
+          onFocus={this.onFocus}
           placeholder={placeholder}
         />
       </StyledSearch>
     );
   }
-};
+}
 
 StyledSearchBox.propTypes = {
   currentRefinement: PropTypes.string.isRequired,
   delay: PropTypes.number,
-  onReset: PropTypes.func,
+  handleFocus: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  placeholder: PropTypes.string.isRequired,
   refine: PropTypes.func.isRequired,
 };
 
 StyledSearchBox.defaultProps = {
-  delay: 150,
-  onReset: null,
+  delay: 200,
+  handleFocus: null,
+  handleSubmit: null,
 };
 
 const SearchBox = connectSearchBox(StyledSearchBox);
@@ -143,10 +154,10 @@ const StyledResetButton = styled.button`
   }
 `;
 
-const ResetButton = connectCurrentRefinements(({ items, refine }) => (
+const ResetButton = connectCurrentRefinements(({ handleClick, items, refine }) => (
   <StyledResetButton
     type="reset"
-    onClick={() => refine(items)}
+    onClick={() => { if (handleClick) handleClick(); refine(items); }}
     hidden={!items || !items.length}
   >
     <Close
@@ -156,25 +167,34 @@ const ResetButton = connectCurrentRefinements(({ items, refine }) => (
   </StyledResetButton>
 ));
 
-const SearchInput = ({ placeholder }) => (
+const SearchInput = ({ handleClickClose, handleFocus, handleSubmit, placeholder }) => (
   <StyledSearchInputContainer
     className="search-input-container"
   >
     <SearchBox
+      handleFocus={handleFocus}
+      handleSubmit={handleSubmit}
       placeholder={placeholder}
     />
     <ResetButton
       clearsQuery
+      handleClick={handleClickClose}
     />
   </StyledSearchInputContainer>
 );
 
 SearchInput.propTypes = {
+  handleClickClose: PropTypes.func,
+  handleFocus: PropTypes.func,
+  handleSubmit: PropTypes.func,
   placeholder: PropTypes.string,
-}
+};
 
 SearchInput.defaultProps = {
-  placeholder: 'What are you curious about?'
-}
+  handleClickClose: null,
+  handleFocus: null,
+  handleSubmit: null,
+  placeholder: 'What are you curious about?',
+};
 
 export default SearchInput;

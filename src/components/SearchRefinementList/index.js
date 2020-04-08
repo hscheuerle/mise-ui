@@ -5,8 +5,8 @@ import styled from 'styled-components';
 
 import ShowMoreLess from '../ShowMoreLess';
 import SearchRefinementFilter from './components/SearchRefinementFilter';
-import { ShowHide } from '../ShowHide';
-import { color, font, fontSize } from '../../styles';
+import ShowHide from '../ShowHide';
+import { color } from '../../styles';
 
 const SearchRefinementListRefinements = styled.div`
   border: none;
@@ -26,7 +26,7 @@ const siteMap = [
     value: 'cco',
   },
   {
-    altFill: color.cork,
+    altFill: color.squirrel,
     label: 'Cook\'s Illustrated',
     value: 'cio',
   },
@@ -44,10 +44,16 @@ const siteMap = [
     altFill: color.tomato,
     value: 'shop',
     label: 'ATK Shop',
-  }
+  },
 ];
 
-const RefinementList = ({ attribute, currentRefinement, items, refine }) => (
+const RefinementList = ({
+  attribute,
+  currentRefinement,
+  items,
+  refine,
+  handleClick,
+}) => (
   <SearchRefinementListRefinements>
     {
       attribute === 'search_site_list' ? (
@@ -55,6 +61,7 @@ const RefinementList = ({ attribute, currentRefinement, items, refine }) => (
           <SearchRefinementFilter
             {...site}
             attribute={attribute}
+            handleClick={handleClick}
             includeCount={false}
             isRefined={currentRefinement.includes(site.value)}
             key={`${attribute}-${site.value}`}
@@ -77,6 +84,7 @@ const RefinementList = ({ attribute, currentRefinement, items, refine }) => (
                 attribute={attribute}
                 key={`${attribute}-${item.label}`}
                 refine={refine}
+                handleClick={handleClick}
               />
             ))
           }
@@ -86,33 +94,48 @@ const RefinementList = ({ attribute, currentRefinement, items, refine }) => (
   </SearchRefinementListRefinements>
 );
 
-const CustomRefinementList = connectRefinementList(RefinementList);
+RefinementList.propTypes = {
+  attribute: PropTypes.string.isRequired,
+  currentRefinement: PropTypes.array.isRequired,
+  handleClick: PropTypes.func,
+  items: PropTypes.array,
+  refine: PropTypes.func.isRequired,
+};
 
-const SearchRefinementList = (props) => {
-  const { showHideLabel, operator, ...restProps } = props;
-  return (
+RefinementList.defaultProps = {
+  handleClick: null,
+  items: null,
+};
+
+const SearchRefinementList = ({ showHideLabel, operator, items, ...restProps }) => (
+  items.length > 0 && (
     <ShowHide isFieldset label={showHideLabel}>
-      <CustomRefinementList
+      <RefinementList
+        items={items}
         operator={operator}
         {...restProps}
       />
     </ShowHide>
-  );
-};
+  )
+);
 
 SearchRefinementList.propTypes = {
   /** Algolia attribute that is used to pull refinement values. */
   attribute: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
   operator: PropTypes.oneOf(['and', 'or']),
   /** 'Title' of the list that will be put into clickable show/hide button */
   showHideLabel: PropTypes.string.isRequired,
+  /** Used to pass click functionality from jarvis etc. */
+  handleClick: PropTypes.func,
   /** Initial number of refinement filters that are visible in the refinement list. */
   transformItems: PropTypes.func,
 };
 
 SearchRefinementList.defaultProps = {
   operator: 'and',
+  handleClick: null,
   transformItems: null,
 };
 
-export default SearchRefinementList;
+export default connectRefinementList(SearchRefinementList);

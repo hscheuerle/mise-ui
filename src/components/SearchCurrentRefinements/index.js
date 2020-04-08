@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
@@ -19,6 +20,28 @@ const RefinementListItem = styled.li`
 
 const Refinement = styled.div`
   display: flex;
+  // We only want hover state when 'x' button is hovered. This style tells
+  // Refinement wrapper to ignore mouse event.
+  pointer-events: none;
+
+  // Trigger mouse event in Refinment only if direct 'x' button child is hovered.
+  & > button {
+    pointer-events: auto;
+  }
+
+  // Change color of p child to mint when hovered.
+  &:hover > p {
+    color: ${color.mint}
+  }
+
+  // Change svg stroke color when parent and 'x' button child are hovered.
+  &:hover > button:hover {
+    svg {
+      g {
+        stroke: ${color.mint};
+      }
+    }
+  }
 `;
 
 const RefinementLabel = styled.p`
@@ -43,18 +66,27 @@ const labelMap = {
   shop: 'ATK Shop',
 };
 
-const CurrentRefinements = ({ items, refine }) => (
+const CurrentRefinements = ({ handleClick, items, refine }) => (
   <RefinementsList>
     {
       items.map(category => (
-        category.items.map(({ attribute, label, value }) => (
+        category.items.map(({ label, value }) => (
           <RefinementListItem key={`clear-refinement--${label}`}>
             <Refinement>
               <RefinementLabel>
                 {labelMap[label] || label}
               </RefinementLabel>
-              <RefinementClearButton onClick={(e) => { e.preventDefault(); refine(value); }}>
-                <Close fill={color.nobel} />
+              <RefinementClearButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  refine(value);
+                  if (handleClick) handleClick(label);
+                }}
+              >
+                <Close
+                  ariaLabel={`Remove ${label} refinement`}
+                  fill={color.nobel}
+                />
               </RefinementClearButton>
             </Refinement>
           </RefinementListItem>
@@ -64,6 +96,28 @@ const CurrentRefinements = ({ items, refine }) => (
   </RefinementsList>
 );
 
+CurrentRefinements.propTypes = {
+  handleClick: PropTypes.func,
+  items: PropTypes.array.isRequired,
+  refine: PropTypes.func.isRequired,
+};
+
+CurrentRefinements.defaultProps = {
+  handleClick: null,
+};
+
 const CustomCurrentRefinements = connectCurrentRefinements(CurrentRefinements);
 
-export default () => <CustomCurrentRefinements />;
+const SearchCurrentRefinements = ({ handleClick }) => (
+  <CustomCurrentRefinements handleClick={handleClick} />
+);
+
+SearchCurrentRefinements.propTypes = {
+  handleClick: PropTypes.func,
+};
+
+SearchCurrentRefinements.defaultProps = {
+  handleClick: null,
+};
+
+export default SearchCurrentRefinements;

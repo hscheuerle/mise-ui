@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Badge from '../../Badge';
-import { Checkmark } from '../../DesignTokens/Icon/svgs'
+import { Checkmark } from '../../DesignTokens/Icon/svgs';
 import { color, font, fontSize } from '../../../styles';
 
 const SearchRefinementFilterLabel = styled.label.attrs({
@@ -13,9 +13,12 @@ const SearchRefinementFilterLabel = styled.label.attrs({
   color: ${color.eclipse};
   display: flex;
   font: ${fontSize.md}/1.38 ${font.pnr};
+  margin: 0 0 1.8rem;
   position: relative;
 
-  margin: 0 0 1.8rem;
+  .search-refinement-list__label-text {
+    ${({ isRefined }) => (isRefined ? `color: ${color.mint}; font-family: ${font.pnb};` : '')}
+  }
 
   &:last-child {
     margin: 0;
@@ -23,6 +26,10 @@ const SearchRefinementFilterLabel = styled.label.attrs({
 
   &:hover {
     cursor: pointer;
+
+    .search-refinement-list__label-text {
+      color: ${color.mint};
+    }
 
     svg {
       circle {
@@ -62,12 +69,19 @@ const SearchRefinementFilter = ({
   isRefined,
   label,
   refine,
+  handleClick,
   value,
 }) => (
   <SearchRefinementFilterLabel
     altFill={altFill}
+    data-site-key={value}
     htmlFor={`${attribute}--${label}`}
-    onClick={(e) => { e.preventDefault(); refine(value); }}
+    isRefined={isRefined}
+    onClick={(e) => {
+      e.preventDefault();
+      if (!isRefined && typeof handleClick === 'function') handleClick(e);
+      refine(value);
+    }}
   >
     {
       isRefined ? (
@@ -92,7 +106,12 @@ const SearchRefinementFilter = ({
     {
       includeCount ? (
         <span>
-          {label} <SearchRefinementFilterCount>{`(${count})`}</SearchRefinementFilterCount>
+          <span className="search-refinement-list__label-text">
+            {label}
+          </span>
+          <SearchRefinementFilterCount>
+            {` (${count})`}
+          </SearchRefinementFilterCount>
         </span>
       ) : (
         label
@@ -114,6 +133,8 @@ SearchRefinementFilter.propTypes = {
   label: PropTypes.string.isRequired,
   /** Call this with the value of a filter to refine results based on filter. */
   refine: PropTypes.func.isRequired,
+  /** Used to pass click functionality from jarvis etc. */
+  handleClick: PropTypes.func,
   /** Value of filter to be used for refining results. */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
 };
@@ -121,7 +142,8 @@ SearchRefinementFilter.propTypes = {
 SearchRefinementFilter.defaultProps = {
   altFill: null,
   count: null,
-  includeCount: false,
-}
+  includeCount: true,
+  handleClick: null,
+};
 
 export default SearchRefinementFilter;
