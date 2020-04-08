@@ -66,7 +66,7 @@ const labelMap = {
   shop: 'ATK Shop',
 };
 
-const CurrentRefinements = ({ items, refine }) => (
+const CurrentRefinements = ({ handleClick, items, refine }) => (
   <RefinementsList>
     {
       items.map(category => (
@@ -76,7 +76,13 @@ const CurrentRefinements = ({ items, refine }) => (
               <RefinementLabel>
                 {labelMap[label] || label}
               </RefinementLabel>
-              <RefinementClearButton onClick={(e) => { e.preventDefault(); refine(value); }}>
+              <RefinementClearButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  refine(value);
+                  if (handleClick) handleClick(label);
+                }}
+              >
                 <Close
                   ariaLabel={`Remove ${label} refinement`}
                   fill={color.nobel}
@@ -91,10 +97,27 @@ const CurrentRefinements = ({ items, refine }) => (
 );
 
 CurrentRefinements.propTypes = {
+  handleClick: PropTypes.func,
   items: PropTypes.array.isRequired,
   refine: PropTypes.func.isRequired,
 };
 
+CurrentRefinements.defaultProps = {
+  handleClick: null,
+};
+
 const CustomCurrentRefinements = connectCurrentRefinements(CurrentRefinements);
 
-export default () => <CustomCurrentRefinements />;
+const SearchCurrentRefinements = ({ handleClick }) => (
+  <CustomCurrentRefinements handleClick={handleClick} />
+);
+
+SearchCurrentRefinements.propTypes = {
+  handleClick: PropTypes.func,
+};
+
+SearchCurrentRefinements.defaultProps = {
+  handleClick: null,
+};
+
+export default SearchCurrentRefinements;

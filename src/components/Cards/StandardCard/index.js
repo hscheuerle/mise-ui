@@ -123,10 +123,11 @@ function StandardCard({
   return (
     <StyledStandardCard className={imageUrl ? '' : 'no-image'}>
       <a
+        className="standard-card__anchor"
         href={href}
         onClick={onClick}
       >
-        <ImageWrapper>
+        <ImageWrapper className="standard-card__image-wrapper">
           { imageUrl ? (
             <Image
               aria-hidden="true"
@@ -152,7 +153,7 @@ function StandardCard({
             </StickerGroup>
           ) : null }
         </ImageWrapper>
-        <TitleWrapper>
+        <TitleWrapper className="standard-card__title-wrapper">
           <StyledTitle className={className} title={title} />
           { displayFavoritesButton ? (
             <StyledFavoriteButton

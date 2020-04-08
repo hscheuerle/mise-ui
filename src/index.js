@@ -4,6 +4,7 @@ import breakpoints from './styles/breakpoints';
 import Button from './components/Button';
 import FilterButton from './components/FilterButton';
 import StandardCard from './components/Cards/StandardCard';
+import SearchClearRefinements from './components/SearchClearRefinements';
 import SearchCurrentRefinements from './components/SearchCurrentRefinements';
 import SearchInput from './components/SearchInput';
 import SearchRefinementList from './components/SearchRefinementList';
@@ -21,6 +22,7 @@ export {
   FilterButton,
   fonts,
   GlobalStyle,
+  SearchClearRefinements,
   SearchCurrentRefinements,
   SearchInput,
   SearchRefinementList,

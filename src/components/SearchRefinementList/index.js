@@ -61,6 +61,7 @@ const RefinementList = ({
           <SearchRefinementFilter
             {...site}
             attribute={attribute}
+            handleClick={handleClick}
             includeCount={false}
             isRefined={currentRefinement.includes(site.value)}
             key={`${attribute}-${site.value}`}
