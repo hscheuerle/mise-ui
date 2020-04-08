@@ -13,16 +13,18 @@ import Title from '../shared/Title';
 
 const StyledStandardCard = styled.article`
   position: relative;
-  padding-bottom: ${spacing.xlg};
+  padding-bottom: ${spacing.md};
   width: 16.2rem;
   color: ${color.eclipse};
 
-    width: 27.2rem;
   ${breakpoint('lg')`
+    padding-bottom: ${spacing.lg};
+    width: 27.2rem;
   `}
 `;
 
 const ImageWrapper = styled.div`
+  background: ${color.white};
   position: relative;
   width: 100%;
 
