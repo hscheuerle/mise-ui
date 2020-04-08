@@ -156,7 +156,6 @@ function StandardCard({
           <StyledTitle className={className} title={title} />
           { displayFavoritesButton ? (
             <StyledFavoriteButton
-              ariaLabel="Save to favorites"
               className={className}
               role="button"
               isFavorited={isFavorited}

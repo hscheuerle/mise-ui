@@ -9,9 +9,8 @@ export default {
   component: FavoriteButton,
 };
 
-export const Default = ({ ariaLabel }) => (
+export const Default = () => (
   <FavoriteButton
-    ariaLabel={ariaLabel}
     className="favorite-ribbon"
     isFavorited={false}
     objectId="123"
@@ -21,13 +20,8 @@ export const Default = ({ ariaLabel }) => (
   />
 );
 
-Default.propTypes = {
-  ariaLabel: PropTypes.string.isRequired,
-};
-
-export const Favorited = ({ ariaLabel }) => (
+export const Favorited = () => (
   <FavoriteButton
-    ariaLabel={ariaLabel}
     className="favorite-ribbon"
     isFavorited
     objectId="123"
@@ -36,7 +30,3 @@ export const Favorited = ({ ariaLabel }) => (
     title=""
   />
 );
-
-Favorited.propTypes = {
-  ariaLabel: PropTypes.string.isRequired,
-};
