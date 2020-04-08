@@ -74,6 +74,7 @@ const SearchRefinementFilter = ({
 }) => (
   <SearchRefinementFilterLabel
     altFill={altFill}
+    data-site-key={value}
     htmlFor={`${attribute}--${label}`}
     isRefined={isRefined}
     onClick={(e) => {
@@ -141,7 +142,7 @@ SearchRefinementFilter.propTypes = {
 SearchRefinementFilter.defaultProps = {
   altFill: null,
   count: null,
-  includeCount: false,
+  includeCount: true,
   handleClick: null,
 };
 
