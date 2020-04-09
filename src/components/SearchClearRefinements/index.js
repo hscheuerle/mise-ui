@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
 import styled from 'styled-components';
 
-import { color, font, fontSize } from '../../styles';
+import { color, font, fontSize, lineHeight, spacing } from '../../styles';
 
 const StyledClearRefinements = styled.button`
   color: ${color.eclipse};
-  font: ${fontSize.md}/1 ${font.pnr};
+  font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
+  margin-bottom: ${spacing.sm};
 
   &[disabled] {
     display: none;
@@ -21,11 +22,12 @@ const StyledClearRefinements = styled.button`
 
 const ClearRefinements = ({ handleClick, items, refine }) => (
   <StyledClearRefinements
+    className="clear-refinements-button"
+    disabled={!items.length}
     onClick={() => {
       refine(items);
       if (handleClick) handleClick();
     }}
-    disabled={!items.length}
     type="button"
   >
     Clear filters

@@ -43,3 +43,15 @@ export const SearchDishType = () => (
     </LabelFrame>
   </MiseInstantSearch>
 );
+
+export const SearchCookbookCollectionTitles = () => (
+  <MiseInstantSearch>
+    <LabelFrame label="Component">
+      <SearchRefinementList
+        attribute="search_cookbook_collection_titles"
+        operator="and"
+        showHideLabel="COOKBOOK COLLECTION"
+      />
+    </LabelFrame>
+  </MiseInstantSearch>
+);

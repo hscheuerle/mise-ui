@@ -4,22 +4,14 @@ import styled from 'styled-components';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
 
 import { Close } from '../DesignTokens/Icon/svgs';
-import { color, font, fontSize } from '../../styles';
-
-const RefinementsList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 1.2rem 0 1rem 0;
-  margin: 0;
-`;
-
-const RefinementListItem = styled.li`
-  margin-bottom: 0.5rem;
-  margin-right: 1.6rem;
-`;
+import { color, font, fontSize, lineHeight, spacing } from '../../styles';
 
 const Refinement = styled.div`
   display: flex;
+  float: left;
+  margin-bottom: ${spacing.xsm};
+  margin-right: ${spacing.sm};
+
   // We only want hover state when 'x' button is hovered. This style tells
   // Refinement wrapper to ignore mouse event.
   pointer-events: none;
@@ -45,13 +37,13 @@ const Refinement = styled.div`
 `;
 
 const RefinementLabel = styled.p`
-  font: ${fontSize.md}/1 ${font.pnr};
+  font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
   color: ${color.eclipse};
-  margin-right: 0.8rem;
+  margin-right: ${spacing.xsm};
 `;
 
 const RefinementClearButton = styled.button`
-  font: ${fontSize.md}/1 ${font.pnr};
+  font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
   color: ${color.nobel};
   height: 0.8rem;
   width: 0.8rem;
@@ -67,33 +59,34 @@ const labelMap = {
 };
 
 const CurrentRefinements = ({ handleClick, items, refine }) => (
-  <RefinementsList>
+  <>
     {
       items.map(category => (
         category.items.map(({ label, value }) => (
-          <RefinementListItem key={`clear-refinement--${label}`}>
-            <Refinement>
-              <RefinementLabel>
-                {labelMap[label] || label}
-              </RefinementLabel>
-              <RefinementClearButton
-                onClick={(e) => {
-                  e.preventDefault();
-                  refine(value);
-                  if (handleClick) handleClick(label);
-                }}
-              >
-                <Close
-                  ariaLabel={`Remove ${label} refinement`}
-                  fill={color.nobel}
-                />
-              </RefinementClearButton>
-            </Refinement>
-          </RefinementListItem>
+          <Refinement
+            className="current-refinement-item"
+            key={`clear-refinement--${label}`}
+          >
+            <RefinementLabel>
+              {labelMap[label] || label}
+            </RefinementLabel>
+            <RefinementClearButton
+              onClick={(e) => {
+                e.preventDefault();
+                refine(value);
+                if (handleClick) handleClick(label);
+              }}
+            >
+              <Close
+                ariaLabel={`Remove ${label} refinement`}
+                fill={color.nobel}
+              />
+            </RefinementClearButton>
+          </Refinement>
         ))
       ))
     }
-  </RefinementsList>
+  </>
 );
 
 CurrentRefinements.propTypes = {

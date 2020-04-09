@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Plus } from '../DesignTokens/Icon/svgs';
+import { Cookbook, Plus } from '../DesignTokens/Icon/svgs';
 import { font, fontSize, letterSpacing, spacing } from '../../styles';
 
 const ShowHideDivWrapper = styled.div``;
@@ -22,6 +22,27 @@ const ShowHideButton = styled.button`
 
   &:hover {
     cursor: pointer;
+  }
+`;
+
+const ShowHideLabelWrapper = styled.div`
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-start;
+
+  ${({ hasIcon }) => (
+    hasIcon ? `
+      legend {
+        max-width: 10rem;
+      }
+    ` : ''
+  )}
+
+  svg {
+    margin: 0 0 0.2rem 1rem;
+    max-width: 1.6rem;
+    min-height: 1.2rem;
+    width: 1.6rem;
   }
 `;
 
@@ -52,9 +73,14 @@ const ShowHideContent = styled.div`
   display: ${({ hidden }) => (hidden ? 'none' : 'block')};
 `;
 
-function ShowHide({ children, isFieldset, isHidden, label }) {
+const icons = {
+  cookbook: Cookbook,
+};
+
+function ShowHide({ children, icon, isFieldset, isHidden, label }) {
   const [hidden, toggleHidden] = useState(isHidden);
   const ShowHideWrapper = isFieldset ? ShowHideFieldsetWrapper : ShowHideDivWrapper;
+  const Icon = icon ? icons[icon] : null;
   return (
     <ShowHideWrapper>
       <ShowHideButton
@@ -64,7 +90,10 @@ function ShowHide({ children, isFieldset, isHidden, label }) {
       >
         {
           isFieldset ? (
-            <legend>{label}</legend>
+            <ShowHideLabelWrapper hasIcon={icon}>
+              <legend>{label}</legend>
+              {Icon ? <Icon className={`show-hide__icon--${icon}`} /> : null}
+            </ShowHideLabelWrapper>
           ) : label
         }
         <ShowHideSvgWrapper isExpanded={!hidden}>
@@ -84,6 +113,8 @@ ShowHide.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  /** Unique id string for svg icon to render next to label */
+  icon: PropTypes.string,
   /** For accessability we need a fieldset version of this component. */
   isFieldset: PropTypes.bool,
   /** Sets initial state of the hidden content. */
@@ -93,6 +124,7 @@ ShowHide.propTypes = {
 };
 
 ShowHide.defaultProps = {
+  icon: null,
   isFieldset: false,
   isHidden: false,
 };
