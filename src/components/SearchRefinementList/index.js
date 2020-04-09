@@ -107,10 +107,15 @@ RefinementList.defaultProps = {
   items: null,
 };
 
-const SearchRefinementList = ({ showHideLabel, operator, items, ...restProps }) => (
+const SearchRefinementList = ({ attribute, showHideLabel, operator, items, ...restProps }) => (
   items.length > 0 && (
-    <ShowHide isFieldset label={showHideLabel}>
+    <ShowHide
+      icon={attribute === 'search_cookbook_collection_titles' ? 'cookbook' : null}
+      isFieldset
+      label={showHideLabel}
+    >
       <RefinementList
+        attribute={attribute}
         items={items}
         operator={operator}
         {...restProps}
