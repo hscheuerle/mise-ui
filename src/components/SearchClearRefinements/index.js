@@ -8,7 +8,7 @@ import { color, font, fontSize, lineHeight, spacing } from '../../styles';
 const StyledClearRefinements = styled.button`
   color: ${color.eclipse};
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
-  margin-bottom: ${spacing.sm};
+  margin-bottom: ${spacing.xsm};
 
   &[disabled] {
     display: none;

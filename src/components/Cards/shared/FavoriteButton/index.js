@@ -24,7 +24,7 @@ const StyledFavoriteButton = styled.button`
 
   [class*="vertical-line"],
   [class*="horizontal-line"] {
-    stroke: ${color.white};
+    stroke: ${color.whiteSmoke};
   }
 
   &.favorited {
@@ -39,7 +39,7 @@ const StyledFavoriteButton = styled.button`
 
     &:hover {
       [class*="horizontal-line"] {
-        stroke: ${color.white};
+        stroke: ${color.whiteSmoke};
       }
 
       [class*="vertical-line"] {
