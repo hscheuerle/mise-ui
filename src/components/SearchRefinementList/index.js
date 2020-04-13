@@ -83,8 +83,8 @@ const RefinementList = ({
                 {...item}
                 attribute={attribute}
                 key={`${attribute}-${item.label}`}
-                refine={refine}
                 handleClick={handleClick}
+                refine={refine}
               />
             ))
           }
@@ -107,7 +107,7 @@ RefinementList.defaultProps = {
   items: null,
 };
 
-const SearchRefinementList = ({ attribute, showHideLabel, operator, items, ...restProps }) => (
+const SearchRefinementList = ({ attribute, showHideLabel, items, ...restProps }) => (
   items.length > 0 && (
     <ShowHide
       icon={attribute === 'search_cookbook_collection_titles' ? 'cookbook' : null}
@@ -117,7 +117,6 @@ const SearchRefinementList = ({ attribute, showHideLabel, operator, items, ...re
       <RefinementList
         attribute={attribute}
         items={items}
-        operator={operator}
         {...restProps}
       />
     </ShowHide>
@@ -128,7 +127,6 @@ SearchRefinementList.propTypes = {
   /** Algolia attribute that is used to pull refinement values. */
   attribute: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
-  operator: PropTypes.oneOf(['and', 'or']),
   /** 'Title' of the list that will be put into clickable show/hide button */
   showHideLabel: PropTypes.string.isRequired,
   /** Used to pass click functionality from jarvis etc. */
@@ -138,7 +136,6 @@ SearchRefinementList.propTypes = {
 };
 
 SearchRefinementList.defaultProps = {
-  operator: 'and',
   handleClick: null,
   transformItems: null,
 };
