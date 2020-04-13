@@ -8,23 +8,22 @@ const StyledFavoriteButton = styled.button`
   flex-shrink: 0;
   margin-top: -${spacing.xxsm};
   padding: ${spacing.xsm} 0 ${spacing.xsm} ${spacing.xsm};
-  stroke: currentColor;
-  fill: transparent;
 
   [class*="ribbon"] {
     fill: transparent;
     transition: .1s all ease-in-out;
   }
 
+  [class*="vertical-line"],
+  [class*="horizontal-line"] {
+    stroke: transparent;
+  }
+
   &:hover {
     [class*="ribbon"] {
       fill: ${color.eclipse};
+      transition: .1s all ease-in-out;
     }
-  }
-
-  [class*="vertical-line"],
-  [class*="horizontal-line"] {
-    stroke: ${color.whiteSmoke};
   }
 
   &.favorited {
@@ -35,11 +34,13 @@ const StyledFavoriteButton = styled.button`
     [class*="vertical-line"],
     [class*="horizontal-line"] {
       stroke: ${color.eclipse};
+      transition: .1s all ease-in-out;
     }
 
     &:hover {
       [class*="horizontal-line"] {
-        stroke: ${color.whiteSmoke};
+        stroke: transparent;
+        transition: .1s all ease-in-out;
       }
 
       [class*="vertical-line"] {
