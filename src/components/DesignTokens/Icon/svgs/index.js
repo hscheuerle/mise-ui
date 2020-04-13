@@ -7,6 +7,7 @@ import FavoriteRibbon from './FavoriteRibbon';
 import Filter from './Filter';
 import Lock from './Lock';
 import Plus from './Plus';
+import QuestionMark from './QuestionMark';
 import SearchIcon from './SearchIcon';
 import VideoPlay from './VideoPlay';
 
@@ -20,6 +21,7 @@ export {
   Filter,
   Lock,
   Plus,
+  QuestionMark,
   SearchIcon,
   VideoPlay,
 };
