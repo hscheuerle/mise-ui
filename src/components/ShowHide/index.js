@@ -15,7 +15,6 @@ const ShowHideButton = styled.button`
   font: ${fontSize.md}/1 ${font.pnb};
   justify-content: space-between;
   letter-spacing: ${letterSpacing.md};
-  margin: 0 0 ${spacing.xsm};
   padding: ${spacing.xsm} ${spacing.xxsm} ${spacing.xsm} 0;
   text-transform: uppercase;
   width: 100%;

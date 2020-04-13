@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { color, font } from '../../styles';
+import { color, font, spacing } from '../../styles';
 
 const ShowMoreLessInitial = styled.div`
-  margin-bottom: 1.8rem;
+  margin-bottom: ${spacing.xsm};
 `;
 
 const ShowMoreLessRest = styled.div`
