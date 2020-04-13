@@ -199,6 +199,7 @@ StandardCard.propTypes = {
   ctaUrl: PropTypes.string,
   displayCommentCount: PropTypes.bool,
   displayLockIcon: PropTypes.bool,
+  href: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
   imageUrl: PropTypes.string,
   isFavorited: PropTypes.bool,
@@ -208,7 +209,6 @@ StandardCard.propTypes = {
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
   stickers: PropTypes.array,
   title: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
 };
 
 StandardCard.defaultProps = {
@@ -228,7 +228,7 @@ StandardCard.defaultProps = {
   stickers: [],
 };
 
-export default React.memo(StandardCard, (prevProps, nextProps) => (
-  prevProps.objectId === nextProps.objectId
-  && prevProps.siteKey === nextProps.siteKey
+export default React.memo(StandardCard, (prev, next) => (
+  prev.objectId === next.objectId
+  && prev.href === next.href
 ));
