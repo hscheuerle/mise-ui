@@ -13,8 +13,12 @@ const SearchRefinementFilterLabel = styled.label.attrs({
   color: ${color.eclipse};
   display: flex;
   font: ${fontSize.md}/1.38 ${font.pnr};
-  margin: 0 0 1.8rem;
+  margin-bottom: 1.2rem;
   position: relative;
+
+  &.search_site_list {
+    margin-bottom: 1.8rem;
+  }
 
   .search-refinement-list__label-text {
     ${({ isRefined }) => (isRefined ? `color: ${color.mint}; font-family: ${font.pnb};` : '')}
@@ -74,6 +78,7 @@ const SearchRefinementFilter = ({
 }) => (
   <SearchRefinementFilterLabel
     altFill={altFill}
+    className={`${attribute}`}
     data-site-key={value}
     htmlFor={`${attribute}--${label}`}
     isRefined={isRefined}
