@@ -88,7 +88,7 @@ class StyledSearchBox extends Component {
 
   render() {
     const {
-      currentRefinement,
+      defaultValue,
       placeholder,
     } = this.props;
 
@@ -106,7 +106,7 @@ class StyledSearchBox extends Component {
         <input
           className="search-input__input"
           type="search"
-          defaultValue={currentRefinement}
+          defaultValue={defaultValue}
           ref={this.onInputMount}
           onChange={this.onChangeDebounced}
           onFocus={this.onFocus}
@@ -118,7 +118,7 @@ class StyledSearchBox extends Component {
 }
 
 StyledSearchBox.propTypes = {
-  currentRefinement: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string,
   delay: PropTypes.number,
   handleFocus: PropTypes.func,
   handleSubmit: PropTypes.func,
@@ -127,6 +127,7 @@ StyledSearchBox.propTypes = {
 };
 
 StyledSearchBox.defaultProps = {
+  defaultValue: null,
   delay: 200,
   handleFocus: null,
   handleSubmit: null,
@@ -167,11 +168,18 @@ const ResetButton = connectCurrentRefinements(({ handleClick, items, refine }) =
   </StyledResetButton>
 ));
 
-const SearchInput = ({ handleClickClose, handleFocus, handleSubmit, placeholder }) => (
+const SearchInput = ({
+  defaultValue,
+  handleClickClose,
+  handleFocus,
+  handleSubmit,
+  placeholder,
+}) => (
   <StyledSearchInputContainer
     className="search-input-container"
   >
     <SearchBox
+      defaultValue={defaultValue}
       handleFocus={handleFocus}
       handleSubmit={handleSubmit}
       placeholder={placeholder}
@@ -184,6 +192,7 @@ const SearchInput = ({ handleClickClose, handleFocus, handleSubmit, placeholder 
 );
 
 SearchInput.propTypes = {
+  defaultValue: PropTypes.string,
   handleClickClose: PropTypes.func,
   handleFocus: PropTypes.func,
   handleSubmit: PropTypes.func,
@@ -191,6 +200,7 @@ SearchInput.propTypes = {
 };
 
 SearchInput.defaultProps = {
+  defaultValue: null,
   handleClickClose: null,
   handleFocus: null,
   handleSubmit: null,
