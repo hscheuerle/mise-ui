@@ -103,6 +103,16 @@ export const Plus = ({ fill }) => (
 
 Plus.propTypes = Icons.Plus.propTypes;
 
+export const QuestionMark = ({ fill }) => (
+  <Icon>
+    <Icons.QuestionMark
+      fill={fill}
+    />
+  </Icon>
+);
+
+QuestionMark.propTypes = Icons.QuestionMark.propTypes;
+
 export const SearchIcon = ({ fill }) => (
   <Icon>
     <Icons.SearchIcon

@@ -3,6 +3,7 @@ import Badge from './components/Badge';
 import breakpoints from './styles/breakpoints';
 import Button from './components/Button';
 import FilterButton from './components/FilterButton';
+import * as Icons from './components/DesignTokens/Icon';
 import StandardCard from './components/Cards/StandardCard';
 import SearchClearRefinements from './components/SearchClearRefinements';
 import SearchCurrentRefinements from './components/SearchCurrentRefinements';
@@ -21,6 +22,7 @@ export {
   Button,
   FilterButton,
   fonts,
+  Icons,
   GlobalStyle,
   SearchClearRefinements,
   SearchCurrentRefinements,
