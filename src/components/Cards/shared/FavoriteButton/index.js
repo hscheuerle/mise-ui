@@ -7,11 +7,11 @@ import { FavoriteRibbon } from '../../../DesignTokens/Icon';
 const StyledFavoriteButton = styled.button`
   flex-shrink: 0;
   margin-top: -${spacing.xxsm};
-  padding: ${spacing.xsm} 0 ${spacing.xsm} ${spacing.xsm};
+  padding: ${spacing.xsm} 0 0 ${spacing.xsm};
 
   [class*="ribbon"] {
     fill: transparent;
-    transition: .1s all ease-in-out;
+    transition: 0.1s all ease-in-out;
   }
 
   [class*="vertical-line"],
@@ -22,7 +22,7 @@ const StyledFavoriteButton = styled.button`
   &:hover {
     [class*="ribbon"] {
       fill: ${color.eclipse};
-      transition: .1s all ease-in-out;
+      transition: 0.1s all ease-in-out;
     }
   }
 
@@ -34,13 +34,13 @@ const StyledFavoriteButton = styled.button`
     [class*="vertical-line"],
     [class*="horizontal-line"] {
       stroke: ${color.eclipse};
-      transition: .1s all ease-in-out;
+      transition: 0.1s all ease-in-out;
     }
 
     &:hover {
       [class*="horizontal-line"] {
         stroke: transparent;
-        transition: .1s all ease-in-out;
+        transition: 0.1s all ease-in-out;
       }
 
       [class*="vertical-line"] {

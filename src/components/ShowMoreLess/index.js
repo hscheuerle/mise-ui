@@ -17,6 +17,10 @@ const ShowMoreLessButton = styled.button`
   font: 1.2rem/1 ${font.pnb};
   letter-spacing: 1.2px;
   text-transform: uppercase;
+
+  &:hover {
+    color: ${color.mint};
+  }
 `;
 
 const ShowMoreLess = ({ initialCount, items, id }) => {
