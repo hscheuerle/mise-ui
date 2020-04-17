@@ -19,6 +19,7 @@ const SearchSortByItem = styled.li`
 const SearchSortByButton = styled.button`
   align-items: center;
   display: flex;
+  letter-spacing: normal;
 
   &:hover {
     cursor: pointer;

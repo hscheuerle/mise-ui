@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 
 import { Cookbook, Plus } from '../DesignTokens/Icon/svgs';
-import { font, fontSize, letterSpacing, spacing } from '../../styles';
+import { color, font, fontSize, letterSpacing, spacing } from '../../styles';
 
 const ShowHideDivWrapper = styled.div``;
 const ShowHideFieldsetWrapper = styled.fieldset``;
@@ -21,7 +22,15 @@ const ShowHideButton = styled.button`
 
   &:hover {
     cursor: pointer;
+
+    svg {
+      fill: ${color.mint};
+    }
   }
+
+  ${breakpoint('xlg')`
+    width: 85%;
+  `}
 `;
 
 const ShowHideLabelWrapper = styled.div`
@@ -53,7 +62,7 @@ const ShowHideSvgWrapper = styled.div`
 
   svg {
     height: 100%;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
     width: 100%;
 
     ${({ isExpanded }) => (isExpanded ? `
@@ -85,6 +94,7 @@ function ShowHide({ children, icon, isFieldset, isHidden, label }) {
       <ShowHideButton
         aria-controls={`show-hide--${label.split(' ').join('')}`}
         aria-expanded={!hidden}
+        className="show-hide__expand-collapse-button"
         onClick={() => toggleHidden(!hidden)}
       >
         {
