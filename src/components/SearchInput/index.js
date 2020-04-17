@@ -20,9 +20,11 @@ const StyledSearch = styled.form`
 
   input[type="search"] {
     border: 0;
+    color: ${color.eclipse};
     font: ${fontSize.lg} ${font.mwr};
     height: 100%;
     padding-left: 5rem;
+    padding-right: 4rem;
     width: 100%;
 
     &::placeholder {
@@ -140,29 +142,32 @@ const StyledResetButton = styled.button`
   top: 0;
   right: 0;
   bottom: 0;
-  margin: auto ${spacing.sm};
-  height: 1rem;
-  width: 1rem;
+  padding: ${spacing.sm};
 
   svg {
     fill: ${color.regentGray};
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
+    height: 1rem;
+    width: 1rem;
+
+    g {
+      transition: stroke 0.2s ease-in-out;
+    }
+  }
+
+  &:hover svg g {
+    stroke: ${color.mint};
   }
 `;
 
 const ResetButton = connectCurrentRefinements(({ handleClick, items, refine }) => (
   <StyledResetButton
+    className="search-input__reset-button"
     type="reset"
     onClick={() => { if (handleClick) handleClick(); refine(items); }}
     hidden={!items || !items.length}
   >
     <Close
-      ariaLabel="clear search input"
+      ariaLabel="clear current search term"
       fill={color.regentGray}
     />
   </StyledResetButton>
