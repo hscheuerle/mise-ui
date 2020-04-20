@@ -73,6 +73,39 @@ export const globalStyles = css`
     margin: 0;
     padding: 0;
   }
+
+  ins {
+    text-decoration: none;
+  }
+
+  ins::before,
+  ins::after,
+  del::before,
+  del::after {
+    clip-path: inset(100%);
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  del::before {
+    content: " [deletion start] ";
+  }
+
+  del::after {
+    content: " [deletion end] ";
+  }
+
+  ins::before {
+    content: " [insertion start] ";
+  }
+
+  ins::after {
+    content: " [insertion end] ";
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`
