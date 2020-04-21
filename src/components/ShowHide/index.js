@@ -36,20 +36,20 @@ const ShowHideButton = styled.button`
 const ShowHideLabelWrapper = styled.div`
   align-items: flex-end;
   display: flex;
-  justify-content: flex-start;
 
   ${({ hasIcon }) => (
     hasIcon ? `
       legend {
+        margin-right: ${spacing.sm};
         max-width: 10rem;
       }
     ` : ''
   )}
 
   svg {
-    margin: 0 0 0.2rem 1rem;
-    max-width: 1.6rem;
-    min-height: 1.2rem;
+    flex-shrink: 0;
+    height: 1.4rem;
+    margin-bottom: 0.2rem;
     width: 1.6rem;
   }
 `;
