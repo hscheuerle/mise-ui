@@ -209,7 +209,7 @@ SearchInput.defaultProps = {
   handleClickClose: null,
   handleFocus: null,
   handleSubmit: null,
-  placeholder: 'What are you curious about?',
+  placeholder: 'Search recipes, reviews & more',
 };
 
 export default SearchInput;
