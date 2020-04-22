@@ -45,7 +45,6 @@ const RefinementLabel = styled.p`
 const RefinementClearButton = styled.button`
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
   color: ${color.nobel};
-  height: 0.8rem;
   width: 0.8rem;
 `;
 

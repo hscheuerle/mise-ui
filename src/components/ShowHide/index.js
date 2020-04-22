@@ -40,8 +40,9 @@ const ShowHideLabelWrapper = styled.div`
   ${({ hasIcon }) => (
     hasIcon ? `
       legend {
-        margin-right: ${spacing.sm};
-        max-width: 10rem;
+        display: inline-block;
+        margin-right: ${spacing.xsm};
+        max-width: 11.25rem;
       }
     ` : ''
   )}
