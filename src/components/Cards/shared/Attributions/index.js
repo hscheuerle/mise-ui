@@ -33,6 +33,7 @@ const StyledAttributions = styled.div`
 
 const StyledLock = styled(Lock)`
   display: inline;
+  height: 1rem;
   margin-right: ${spacing.xsm};
   width: 0.8rem;
 `;
