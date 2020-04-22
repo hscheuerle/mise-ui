@@ -15,16 +15,13 @@ const StyledSearchInputContainer = styled.div`
 
 const StyledSearch = styled.form`
   position: relative;
-  height: 5rem;
   width: 100%;
 
   input[type="search"] {
     border: 0;
     color: ${color.eclipse};
     font: ${fontSize.lg} ${font.mwr};
-    height: 100%;
-    padding-left: 5rem;
-    padding-right: 4rem;
+    padding: 1.35rem 0 1.35rem 5rem;
     width: 100%;
 
     &::placeholder {
@@ -45,11 +42,11 @@ const StyledSearch = styled.form`
     z-index: 1;
 
     &.search-icon {
+      bottom: 0;
       height: 2rem;
       left: 0;
-      margin-left: 1.6rem;
-      top: 50%;
-      transform: translateY(-50%);
+      margin: auto auto auto ${spacing.sm};
+      top: 0;
       width: 2rem;
     }
   }
@@ -139,9 +136,9 @@ const SearchBox = connectSearchBox(StyledSearchBox);
 
 const StyledResetButton = styled.button`
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  top: 0.2rem;
+  right: 0.2rem;
+  bottom: 0.2rem;
   padding: ${spacing.sm};
 
   svg {
@@ -157,6 +154,10 @@ const StyledResetButton = styled.button`
   &:hover svg g {
     stroke: ${color.mint};
   }
+
+  && {
+    background-color: ${color.white};
+  }
 `;
 
 const ResetButton = connectCurrentRefinements(({ handleClick, items, refine }) => (
@@ -168,7 +169,6 @@ const ResetButton = connectCurrentRefinements(({ handleClick, items, refine }) =
   >
     <Close
       ariaLabel="clear current search term"
-      fill={color.regentGray}
     />
   </StyledResetButton>
 ));
