@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Badge from '../../Badge';
 import { Checkmark } from '../../DesignTokens/Icon/svgs';
-import { color, font, fontSize } from '../../../styles';
+import { color, font, fontSize, spacing } from '../../../styles';
 
 const SearchRefinementFilterLabel = styled.label.attrs({
   className: 'search-refinement-list__label',
@@ -48,9 +48,17 @@ const SearchRefinementFilterLabel = styled.label.attrs({
 `;
 
 const SearchRefinementFilterCheck = styled.div`
-  left: -2rem;
-  position: absolute;
+  height: 1.2rem;
+  margin-left: -2rem;
+  margin-right: ${spacing.xsm};
+  position: relative;
   width: 1.2rem;
+
+  svg {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
 `;
 
 const SearchRefinementFilterCheckbox = styled.input`
