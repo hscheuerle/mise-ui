@@ -33,6 +33,7 @@ const StyledAttributions = styled.div`
 
 const StyledLock = styled(Lock)`
   display: inline;
+  height: 1rem;
   margin-right: ${spacing.xsm};
   width: 0.8rem;
 `;
@@ -40,6 +41,7 @@ const StyledLock = styled(Lock)`
 const StyledCookbook = styled(Cookbook)`
   margin-right: ${spacing.xsm};
   width: 1.6rem;
+  height: 1.1rem;
 `;
 
 const Attributions = ({

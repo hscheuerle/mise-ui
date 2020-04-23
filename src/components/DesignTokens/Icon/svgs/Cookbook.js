@@ -2,30 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { color } from '../../../../styles';
 
-const Cookbook = ({ className }) => (
-  <svg className={className} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 12">
-    <defs>
-      <clipPath id="cookbook-icon-a">
-        <path fill={`${color.eclipse}`} d="M15.652-13.7h-.7V-15a.341.341 0 00-.226-.355 6.511 6.511 0 00-2.252-.392 6.37 6.37 0 00-4.44 1.727A6.37 6.37 0 003.6-15.75a6.533 6.533 0 00-2.258.392.345.345 0 00-.224.339v1.32h-.77a.345.345 0 00-.348.343v9.265a.345.345 0 00.348.341h15.3A.345.345 0 0016-4.092v-9.265a.345.345 0 00-.348-.341zm-7.266.3a5.632 5.632 0 014.09-1.67 5.885 5.885 0 011.78.273v8.527a6.625 6.625 0 00-1.87-.263 6.3 6.3 0 00-4 1.5zm-6.57-1.4a5.885 5.885 0 011.784-.265A5.63 5.63 0 017.684-13.4v8.36a6.3 6.3 0 00-4-1.5 6.611 6.611 0 00-1.868.267zM.7-13h.42v7.22a.345.345 0 00.282.336.36.36 0 00.2-.026 5.836 5.836 0 012.072-.38 5.605 5.605 0 013.64 1.415H.7zm14.6 8.575H8.746a5.609 5.609 0 013.64-1.415 5.814 5.814 0 012.064.373.348.348 0 00.228.027.341.341 0 00.276-.334V-13h.346z" />
-      </clipPath>
-      <clipPath id="cookbook-icon-b">
-        <path fill={`${color.eclipse}`} d="M0-3.443h16V-16H0z" transform="translate(0 16)" />
-      </clipPath>
-    </defs>
-    <g clipPath="url(#cookbook-icon-a)" transform="translate(0 15.75)">
-      <g clipPath="url(#cookbook-icon-b)" transform="translate(0 -15.946)">
-        <path fill={`${color.eclipse}`} d="M-4-3.728h24v19.85H-4z" />
-      </g>
-    </g>
+const Cookbook = ({ className, fill }) => (
+  <svg
+    aria-hidden="true"
+    className={className}
+    focusable="false"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    viewBox="0 0 16 12"
+  >
+    <path fill={fill} d="M15.7 2H15V.7c0-.2-.1-.3-.2-.4-.8-.2-1.6-.3-2.3-.3C10.8 0 9.2.6 8 1.7 6.8.6 5.2 0 3.6 0c-.8 0-1.5.1-2.3.4-.1 0-.2.2-.2.3V2H.3c-.1 0-.3.2-.3.4v9.3c0 .1.2.3.3.3h15.3c.2 0 .3-.1.4-.3V2.4c0-.2-.2-.4-.3-.4zm-15 9.3V2.7h.4V10c0 .2.1.3.3.3h.2c.7-.3 1.4-.4 2.1-.4 1.3 0 2.6.5 3.6 1.4H.7zm7-.6c-1.1-1-2.5-1.5-4-1.5-.6 0-1.3.1-1.9.3V.9C2.4.8 3 .7 3.6.7c1.5 0 3 .6 4.1 1.7v8.3zm.7-8.4C9.5 1.2 11 .6 12.5.6c.6 0 1.2.1 1.8.3v8.5c-.6-.2-1.2-.3-1.9-.3-1.5 0-2.9.5-4 1.5V2.3zm6.9 9H8.7c1-.9 2.3-1.4 3.6-1.4.7 0 1.4.1 2.1.4h.2c.2 0 .3-.2.3-.3V2.7h.3v8.6z" />
   </svg>
 );
 
 Cookbook.propTypes = {
   className: PropTypes.string,
+  fill: PropTypes.string,
 };
 
 Cookbook.defaultProps = {
   className: null,
+  fill: color.eclipse,
 };
 
 export default Cookbook;

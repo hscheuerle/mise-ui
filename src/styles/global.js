@@ -57,6 +57,11 @@ export const globalStyles = css`
     appearance: none;
   }
 
+  input[type="text"],
+  input[type="search"] {
+    appearance: none;
+  }
+
   ul,
   li {
     list-style-type: none;
