@@ -12,21 +12,21 @@ const Refinement = styled.div`
   margin-bottom: ${spacing.xsm};
   margin-right: ${spacing.sm};
 
-  // We only want hover state when 'x' button is hovered. This style tells
-  // Refinement wrapper to ignore mouse event.
+  /* We only want hover state when 'x' button is hovered. This style tells
+  Refinement wrapper to ignore mouse event. */
   pointer-events: none;
 
-  // Trigger mouse event in Refinment only if direct 'x' button child is hovered.
+  /* Trigger mouse event in Refinment only if direct 'x' button child is hovered. */
   & > button {
     pointer-events: auto;
   }
 
-  // Change color of p child to mint when hovered.
+  /* Change color of p child to mint when hovered. */
   &:hover > p {
     color: ${color.mint}
   }
 
-  // Change svg stroke color when parent and 'x' button child are hovered.
+  /* Change svg stroke color when parent and 'x' button child are hovered. */
   &:hover > button:hover {
     svg {
       g {
@@ -46,6 +46,10 @@ const RefinementClearButton = styled.button`
   font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
   color: ${color.nobel};
   width: 0.8rem;
+
+  svg {
+    height: 0.8rem;
+  }
 `;
 
 const labelMap = {
