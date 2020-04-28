@@ -11,6 +11,7 @@ const StyledFilterButton = styled.button`
 `;
 
 const StyledFilter = styled(Filter)`
+  height: 1rem;
   margin-left: ${spacing.xsm};
   width: 1.7rem;
 `;
