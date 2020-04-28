@@ -58,6 +58,18 @@ class StyledSearchBox extends Component {
     this.timerId = null;
   }
 
+  componentDidMount() {
+    /*
+       Value swapping is done here because on some browsers focusing on the
+       input element on mount will place the cursor at the beginning of the
+       search query rather than at the end.
+    */
+    const tempVal = this.input.value;
+    this.input.focus();
+    this.input.value = '';
+    this.input.value = tempVal;
+  }
+
   onInputMount = (input) => {
     this.input = input;
   }
@@ -160,12 +172,12 @@ const StyledResetButton = styled.button`
   }
 `;
 
-const ResetButton = connectCurrentRefinements(({ handleClick, items, refine }) => (
+const ResetButton = connectCurrentRefinements(({ handleClick, items, refine, query }) => (
   <StyledResetButton
     className="search-input__reset-button"
     type="reset"
     onClick={() => { if (handleClick) handleClick(); refine(items); }}
-    hidden={!items || !items.length}
+    hidden={!query || query.length === 0}
   >
     <Close
       ariaLabel="clear current search term"
@@ -179,6 +191,7 @@ const SearchInput = ({
   handleFocus,
   handleSubmit,
   placeholder,
+  query,
 }) => (
   <StyledSearchInputContainer
     className="search-input-container"
@@ -192,6 +205,7 @@ const SearchInput = ({
     <ResetButton
       clearsQuery
       handleClick={handleClickClose}
+      query={query}
     />
   </StyledSearchInputContainer>
 );
@@ -202,6 +216,7 @@ SearchInput.propTypes = {
   handleFocus: PropTypes.func,
   handleSubmit: PropTypes.func,
   placeholder: PropTypes.string,
+  query: PropTypes.string,
 };
 
 SearchInput.defaultProps = {
@@ -210,6 +225,7 @@ SearchInput.defaultProps = {
   handleFocus: null,
   handleSubmit: null,
   placeholder: 'Search recipes, reviews & more',
+  query: '',
 };
 
 export default SearchInput;
