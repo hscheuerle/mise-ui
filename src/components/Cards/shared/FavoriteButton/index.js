@@ -19,10 +19,12 @@ const StyledFavoriteButton = styled.button`
     stroke: transparent;
   }
 
-  &:hover {
-    [class*="ribbon"] {
-      fill: ${color.eclipse};
-      transition: 0.1s all ease-in-out;
+  @media(hover: hover) {
+    &:hover {
+      [class*="ribbon"] {
+        fill: ${color.eclipse};
+        transition: 0.1s all ease-in-out;
+      }
     }
   }
 
@@ -37,14 +39,16 @@ const StyledFavoriteButton = styled.button`
       transition: 0.1s all ease-in-out;
     }
 
-    &:hover {
-      [class*="horizontal-line"] {
-        stroke: transparent;
-        transition: 0.1s all ease-in-out;
-      }
+    @media(hover: hover) {
+      &:hover {
+        [class*="horizontal-line"] {
+          stroke: transparent;
+          transition: 0.1s all ease-in-out;
+        }
 
-      [class*="vertical-line"] {
-        stroke: ${color.eclipse};
+        [class*="vertical-line"] {
+          stroke: ${color.eclipse};
+        }
       }
     }
   }
