@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectCurrentRefinements, connectSearchBox } from 'react-instantsearch-dom';
 
-import { color, font, fontSize, spacing } from '../../styles';
+import { color, font, fontSize } from '../../styles';
 import { SearchIcon, Close } from '../DesignTokens/Icon';
 
 const StyledSearchInputContainer = styled.div`
@@ -21,7 +21,7 @@ const StyledSearch = styled.form`
     border: 0;
     color: ${color.eclipse};
     font: ${fontSize.lg} ${font.mwr};
-    padding: 1.35rem 0 1.35rem 5rem;
+    padding: 1.35rem 3.5rem 1.35rem 4.5rem;
     width: 100%;
 
     &::placeholder {
@@ -43,11 +43,11 @@ const StyledSearch = styled.form`
 
     &.search-icon {
       bottom: 0;
-      height: 2rem;
+      height: 2.3rem;
       left: 0;
-      margin: auto auto auto ${spacing.sm};
+      margin: auto auto auto 1.2rem;
       top: 0;
-      width: 2rem;
+      width: 2.3rem;
     }
   }
 `;
@@ -56,6 +56,18 @@ class StyledSearchBox extends Component {
   constructor(props) {
     super(props);
     this.timerId = null;
+  }
+
+  componentDidMount() {
+    /*
+       Value swapping is done here because on some browsers focusing on the
+       input element on mount will place the cursor at the beginning of the
+       search query rather than at the end.
+    */
+    const tempVal = this.input.value;
+    this.input.focus();
+    this.input.value = '';
+    this.input.value = tempVal;
   }
 
   onInputMount = (input) => {
@@ -139,7 +151,7 @@ const StyledResetButton = styled.button`
   top: 0.2rem;
   right: 0.2rem;
   bottom: 0.2rem;
-  padding: ${spacing.sm};
+  padding: 1.2rem;
 
   svg {
     fill: ${color.regentGray};
@@ -160,12 +172,12 @@ const StyledResetButton = styled.button`
   }
 `;
 
-const ResetButton = connectCurrentRefinements(({ handleClick, items, refine }) => (
+const ResetButton = connectCurrentRefinements(({ handleClick, items, refine, query }) => (
   <StyledResetButton
     className="search-input__reset-button"
     type="reset"
     onClick={() => { if (handleClick) handleClick(); refine(items); }}
-    hidden={!items || !items.length}
+    hidden={!query || query.length === 0}
   >
     <Close
       ariaLabel="clear current search term"
@@ -179,6 +191,7 @@ const SearchInput = ({
   handleFocus,
   handleSubmit,
   placeholder,
+  query,
 }) => (
   <StyledSearchInputContainer
     className="search-input-container"
@@ -192,6 +205,7 @@ const SearchInput = ({
     <ResetButton
       clearsQuery
       handleClick={handleClickClose}
+      query={query}
     />
   </StyledSearchInputContainer>
 );
@@ -202,6 +216,7 @@ SearchInput.propTypes = {
   handleFocus: PropTypes.func,
   handleSubmit: PropTypes.func,
   placeholder: PropTypes.string,
+  query: PropTypes.string,
 };
 
 SearchInput.defaultProps = {
@@ -210,6 +225,7 @@ SearchInput.defaultProps = {
   handleFocus: null,
   handleSubmit: null,
   placeholder: 'Search recipes, reviews & more',
+  query: '',
 };
 
 export default SearchInput;

@@ -48,7 +48,7 @@ const TitleWrapper = styled.div`
   padding-top: ${spacing.xsm};
 `;
 
-const StyledTitle = styled(Title)`
+export const StyledTitle = styled(Title)`
   transition: color 0.2s ease;
 
   &:hover {
@@ -56,12 +56,12 @@ const StyledTitle = styled(Title)`
   }
 `;
 
-const StyledFavoriteButton = styled(FavoriteButton)`
+export const StyledFavoriteButton = styled(FavoriteButton)`
   flex-shrink: 0;
   margin-top: ${spacing.xxsm};
 `;
 
-const StickerGroup = styled.div`
+export const StickerGroup = styled.div`
   display: flex;
   position: absolute;
   bottom: 0;
@@ -76,7 +76,7 @@ const StickerGroup = styled.div`
 `;
 
 const stickerHeightMobile = '1.2rem';
-const StyledSticker = styled(Sticker)`
+export const StyledSticker = styled(Sticker)`
   ${breakpoint('xs', 'lg')`
     border-radius: 0.5rem;
     line-height: ${stickerHeightMobile};
@@ -85,7 +85,7 @@ const StyledSticker = styled(Sticker)`
   `}
 `;
 
-const StyledBadge = styled(Badge)`
+export const StyledBadge = styled(Badge)`
   position: absolute;
   top: ${spacing.xsm};
   left: ${spacing.xsm};
