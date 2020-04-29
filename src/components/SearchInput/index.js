@@ -76,9 +76,15 @@ class StyledSearchBox extends Component {
 
   onChangeDebounced = (evt) => {
     clearTimeout(this.timerId);
-    const { refine, delay } = this.props;
+    const { handleChange, refine, delay } = this.props;
     const value = evt.currentTarget.value;
-    this.timerId = setTimeout(() => refine(value), delay);
+    this.timerId = setTimeout(
+      () => {
+        refine(value);
+        if (handleChange) handleChange();
+      },
+      delay,
+    );
   };
 
   onSubmit = (evt) => {
@@ -131,6 +137,7 @@ class StyledSearchBox extends Component {
 StyledSearchBox.propTypes = {
   defaultValue: PropTypes.string,
   delay: PropTypes.number,
+  handleChange: PropTypes.func,
   handleFocus: PropTypes.func,
   handleSubmit: PropTypes.func,
   placeholder: PropTypes.string.isRequired,
@@ -140,6 +147,7 @@ StyledSearchBox.propTypes = {
 StyledSearchBox.defaultProps = {
   defaultValue: null,
   delay: 200,
+  handleChange: null,
   handleFocus: null,
   handleSubmit: null,
 };
@@ -187,6 +195,7 @@ const ResetButton = connectCurrentRefinements(({ handleClick, items, refine, que
 
 const SearchInput = ({
   defaultValue,
+  handleChange,
   handleClickClose,
   handleFocus,
   handleSubmit,
@@ -198,6 +207,7 @@ const SearchInput = ({
   >
     <SearchBox
       defaultValue={defaultValue}
+      handleChange={handleChange}
       handleFocus={handleFocus}
       handleSubmit={handleSubmit}
       placeholder={placeholder}
@@ -212,6 +222,7 @@ const SearchInput = ({
 
 SearchInput.propTypes = {
   defaultValue: PropTypes.string,
+  handleChange: PropTypes.func,
   handleClickClose: PropTypes.func,
   handleFocus: PropTypes.func,
   handleSubmit: PropTypes.func,
@@ -221,6 +232,7 @@ SearchInput.propTypes = {
 
 SearchInput.defaultProps = {
   defaultValue: null,
+  handleChange: null,
   handleClickClose: null,
   handleFocus: null,
   handleSubmit: null,
