@@ -51,8 +51,10 @@ const TitleWrapper = styled.div`
 export const StyledTitle = styled(Title)`
   transition: color 0.2s ease;
 
-  &:hover {
-    color: ${color.mint};
+  @media(hover: hover) {
+    &:hover {
+      color: ${color.mint};
+    }
   }
 `;
 
