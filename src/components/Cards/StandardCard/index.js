@@ -17,10 +17,6 @@ const StyledStandardCard = styled.article`
   width: 16.2rem;
   color: ${color.eclipse};
 
-  a.standard-card__anchor:hover {
-    color: ${color.eclipse};
-  }
-
   ${breakpoint('lg')`
     padding-bottom: ${spacing.lg};
     width: 27.2rem;
