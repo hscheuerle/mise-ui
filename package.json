@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^8.1.0",
+    "@whitespace/storybook-addon-html": "^1.2.1",
     "algoliasearch": "^4.0.3",
     "lodash.memoize": "^4.1.2",
     "lodash.orderby": "^4.6.0",
