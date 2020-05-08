@@ -25,8 +25,10 @@ const StyledButton = styled.button`
   transition: 0.2s all ease;
   white-space: nowrap;
 
-  &:hover {
-    background-color: ${color.mint};
+  @media(hover: hover) {
+    &:hover {
+      background-color: ${color.mint};
+    }
   }
 `;
 

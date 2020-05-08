@@ -20,11 +20,13 @@ const ShowHideButton = styled.button`
   text-transform: uppercase;
   width: 100%;
 
-  &:hover {
-    cursor: pointer;
+  @media(hover: hover) {
+    &:hover {
+      cursor: pointer;
 
-    svg {
-      fill: ${color.mint};
+      svg {
+        fill: ${color.mint};
+      }
     }
   }
 
