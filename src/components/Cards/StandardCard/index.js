@@ -128,6 +128,7 @@ function StandardCard({
   shopPrices,
   siteKey,
   siteKeyFavorites,
+  target,
   title,
   href,
 }) {
@@ -137,6 +138,8 @@ function StandardCard({
         className="standard-card__anchor"
         href={href}
         onClick={onClick}
+        rel={target && target === '_blank' ? 'noopener noreferrer' : null}
+        target={target}
       >
         <ImageWrapper className="standard-card__image-wrapper">
           { imageUrl ? (
@@ -220,6 +223,7 @@ StandardCard.propTypes = {
   siteKey: PropTypes.oneOf(['atk', 'cco', 'cio', 'kids', 'school', 'shop']).isRequired,
   siteKeyFavorites: PropTypes.oneOf(['atk', 'cco', 'cio']),
   stickers: PropTypes.array,
+  target: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
 
@@ -240,6 +244,7 @@ StandardCard.defaultProps = {
   shopPrices: null,
   siteKeyFavorites: null,
   stickers: [],
+  target: null,
 };
 
 export default React.memo(StandardCard, (prev, next) => (
