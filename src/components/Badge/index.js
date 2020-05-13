@@ -33,10 +33,16 @@ const determineType = (type, fill) => {
  * Badges exist for brand logos (cc, ci, atk, kids) and also other destination
  * identities like shop.
  * <br>
- * Logo badges appear on cards in mixed brand scenarios, like search and
- * do not appear when only one brand’s content is showing
- *  Badges on a card do not go anywhere, but the badges that
- *  appear in the browse bar *are* interactive and function as facets
+ * Logo badges appear on cards in mixed brand scenarios, like search, and also
+ * in the case that only one brand’s content is showing like in CI recipe
+ * browse.
+
+ <br>
+ .
+ * <b>Badges on a card</b> are not interactive and do not go anywhere.
+ <br>
+ * <b>Badges on search site filters</b> are interactive and function as facets,
+ * surfacing content belonging to that brand and do have a hover state.
  */
 
 const Badge = ({

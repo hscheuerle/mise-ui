@@ -54,6 +54,41 @@ const StyledFavoriteButton = styled.button`
   }
 `;
 
+/**
+
+The Favorite Button allows users to add or remove a piece of content from their
+favorites.
+
+Favorite Buttons appear on all Standard Cards for document types that
+are currently ‘likeable’:
+<ul>
+<li>Recipe</li>
+<li>Equipment Review</li>
+<li>Taste Test</li>
+<li>Clip</li>
+<li>Episode</li>
+<li>How-to</li>
+</ul>
+
+-----
+
+<b>States:</b>
+<ul>
+<li>Default (not bookmarked)</li>
+<li>Hover</li>
+<li>Hover is a plus on a default button</li>
+<li>Hover is a minus on a bookmarked button</li>
+<li>Favorited</li>
+</ul>
+
+-----
+
+Coming soon: Environmental theming changes some colors, but not dimensions, of a favorite button
+In a light-themed environment, the favorite button uses a dark stroke
+On a dark-themed environment, the favorite button uses a light stroke
+
+*/
+
 const FavoriteButton = ({
   isFavorited,
   objectId,

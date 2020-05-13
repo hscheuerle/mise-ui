@@ -13,6 +13,13 @@ const StyledTitle = styled.h3`
   `}
 `;
 
+/**
+
+A title is the primary identifier for a piece of content. All cards always have a
+title.
+
+*/
+
 const Title = ({ className, title }) => (
   <StyledTitle
     className={className}

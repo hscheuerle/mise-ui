@@ -18,6 +18,16 @@ const StyledCtaLink = styled.a`
   `}
 `;
 
+
+/**
+
+A CTA link is an actionable text element on a card. The most common use case for
+CTA link is “buy the winner” which we use to send users off-site directly to
+affiliate links for winning products that we’ve reviewed.
+
+*/
+
+
 const CtaLink = ({ ctaText, ctaUrl, onClick }) => (
   <StyledCtaLink
     aria-label={`${ctaText} (opens in new window)`}

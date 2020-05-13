@@ -44,6 +44,47 @@ const StyledCookbook = styled(Cookbook)`
   height: 1.1rem;
 `;
 
+/**
+
+An Attribution is an element of a card that gives the user more context about
+the piece of content. Attributions always contain text, and on occasion
+(Cookbook Collection) an icon.
+
+
+<br>
+
+-----
+
+<br>
+
+### Notes
+
+Card attributions can include:
+
+<ul>
+<li>TV or Podcast Show name</li>
+<li>Doc type (with or without lock depending on user state)</li>
+<li>Recipe</li>
+<li>Review</li>
+<li>Episode</li>
+<li>Author / test cook name (just one!)</li>
+<li>Comment tally</li>
+<li>Date (just one!)</li>
+<li>Publish date</li>
+<li>Last Updated date</li>
+<li>Air date</li>
+</ul>
+
+<br>
+
+-----
+
+<br>
+
+*/
+
+
+
 const Attributions = ({
   className,
   contentType,

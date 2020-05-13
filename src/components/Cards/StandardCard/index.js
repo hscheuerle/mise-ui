@@ -108,6 +108,22 @@ export const StyledBadge = styled(Badge)`
   `}
 `;
 
+/**
+
+A Standard Card is the most commonly used card format. It can be themed light, or dark.
+
+A Standard Card can have the following components:
+<ul>
+<li>Badge</li>
+<li>Image (optional)</li>
+<li>Up to 2 stickers, 1 on mobile</li>
+<li>Title e.g. “Plastic Food Storage Containers”</li>
+<li>Favorite Button</li>
+<li>Attributions</li>
+</ul>
+
+*/
+
 function StandardCard({
   className,
   commentCount,
