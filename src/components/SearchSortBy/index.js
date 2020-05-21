@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectSortBy } from 'react-instantsearch-dom';
 
-import ShowHide from '../ShowHide';
+import Accordion from '../Accordion';
 import { color, font, fontSize, spacing } from '../../styles';
 
 const SearchSortByList = styled.ul``;
@@ -84,7 +84,7 @@ SortBy.propTypes = {
 const CustomSortBy = connectSortBy(SortBy);
 
 const SearchSortBy = ({ defaultRefinement, items }) => (
-  <ShowHide
+  <Accordion
     isFieldset
     label="Sort By"
   >
@@ -92,7 +92,7 @@ const SearchSortBy = ({ defaultRefinement, items }) => (
       defaultRefinement={defaultRefinement}
       items={items}
     />
-  </ShowHide>
+  </Accordion>
 );
 
 SearchSortBy.propTypes = {

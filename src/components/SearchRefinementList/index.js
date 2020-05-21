@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import ShowMoreLess from '../ShowMoreLess';
 import SearchRefinementFilter from './components/SearchRefinementFilter';
-import ShowHide from '../ShowHide';
+import Accordion from '../Accordion';
 import { color } from '../../styles';
 
 const SearchRefinementListRefinements = styled.div`
@@ -109,7 +109,7 @@ RefinementList.defaultProps = {
 
 const SearchRefinementList = ({ attribute, showHideLabel, items, ...restProps }) => (
   items.length > 0 && (
-    <ShowHide
+    <Accordion
       icon={attribute === 'search_cookbook_collection_titles' ? 'cookbook' : null}
       isFieldset
       label={showHideLabel}
@@ -119,7 +119,7 @@ const SearchRefinementList = ({ attribute, showHideLabel, items, ...restProps })
         items={items}
         {...restProps}
       />
-    </ShowHide>
+    </Accordion>
   )
 );
 
