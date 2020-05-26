@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import LabelFrame from '../LabelFrame';
 import SearchCurrentRefinements from '../SearchCurrentRefinements';
 import SearchClearRefinements from './index';
-import SearchRefinementList from '../SearchRefinementList';
+import SearchRefinementList from '../Algolia/search/SearchRefinementList';
 import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
