@@ -10,7 +10,7 @@ import SearchBanner from './components/SearchBanner';
 import SearchClearRefinements from './components/SearchClearRefinements';
 import SearchCurrentRefinements from './components/SearchCurrentRefinements';
 import SearchInput from './components/SearchInput';
-import SearchRefinementList from './components/SearchRefinementList';
+import SearchRefinementList from './components/Algolia/search/SearchRefinementList';
 import SearchResultsCount from './components/SearchResultsCount';
 import SearchSortBy from './components/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';

@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { connectRefinementList } from 'react-instantsearch-dom';
 import styled from 'styled-components';
 
-import ShowMoreLess from '../ShowMoreLess';
-import SearchRefinementFilter from './components/SearchRefinementFilter';
-import Accordion from '../Accordion';
-import { color } from '../../styles';
+import ShowMoreLess from '../../../ShowMoreLess';
+import RefinementFilter from './components/RefinementFilter/RefinementFilter';
+import { color } from '../../../../styles';
 
-const SearchRefinementListRefinements = styled.div`
+const RefinementListRefinements = styled.div`
   border: none;
   margin: 0;
   padding: 0;
@@ -47,18 +46,18 @@ const siteMap = [
   },
 ];
 
-const RefinementList = ({
+export const CustomRefinementList = ({
   attribute,
   currentRefinement,
   items,
   refine,
   handleClick,
 }) => (
-  <SearchRefinementListRefinements>
+  <RefinementListRefinements>
     {
       attribute === 'search_site_list' ? (
         siteMap.map(site => (
-          <SearchRefinementFilter
+          <RefinementFilter
             {...site}
             attribute={attribute}
             handleClick={handleClick}
@@ -79,7 +78,7 @@ const RefinementList = ({
           initialCount={3}
           items={
             items.map(item => (
-              <SearchRefinementFilter
+              <RefinementFilter
                 {...item}
                 attribute={attribute}
                 key={`${attribute}-${item.label}`}
@@ -91,10 +90,10 @@ const RefinementList = ({
         />
       )
     }
-  </SearchRefinementListRefinements>
+  </RefinementListRefinements>
 );
 
-RefinementList.propTypes = {
+CustomRefinementList.propTypes = {
   attribute: PropTypes.string.isRequired,
   currentRefinement: PropTypes.array.isRequired,
   handleClick: PropTypes.func,
@@ -102,42 +101,35 @@ RefinementList.propTypes = {
   refine: PropTypes.func.isRequired,
 };
 
-RefinementList.defaultProps = {
+CustomRefinementList.defaultProps = {
   handleClick: null,
   items: null,
 };
 
-const SearchRefinementList = ({ attribute, showHideLabel, items, ...restProps }) => (
+const RefinementList = ({ attribute, items, ...restProps }) => (
   items.length > 0 && (
-    <Accordion
-      icon={attribute === 'search_cookbook_collection_titles' ? 'cookbook' : null}
-      isFieldset
-      label={showHideLabel}
-    >
-      <RefinementList
-        attribute={attribute}
-        items={items}
-        {...restProps}
-      />
-    </Accordion>
+    <CustomRefinementList
+      attribute={attribute}
+      items={items}
+      {...restProps}
+    />
   )
 );
 
-SearchRefinementList.propTypes = {
+RefinementList.propTypes = {
   /** Algolia attribute that is used to pull refinement values. */
   attribute: PropTypes.string.isRequired,
+  /** Algolia attribute, list of refinement values. */
   items: PropTypes.array.isRequired,
-  /** 'Title' of the list that will be put into clickable show/hide button */
-  showHideLabel: PropTypes.string.isRequired,
   /** Used to pass click functionality from jarvis etc. */
   handleClick: PropTypes.func,
   /** Initial number of refinement filters that are visible in the refinement list. */
   transformItems: PropTypes.func,
 };
 
-SearchRefinementList.defaultProps = {
+RefinementList.defaultProps = {
   handleClick: null,
   transformItems: null,
 };
 
-export default connectRefinementList(SearchRefinementList);
+export default connectRefinementList(RefinementList);
