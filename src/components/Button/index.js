@@ -32,12 +32,6 @@ const StyledButton = styled.button`
   }
 `;
 
-/**
-  A text button is one type of CTA. A text button always prompts an action, be
-  that “done” “submit” or “start my 14 day free trial” “show more results”. It
-  will alway have text.
-*/
-
 function Button({
   className,
   children,
