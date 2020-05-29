@@ -3,17 +3,12 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs/react';
 
 import Button from './index';
-import mdx from './Button.mdx';
 
 export default {
   title: 'Components|Button',
-  parameters: {
-    docs: {
-      page: mdx,
-    },
-  },
   component: Button,
   decorators: [withKnobs],
+  includeStories: [],
 };
 
 export const DefaultTextButton = () => (
@@ -21,3 +16,7 @@ export const DefaultTextButton = () => (
     {text('Text', 'Done')}
   </Button>
 );
+
+DefaultTextButton.story = {
+  parameters: { viewMode: 'story' },
+};

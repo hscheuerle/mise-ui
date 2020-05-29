@@ -1,0 +1,13 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import * as stories from './Button.stories.js';
+import Button from './index';
+
+<Meta title="Components/Button" component={Button} />
+
+# Button
+
+<Story name="DefaultTextButton">{stories.DefaultTextButton()}</Story>
+
+A text button is one type of CTA. A text button always prompts an action, be
+that “done” “submit” or “start my 14 day free trial” “show more results”. It
+will always have text.
