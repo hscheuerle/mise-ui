@@ -12,7 +12,7 @@ const ShowMoreLessRest = styled.div`
   margin-bottom: 1.2rem;
 `;
 
-const ShowMoreLessButton = styled.button`
+export const ShowMoreLessButton = styled.button`
   color: ${color.nobel};
   font: 1.2rem/1 ${font.pnb};
   letter-spacing: 1.2px;
@@ -40,6 +40,7 @@ const ShowMoreLess = ({ initialCount, items, id }) => {
               {initialItems.map(item => item)}
             </ShowMoreLessInitial>
             <ShowMoreLessRest
+              data-testid="show-more-rest-items"
               hidden={hidden || null}
               id={`show-hide--${id}`}
             >
@@ -48,6 +49,7 @@ const ShowMoreLess = ({ initialCount, items, id }) => {
             <ShowMoreLessButton
               aria-controls={`show-hide--${id}`}
               aria-expanded={!hidden}
+              className="show-more-less__button"
               onClick={() => { toggleHidden(!hidden); }}
             >
               {hidden ? '+ Show More' : '- Show Less'}
