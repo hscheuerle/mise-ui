@@ -1,44 +1,47 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import TestRenderer from 'react-test-renderer';
+import { render, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import 'jest-styled-components';
 
 import Accordion from '../index';
-import { Plus } from '../../DesignTokens/Icon/svgs';
 import breakpoints from '../../../styles/breakpoints';
 
-describe('Accordion component', () => {
-  const componentSetup = (props) => {
-    const testRenderer = TestRenderer.create(
-      <ThemeProvider
-        theme={{ breakpoints }}
-      >
+describe('Accordion component should', () => {
+  const renderComponent = props => (
+    render(
+      <ThemeProvider theme={{ breakpoints }}>
         <Accordion {...props}>
           <p>Test content</p>
         </Accordion>
       </ThemeProvider>,
-    );
-    return testRenderer.root;
-  };
+    )
+  );
 
-  it('renders a Plus icon', () => {
-    const testInstance = componentSetup({ label: 'Test' });
-    expect(testInstance.findByType(Plus));
+  it('render hide-able content by default', () => {
+    renderComponent({ label: 'Test' });
+    expect(screen.getByTestId('accordion-content').hidden).toBe(false);
   });
 
-  it('renders a label icon', () => {
-    const testInstance = componentSetup({ isFieldset: true, icon: 'cookbook', label: 'Test' });
-    expect(
-      testInstance.findByProps({ className: 'show-hide__icon--cookbook' }));
+  it('hide content when clicked while expanded', () => {
+    renderComponent({ label: 'Test' });
+    fireEvent.click(screen.getByText('Test'));
+    expect(screen.getByTestId('accordion-content').hidden).toBe(true);
   });
 
-  it('renders content when expanded', () => {
-    const testInstance = componentSetup({ isHidden: false, label: 'Test' });
-    expect(testInstance.findByProps({ id: 'show-hide--Test' }).props.hidden).toBe(null);
+  it('reveal content when clicked while collapsed', () => {
+    renderComponent({ isHidden: true, label: 'Test' });
+    fireEvent.click(screen.getByText('Test'));
+    expect(screen.getByTestId('accordion-content').hidden).toBe(false);
   });
 
-  it('hides content when collapsed', () => {
-    const testInstance = componentSetup({ isHidden: true, label: 'Test' });
-    expect(testInstance.findByProps({ id: 'show-hide--Test' }).props.hidden).toBe(true);
+  it('render a Plus icon', () => {
+    renderComponent({ label: 'Test' });
+    expect(screen.getByTestId('plus-svg'));
+  });
+
+  it('render a label icon with appropriate props', () => {
+    renderComponent({ isFieldset: true, icon: 'cookbook', label: 'Test' });
+    expect(screen.getByTestId('cookbook-svg'));
   });
 });

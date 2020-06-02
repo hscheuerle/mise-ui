@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import LabelFrame from '../LabelFrame';
-import SearchCurrentRefinements from '../SearchCurrentRefinements';
-import SearchClearRefinements from './index';
-import SearchRefinementList from '../Algolia/search/SearchRefinementList';
-import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
+import LabelFrame from '../../../LabelFrame';
+import CurrentRefinements from '../CurrentRefinements';
+import ClearRefinements from './index';
+import SearchRefinementList from '../../search/SearchRefinementList';
+import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
-  title: 'Components|SearchClearRefinements',
-  component: SearchClearRefinements,
+  title: 'Components|Algolia/shared/ClearRefinements',
+  component: ClearRefinements,
 };
 
 const StyledWrapper = styled.div`
@@ -19,11 +19,11 @@ const StyledWrapper = styled.div`
 export const Default = () => (
   <MiseInstantSearch>
     <LabelFrame label="Component">
-      <SearchClearRefinements />
+      <ClearRefinements />
     </LabelFrame>
     <LabelFrame label="Supplemental Components">
       <StyledWrapper>
-        <SearchCurrentRefinements />
+        <CurrentRefinements />
       </StyledWrapper>
       <SearchRefinementList
         attribute="search_cuisine_list"
