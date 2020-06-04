@@ -1,25 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connectRefinementList } from 'react-instantsearch-dom';
 
 import RefinementList from '../../shared/RefinementList';
 import Accordion from '../../../Accordion';
 
-const SearchRefinementList = ({ attribute, showHideLabel, ...restProps }) => (
-  <Accordion
-    icon={attribute === 'search_cookbook_collection_titles' ? 'cookbook' : null}
-    isFieldset
-    label={showHideLabel}
-  >
-    <RefinementList
-      attribute={attribute}
-      {...restProps}
-    />
-  </Accordion>
+const SearchRefinementList = ({ attribute, showHideLabel, items, ...restProps }) => (
+  items && items.length > 0 ? (
+    <Accordion
+      icon={attribute === 'search_cookbook_collection_titles' ? 'cookbook' : null}
+      isFieldset
+      label={showHideLabel}
+    >
+      <RefinementList
+        attribute={attribute}
+        {...restProps}
+      />
+    </Accordion>
+  ) : null
 );
 
 SearchRefinementList.propTypes = {
   /** Algolia attribute that is used to pull refinement values. */
   attribute: PropTypes.string.isRequired,
+  /** Refinement filter values from algolia */
+  items: PropTypes.array.isRequired,
   /** 'Title' of the list that will be put into clickable show/hide button */
   showHideLabel: PropTypes.string.isRequired,
   /** Used to pass click functionality from jarvis etc. */
@@ -34,4 +39,4 @@ SearchRefinementList.defaultProps = {
 };
 
 
-export default SearchRefinementList;
+export default connectRefinementList(SearchRefinementList);
