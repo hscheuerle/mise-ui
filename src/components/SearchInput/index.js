@@ -1,56 +1,79 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { connectCurrentRefinements, connectSearchBox } from 'react-instantsearch-dom';
 
-import { color, font, fontSize } from '../../styles';
+import { color, font, fontSize, withThemes } from '../../styles';
 import { SearchIcon, Close } from '../DesignTokens/Icon';
 
+const StyledSearchInputContainerTheme = {
+  default: css`
+    background-color: ${color.white};
+    border: 1px solid ${color.silver};
+    position: relative;
+    width: 100%;
+  `,
+  kids: css`
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 2rem;
+    margin-bottom: 1.8rem;
+  `,
+};
+
 const StyledSearchInputContainer = styled.div`
-  background-color: ${color.white};
-  border: 1px solid ${color.silver};
-  position: relative;
-  width: 100%;
+  ${withThemes(StyledSearchInputContainerTheme)}
 `;
 
-const StyledSearch = styled.form`
-  position: relative;
-  width: 100%;
-
-  input[type="search"] {
-    border: 0;
-    color: ${color.eclipse};
-    font: ${fontSize.lg} ${font.mwr};
-    padding: 1.35rem 3.5rem 1.35rem 4.5rem;
+const StyledSearchTheme = {
+  default: css`
+    position: relative;
     width: 100%;
 
-    &::placeholder {
+    input[type="search"] {
+      border: none;
       color: ${color.eclipse};
       font: ${fontSize.lg} ${font.mwr};
-      font-style: italic;
-      text-align: left;
+      padding: 1.35rem 3.5rem 1.35rem 4.5rem;
+      width: 100%;
+
+      &::placeholder {
+        color: ${color.eclipse};
+        font: ${fontSize.lg} ${font.mwr};
+        font-style: italic;
+        text-align: left;
+      }
+
+      &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+      }
     }
 
-    &::-webkit-search-cancel-button {
-      -webkit-appearance: none;
-    }
-  }
+    svg {
+      fill: ${color.regentGray};
+      position: absolute;
+      z-index: 1;
 
-  svg {
-    fill: ${color.regentGray};
-    position: absolute;
-    z-index: 1;
-
-    &.search-icon {
-      bottom: 0;
-      height: 2.3rem;
-      left: 0;
-      margin: auto auto auto 1.2rem;
-      top: 0;
-      width: 2.3rem;
+      &.search-icon {
+        bottom: 0;
+        height: 2.3rem;
+        left: 0;
+        margin: auto auto auto 1.2rem;
+        top: 0;
+        width: 2.3rem;
+      }
     }
-  }
+  `,
+  kids: css`
+    input[type="search"] {
+      border-radius: 2rem;
+    }
+  `,
+};
+const StyledSearch = styled.form`
+  ${withThemes(StyledSearchTheme)}
 `;
+
 
 class StyledSearchBox extends Component {
   constructor(props) {
@@ -145,7 +168,7 @@ StyledSearchBox.propTypes = {
 };
 
 StyledSearchBox.defaultProps = {
-  defaultValue: null,
+  defaultValue: '',
   delay: 200,
   handleChange: null,
   handleFocus: null,
@@ -154,30 +177,41 @@ StyledSearchBox.defaultProps = {
 
 const SearchBox = connectSearchBox(StyledSearchBox);
 
-const StyledResetButton = styled.button`
-  position: absolute;
-  top: 0.2rem;
-  right: 0.2rem;
-  bottom: 0.2rem;
-  padding: 1.2rem;
+const StyledResetButtonTheme = {
+  default: css`
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    bottom: 0.2rem;
+    padding: 1.2rem;
 
-  svg {
-    fill: ${color.regentGray};
-    height: 1rem;
-    width: 1rem;
+    svg {
+      fill: ${color.regentGray};
+      height: 1rem;
+      width: 1rem;
 
-    g {
-      transition: stroke 0.2s ease-in-out;
+      g {
+        transition: stroke 0.2s ease-in-out;
+      }
     }
-  }
 
-  &:hover svg g {
-    stroke: ${color.mint};
-  }
+    &:hover svg g {
+      stroke: ${color.mint};
+    }
 
-  && {
-    background-color: ${color.white};
-  }
+    && {
+      background-color: ${color.white};
+    }
+  `,
+  kids: css`
+    && {
+      background-color: transparent;
+    }
+  `,
+};
+
+const StyledResetButton = styled.button`
+  ${withThemes(StyledResetButtonTheme)}
 `;
 
 const ResetButton = connectCurrentRefinements(({ handleClick, items, refine, query }) => (

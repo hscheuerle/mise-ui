@@ -8,13 +8,12 @@ import Accordion from '../../../Accordion';
 const SearchRefinementList = ({ attribute, showHideLabel, items, ...restProps }) => (
   items && items.length > 0 ? (
     <Accordion
-      icon={attribute === 'search_cookbook_collection_titles' ? 'cookbook' : null}
+      icon={icon}
       isFieldset
       label={showHideLabel}
     >
       <RefinementList
         attribute={attribute}
-        items={items}
         {...restProps}
       />
     </Accordion>
@@ -24,18 +23,21 @@ const SearchRefinementList = ({ attribute, showHideLabel, items, ...restProps })
 SearchRefinementList.propTypes = {
   /** Algolia attribute that is used to pull refinement values. */
   attribute: PropTypes.string.isRequired,
+  /* Name of icon */
+  icon: PropTypes.string,
   /** Refinement filter values from algolia */
   items: PropTypes.array.isRequired,
-  /** 'Title' of the list that will be put into clickable show/hide button */
-  showHideLabel: PropTypes.string.isRequired,
   /** Used to pass click functionality from jarvis etc. */
   handleClick: PropTypes.func,
+  /** 'Title' of the list that will be put into clickable show/hide button */
+  showHideLabel: PropTypes.string.isRequired,
   /** Initial number of refinement filters that are visible in the refinement list. */
   transformItems: PropTypes.func,
 };
 
 SearchRefinementList.defaultProps = {
   handleClick: null,
+  icon: null,
   transformItems: null,
 };
 
