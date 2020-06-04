@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connectRefinementList } from 'react-instantsearch-dom';
 import styled from 'styled-components';
 
 import ShowMoreLess from '../../../ShowMoreLess';
@@ -107,13 +106,13 @@ CustomRefinementList.defaultProps = {
 };
 
 const RefinementList = ({ attribute, items, ...restProps }) => (
-  items.length > 0 && (
+  items && items.length > 0 ? (
     <CustomRefinementList
       attribute={attribute}
       items={items}
       {...restProps}
     />
-  )
+  ) : null
 );
 
 RefinementList.propTypes = {
@@ -132,4 +131,4 @@ RefinementList.defaultProps = {
   transformItems: null,
 };
 
-export default connectRefinementList(RefinementList);
+export default RefinementList;
