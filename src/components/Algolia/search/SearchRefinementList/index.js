@@ -14,6 +14,7 @@ const SearchRefinementList = ({ attribute, showHideLabel, items, ...restProps })
     >
       <RefinementList
         attribute={attribute}
+        items={items}
         {...restProps}
       />
     </Accordion>
