@@ -4,7 +4,7 @@ import breakpoint from 'styled-components-breakpoint';
 import styled from 'styled-components';
 import { connectStats } from 'react-instantsearch-dom';
 
-import { color, font, fontSize, lineHeight, spacing } from '../../styles';
+import { color, font, fontSize, lineHeight, spacing } from '../../../../styles';
 
 const StatsWrapper = styled.p`
   color: ${color.eclipse};
@@ -16,7 +16,7 @@ const StatsWrapper = styled.p`
   `}
 `;
 
-const Stats = ({ nbHits }) => (
+export const Stats = ({ nbHits }) => (
   <StatsWrapper className="search-results-count">
     {`${nbHits.toLocaleString()} Result${nbHits !== 1 ? 's' : ''}`}
   </StatsWrapper>

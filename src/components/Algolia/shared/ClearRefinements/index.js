@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
 import styled from 'styled-components';
 
-import { color, font, fontSize, lineHeight, spacing } from '../../styles';
+import { color, font, fontSize, lineHeight, spacing } from '../../../../styles';
 
 const StyledClearRefinements = styled.button`
   color: ${color.eclipse};
@@ -20,7 +20,7 @@ const StyledClearRefinements = styled.button`
   }
 `;
 
-const ClearRefinements = ({ handleClick, items, refine }) => (
+export const CustomClearRefinements = ({ handleClick, items, refine }) => (
   <StyledClearRefinements
     className="clear-refinements-button"
     disabled={!items.length}
@@ -34,28 +34,14 @@ const ClearRefinements = ({ handleClick, items, refine }) => (
   </StyledClearRefinements>
 );
 
-ClearRefinements.propTypes = {
+CustomClearRefinements.propTypes = {
   handleClick: PropTypes.func,
   items: PropTypes.array.isRequired,
   refine: PropTypes.func.isRequired,
 };
 
-ClearRefinements.defaultProps = {
+CustomClearRefinements.defaultProps = {
   handleClick: null,
 };
 
-const CustomClearRefinements = connectCurrentRefinements(ClearRefinements);
-
-const SearchClearRefinements = ({ handleClick }) => (
-  <CustomClearRefinements handleClick={handleClick} />
-);
-
-SearchClearRefinements.propTypes = {
-  handleClick: PropTypes.func,
-};
-
-SearchClearRefinements.defaultProps = {
-  handleClick: null,
-};
-
-export default SearchClearRefinements;
+export default connectCurrentRefinements(CustomClearRefinements);

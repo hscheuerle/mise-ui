@@ -1,19 +1,19 @@
 import React from 'react';
 
-import LabelFrame from '../LabelFrame';
-import SearchCurrentRefinements from './index';
-import SearchRefinementList from '../SearchRefinementList';
-import MiseInstantSearch from '../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
+import LabelFrame from '../../../LabelFrame';
+import CurrentRefinements from './index';
+import SearchRefinementList from '../../search/SearchRefinementList';
+import MiseInstantSearch from '../../../../lib/algolia/MiseInstantSearch/MiseInstantSearch';
 
 export default {
-  title: 'Components|SearchCurrentRefinements',
-  component: SearchCurrentRefinements,
+  title: 'Components|Algolia/shared/CurrentRefinements',
+  component: CurrentRefinements,
 };
 
 export const Default = () => (
   <MiseInstantSearch>
     <LabelFrame label="Component">
-      <SearchCurrentRefinements />
+      <CurrentRefinements />
     </LabelFrame>
     <LabelFrame label="Supplemental Component">
       <SearchRefinementList

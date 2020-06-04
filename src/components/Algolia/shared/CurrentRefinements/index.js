@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
 
-import { Close } from '../DesignTokens/Icon/svgs';
-import { color, font, fontSize, lineHeight, spacing } from '../../styles';
+import { Close } from '../../../DesignTokens/Icon/svgs';
+import { color, font, fontSize, lineHeight, spacing } from '../../../../styles';
 
 const Refinement = styled.div`
   display: flex;
@@ -61,7 +61,7 @@ const labelMap = {
   shop: 'ATK Shop',
 };
 
-const CurrentRefinements = ({ handleClick, items, refine }) => (
+export const CustomCurrentRefinements = ({ handleClick, items, refine }) => (
   <>
     {
       items.map(category => (
@@ -92,33 +92,14 @@ const CurrentRefinements = ({ handleClick, items, refine }) => (
   </>
 );
 
-CurrentRefinements.propTypes = {
+CustomCurrentRefinements.propTypes = {
   handleClick: PropTypes.func,
   items: PropTypes.array.isRequired,
   refine: PropTypes.func.isRequired,
 };
 
-CurrentRefinements.defaultProps = {
+CustomCurrentRefinements.defaultProps = {
   handleClick: null,
 };
 
-const CustomCurrentRefinements = connectCurrentRefinements(CurrentRefinements);
-
-const SearchCurrentRefinements = ({ handleClick, transformItems }) => (
-  <CustomCurrentRefinements
-    handleClick={handleClick}
-    transformItems={transformItems}
-  />
-);
-
-SearchCurrentRefinements.propTypes = {
-  handleClick: PropTypes.func,
-  transformItems: PropTypes.func,
-};
-
-SearchCurrentRefinements.defaultProps = {
-  handleClick: null,
-  transformItems: null,
-};
-
-export default SearchCurrentRefinements;
+export default connectCurrentRefinements(CustomCurrentRefinements);

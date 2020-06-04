@@ -2,22 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import { withKnobs } from '@storybook/addon-knobs';
 
-import ShowHide from './index';
+import Accordion from './index';
 
 export default {
-  title: 'Components|ShowHide',
-  component: ShowHide,
+  title: 'Components|Accordion',
+  component: Accordion,
   decorators: [withKnobs],
 };
 
-const ShowHideWrapper = styled.div`
+const AccordionWrapper = styled.div`
   max-width: 30rem;
 `;
 
 export const Default = () => (
-  <ShowHideWrapper>
-    <ShowHide label="button">
+  <AccordionWrapper>
+    <Accordion label="button">
       <p>Hidden Content</p>
-    </ShowHide>
-  </ShowHideWrapper>
+    </Accordion>
+  </AccordionWrapper>
 );

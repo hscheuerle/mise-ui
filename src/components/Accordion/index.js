@@ -6,10 +6,10 @@ import breakpoint from 'styled-components-breakpoint';
 import { Cookbook, Plus } from '../DesignTokens/Icon/svgs';
 import { color, font, fontSize, letterSpacing, spacing } from '../../styles';
 
-const ShowHideDivWrapper = styled.div``;
-const ShowHideFieldsetWrapper = styled.fieldset``;
+const AccordionDivWrapper = styled.div``;
+const AccordionFieldsetWrapper = styled.fieldset``;
 
-const ShowHideButton = styled.button`
+const AccordionButton = styled.button`
   align-items: center;
   border: none;
   display: flex;
@@ -35,7 +35,7 @@ const ShowHideButton = styled.button`
   `}
 `;
 
-const ShowHideLabelWrapper = styled.div`
+const AccordionLabelWrapper = styled.div`
   align-items: flex-end;
   display: flex;
 
@@ -57,7 +57,7 @@ const ShowHideLabelWrapper = styled.div`
   }
 `;
 
-const ShowHideSvgWrapper = styled.div`
+const AccordionSvgWrapper = styled.div`
   height: 2rem;
   max-height: 2rem;
   max-width: 2rem;
@@ -80,7 +80,7 @@ const ShowHideSvgWrapper = styled.div`
   }
 `;
 
-const ShowHideContent = styled.div`
+const AccordionContent = styled.div`
   display: ${({ hidden }) => (hidden ? 'none' : 'block')};
 `;
 
@@ -88,13 +88,13 @@ const icons = {
   cookbook: Cookbook,
 };
 
-function ShowHide({ children, icon, isFieldset, isHidden, label }) {
+function Accordion({ children, icon, isFieldset, isHidden, label }) {
   const [hidden, toggleHidden] = useState(isHidden);
-  const ShowHideWrapper = isFieldset ? ShowHideFieldsetWrapper : ShowHideDivWrapper;
+  const AccordionWrapper = isFieldset ? AccordionFieldsetWrapper : AccordionDivWrapper;
   const Icon = icon ? icons[icon] : null;
   return (
-    <ShowHideWrapper>
-      <ShowHideButton
+    <AccordionWrapper>
+      <AccordionButton
         aria-controls={`show-hide--${label.split(' ').join('')}`}
         aria-expanded={!hidden}
         className="show-hide__expand-collapse-button"
@@ -102,24 +102,28 @@ function ShowHide({ children, icon, isFieldset, isHidden, label }) {
       >
         {
           isFieldset ? (
-            <ShowHideLabelWrapper hasIcon={icon}>
+            <AccordionLabelWrapper hasIcon={icon}>
               <legend>{label}</legend>
               {Icon ? <Icon className={`show-hide__icon--${icon}`} /> : null}
-            </ShowHideLabelWrapper>
+            </AccordionLabelWrapper>
           ) : label
         }
-        <ShowHideSvgWrapper isExpanded={!hidden}>
+        <AccordionSvgWrapper isExpanded={!hidden}>
           <Plus />
-        </ShowHideSvgWrapper>
-      </ShowHideButton>
-      <ShowHideContent id={`show-hide--${label.split(' ').join('')}`} hidden={hidden ? true : null}>
+        </AccordionSvgWrapper>
+      </AccordionButton>
+      <AccordionContent
+        data-testid="accordion-content"
+        id={`show-hide--${label.split(' ').join('')}`}
+        hidden={hidden ? true : null}
+      >
         {children}
-      </ShowHideContent>
-    </ShowHideWrapper>
+      </AccordionContent>
+    </AccordionWrapper>
   );
 }
 
-ShowHide.propTypes = {
+Accordion.propTypes = {
   /** Content that will be hidden by expand collapse behavior. */
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -135,10 +139,10 @@ ShowHide.propTypes = {
   label: PropTypes.string.isRequired,
 };
 
-ShowHide.defaultProps = {
+Accordion.defaultProps = {
   icon: null,
   isFieldset: false,
   isHidden: false,
 };
 
-export default ShowHide;
+export default Accordion;

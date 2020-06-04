@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Badge from '../../Badge';
-import { Checkmark } from '../../DesignTokens/Icon/svgs';
-import { color, font, fontSize, spacing } from '../../../styles';
+import Badge from '../../../../../Badge';
+import { Checkmark } from '../../../../../DesignTokens/Icon/svgs';
+import { color, font, fontSize, spacing } from '../../../../../../styles';
 
-const SearchRefinementFilterLabel = styled.label.attrs({
+const RefinementFilterLabel = styled.label.attrs({
   className: 'search-refinement-list__label',
 })`
   align-items: center;
@@ -47,7 +47,7 @@ const SearchRefinementFilterLabel = styled.label.attrs({
   }
 `;
 
-const SearchRefinementFilterCheck = styled.div`
+const RefinementFilterCheck = styled.div`
   height: 1.2rem;
   margin-left: -2rem;
   margin-right: ${spacing.xsm};
@@ -61,7 +61,7 @@ const SearchRefinementFilterCheck = styled.div`
   }
 `;
 
-const SearchRefinementFilterCheckbox = styled.input`
+const RefinementFilterCheckbox = styled.input`
   height: 0.8rem;
   left: -2rem;
   position: absolute;
@@ -69,11 +69,11 @@ const SearchRefinementFilterCheckbox = styled.input`
   width: 1.2rem;
 `;
 
-const SearchRefinementFilterCount = styled.span`
+const RefinementFilterCount = styled.span`
   color: ${color.nobel};
 `;
 
-const SearchRefinementFilter = ({
+const RefinementFilter = ({
   altFill,
   attribute,
   count,
@@ -84,7 +84,7 @@ const SearchRefinementFilter = ({
   handleClick,
   value,
 }) => (
-  <SearchRefinementFilterLabel
+  <RefinementFilterLabel
     altFill={altFill}
     className={`${attribute}`}
     data-site-key={value}
@@ -98,12 +98,12 @@ const SearchRefinementFilter = ({
   >
     {
       isRefined ? (
-        <SearchRefinementFilterCheck>
+        <RefinementFilterCheck data-testid="refinement-filter__checkmark">
           <Checkmark />
-        </SearchRefinementFilterCheck>
+        </RefinementFilterCheck>
       ) : null
     }
-    <SearchRefinementFilterCheckbox
+    <RefinementFilterCheckbox
       id={`search-site-list--${value}`}
       type="checkbox"
     />
@@ -118,22 +118,22 @@ const SearchRefinementFilter = ({
     }
     {
       includeCount ? (
-        <span>
+        <span className="search-refinement-filter__count">
           <span className="search-refinement-list__label-text">
             {label}
           </span>
-          <SearchRefinementFilterCount>
+          <RefinementFilterCount data-testid="refinement-filter__count">
             {` (${count})`}
-          </SearchRefinementFilterCount>
+          </RefinementFilterCount>
         </span>
       ) : (
         label
       )
     }
-  </SearchRefinementFilterLabel>
+  </RefinementFilterLabel>
 );
 
-SearchRefinementFilter.propTypes = {
+RefinementFilter.propTypes = {
   altFill: PropTypes.string,
   /** Algolia attribute used to filter results. */
   attribute: PropTypes.string.isRequired,
@@ -152,11 +152,11 @@ SearchRefinementFilter.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
 };
 
-SearchRefinementFilter.defaultProps = {
+RefinementFilter.defaultProps = {
   altFill: null,
   count: null,
   includeCount: true,
   handleClick: null,
 };
 
-export default SearchRefinementFilter;
+export default RefinementFilter;
