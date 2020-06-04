@@ -98,7 +98,7 @@ const RefinementFilter = ({
   >
     {
       isRefined ? (
-        <RefinementFilterCheck>
+        <RefinementFilterCheck data-testid="refinement-filter__checkmark">
           <Checkmark />
         </RefinementFilterCheck>
       ) : null
@@ -122,7 +122,7 @@ const RefinementFilter = ({
           <span className="search-refinement-list__label-text">
             {label}
           </span>
-          <RefinementFilterCount>
+          <RefinementFilterCount data-testid="refinement-filter__count">
             {` (${count})`}
           </RefinementFilterCount>
         </span>

@@ -112,7 +112,11 @@ function Accordion({ children, icon, isFieldset, isHidden, label }) {
           <Plus />
         </AccordionSvgWrapper>
       </AccordionButton>
-      <AccordionContent id={`show-hide--${label.split(' ').join('')}`} hidden={hidden ? true : null}>
+      <AccordionContent
+        data-testid="accordion-content"
+        id={`show-hide--${label.split(' ').join('')}`}
+        hidden={hidden ? true : null}
+      >
         {children}
       </AccordionContent>
     </AccordionWrapper>

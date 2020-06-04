@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connectSortBy } from 'react-instantsearch-dom';
 
-import Accordion from '../Accordion';
-import { color, font, fontSize, spacing } from '../../styles';
+import { color, font, fontSize, spacing } from '../../../../styles';
 
 const SearchSortByList = styled.ul``;
 
@@ -59,13 +58,16 @@ const SearchSortByLabel = styled.span.attrs({
   font-size: ${fontSize.md};
 `;
 
-const SortBy = ({ items, refine }) => (
+export const CustomSortBy = ({ items, refine }) => (
   <SearchSortByList>
     {
       items.map(({ isRefined, label, value }) => (
         <SearchSortByItem key={value}>
           <SearchSortByButton onClick={(e) => { e.preventDefault(); refine(value); }}>
-            <SearchSortByCircle isRefined={isRefined} />
+            <SearchSortByCircle
+              data-testid="sort-by__radio"
+              isRefined={isRefined}
+            />
             <SearchSortByLabel>
               {label}
             </SearchSortByLabel>
@@ -76,39 +78,9 @@ const SortBy = ({ items, refine }) => (
   </SearchSortByList>
 );
 
-SortBy.propTypes = {
+CustomSortBy.propTypes = {
   items: PropTypes.array.isRequired,
   refine: PropTypes.func.isRequired,
 };
 
-const CustomSortBy = connectSortBy(SortBy);
-
-const SearchSortBy = ({ defaultRefinement, items }) => (
-  <Accordion
-    isFieldset
-    label="Sort By"
-  >
-    <CustomSortBy
-      defaultRefinement={defaultRefinement}
-      items={items}
-    />
-  </Accordion>
-);
-
-SearchSortBy.propTypes = {
-  /** Name of algolia index that should be selected on initial page render. */
-  defaultRefinement: PropTypes.string,
-  /** List of 'hits' returned by algolia. */
-  items: PropTypes.array,
-};
-
-SearchSortBy.defaultProps = {
-  defaultRefinement: 'everest_search_development',
-  items: [
-    { value: 'everest_search_development', label: 'Relevance' },
-    { value: 'everest_search_popularity_desc_development', label: 'Popularity' },
-    { value: 'everest_search_published_date_desc_development', label: 'Publish Date' },
-  ],
-};
-
-export default SearchSortBy;
+export default connectSortBy(CustomSortBy);
