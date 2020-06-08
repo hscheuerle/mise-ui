@@ -3,24 +3,70 @@ import PropTypes from 'prop-types';
 
 import { color } from '../../../../styles';
 
-const Plus = ({ fill }) => (
+const sizeLookup = {
+  default: {
+    horizontal: {
+      height: 16,
+      width: 1.5,
+      x: 14.5,
+      y: 7,
+    },
+    vertical: {
+      height: 1.5,
+      width: 16,
+      x: 7,
+      y: 14.5,
+    },
+  },
+  large: {
+    horizontal: {
+      height: 16,
+      width: 3,
+      x: 14.5,
+      y: 7,
+    },
+    vertical: {
+      height: 3,
+      width: 16,
+      x: 8,
+      y: 13.5,
+    },
+  },
+};
+
+const Plus = ({ fill, size }) => (
   <svg
+    data-size={size}
     data-testid="plus-svg"
     fill={fill}
     viewBox="0 0 32 32"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="7" y="14.5" width="16" height="1.5" />
-    <rect x="14.5" y="7" width="1.5" height="16" />
+    <rect
+      className="plus-vertical-bar"
+      x={sizeLookup[size].vertical.x}
+      y={sizeLookup[size].vertical.y}
+      width={sizeLookup[size].vertical.width}
+      height={sizeLookup[size].vertical.height}
+    />
+    <rect
+      className="plus-horizontal-bar"
+      x={sizeLookup[size].horizontal.x}
+      y={sizeLookup[size].horizontal.y}
+      width={sizeLookup[size].horizontal.width}
+      height={sizeLookup[size].horizontal.height}
+    />
   </svg>
 );
 
 Plus.propTypes = {
   fill: PropTypes.string,
+  size: PropTypes.oneOf(['default', 'large']),
 };
 
 Plus.defaultProps = {
   fill: color.eclipse,
+  size: 'default',
 };
 
 export default Plus;

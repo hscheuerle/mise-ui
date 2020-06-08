@@ -1,23 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { color, font, fontSize, lineHeight, spacing } from '../../../../styles';
+import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../../styles';
+
+const StyledClearRefinementsTheme = {
+  default: css`
+    color: ${color.eclipse};
+    font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
+    margin-bottom: ${spacing.xsm};
+
+    &[disabled] {
+      display: none;
+    }
+
+    &:hover {
+      color: ${color.mint};
+      cursor: pointer;
+    }
+  `,
+  kidsSearch: css`
+    background-color: ${color.greySmoke};
+    border-radius: 1rem;
+    color: ${color.black};
+    float: left;
+    padding: 0.3rem 1rem 0.4rem;
+
+    &:hover {
+      color: ${color.jade};
+    }
+  `,
+};
 
 const StyledClearRefinements = styled.button`
-  color: ${color.eclipse};
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
-  margin-bottom: ${spacing.xsm};
-
-  &[disabled] {
-    display: none;
-  }
-
-  &:hover {
-    color: ${color.mint};
-    cursor: pointer;
-  }
+  ${withThemes(StyledClearRefinementsTheme)}
 `;
 
 export const CustomClearRefinements = ({ handleClick, items, refine }) => (

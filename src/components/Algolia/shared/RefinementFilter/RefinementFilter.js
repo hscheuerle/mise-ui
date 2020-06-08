@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import Badge from '../../../../../Badge';
-import { Checkmark } from '../../../../../DesignTokens/Icon/svgs';
-import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../../../../styles';
+import Badge from '../../../Badge';
+import { Checkmark } from '../../../DesignTokens/Icon/svgs';
+import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../../styles';
 
 const RefinementFilterLabelTheme = {
   default: css`
@@ -21,10 +21,6 @@ const RefinementFilterLabelTheme = {
 
     .search-refinement-list__label-text {
       ${({ isRefined }) => (isRefined ? `color: ${color.mint}; font-family: ${font.pnb};` : '')}
-    }
-
-    &:last-child {
-      margin: 0;
     }
 
     &:hover {
@@ -45,13 +41,20 @@ const RefinementFilterLabelTheme = {
       margin-right: 0.8rem;
     }
   `,
-  kids: css`
+  kidsSearch: css`
     background-color: ${color.greySmoke};
     border-radius: 1rem;
     color: ${color.black};
     line-height: ${lineHeight.xlg};
     padding: 0.4rem 1.3rem;
-    text-transform: capitalize;
+
+    .search-refinement-list__label-text {
+      display: block;
+
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
 
     .refinement-filter__checkmark,
     .refinement-filter__count {

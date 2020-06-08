@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 
 import RefinementFilter from '../RefinementFilter';
-import breakpoints from '../../../../../../../styles/breakpoints';
+import breakpoints from '../../../../../styles/breakpoints';
 
 describe('RefinementFilter component should', () => {
   const renderComponent = (props) => {
@@ -37,26 +37,6 @@ describe('RefinementFilter component should', () => {
       value: 'American',
     });
     expect(!screen.queryByTestId('refinement-filter__checkmark'));
-  });
-
-  it('render a Badge for search_site_list attribute', () => {
-    renderComponent({
-      attribute: 'search_site_list',
-      isRefined: false,
-      label: 'America\'s Test Kitchen',
-      value: 'atk',
-    });
-    expect(screen.getByTestId('badge'));
-  });
-
-  it('not render a Badge for non-search_site_list attribute', () => {
-    renderComponent({
-      attribute: 'search_cuisine_list',
-      isRefined: false,
-      label: 'Italian',
-      value: 'Italian',
-    });
-    expect(!screen.queryByTestId('badge'));
   });
 
   it('render a count when includeCount prop is true', () => {

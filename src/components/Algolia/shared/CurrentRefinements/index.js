@@ -1,55 +1,102 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { connectCurrentRefinements } from 'react-instantsearch-dom';
 
 import { Close } from '../../../DesignTokens/Icon/svgs';
-import { color, font, fontSize, lineHeight, spacing } from '../../../../styles';
+import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../../styles';
 
-const Refinement = styled.div`
-  display: flex;
-  float: left;
-  margin-bottom: ${spacing.xsm};
-  margin-right: ${spacing.sm};
+const RefinementTheme = {
+  default: css`
+    display: flex;
+    float: left;
+    margin-bottom: ${spacing.xsm};
+    margin-right: ${spacing.sm};
 
-  /* We only want hover state when 'x' button is hovered. This style tells
-  Refinement wrapper to ignore mouse event. */
-  pointer-events: none;
+    /* We only want hover state when 'x' button is hovered. This style tells
+    Refinement wrapper to ignore mouse event. */
+    pointer-events: none;
 
-  /* Trigger mouse event in Refinment only if direct 'x' button child is hovered. */
-  & > button {
-    pointer-events: auto;
-  }
+    /* Trigger mouse event in Refinment only if direct 'x' button child is hovered. */
+    & > button {
+      pointer-events: auto;
+    }
 
-  /* Change color of p child to mint when hovered. */
-  &:hover > p {
-    color: ${color.mint}
-  }
+    /* Change color of p child to mint when hovered. */
+    &:hover > p {
+      color: ${color.mint}
+    }
 
-  /* Change svg stroke color when parent and 'x' button child are hovered. */
-  &:hover > button:hover {
-    svg {
-      g {
+    /* Change svg stroke color when parent and 'x' button child are hovered. */
+    &:hover > button:hover {
+      svg g {
         stroke: ${color.mint};
       }
     }
-  }
+  `,
+  kidsSearch: css`
+    background-color: ${color.greySmoke};
+    border-radius: 1rem;
+    color: ${color.black};
+    padding: 0.3rem 1rem 0.4rem;
+
+    /* Change color of p child to mint when hovered. */
+    &:hover > p {
+      color: ${color.jade}
+    }
+
+    /* Change svg stroke color when parent and 'x' button child are hovered. */
+    &:hover > button:hover {
+      svg g {
+        stroke: ${color.jade};
+      }
+    }
+  `,
+};
+
+const Refinement = styled.div`
+  ${withThemes(RefinementTheme)}
 `;
+
+const RefinementLabelTheme = {
+  default: css`
+    font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
+    color: ${color.eclipse};
+    margin-right: ${spacing.xsm};
+  `,
+  kidsSearch: css`
+    color: ${color.black};
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  `,
+
+};
 
 const RefinementLabel = styled.p`
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
-  color: ${color.eclipse};
-  margin-right: ${spacing.xsm};
+  ${withThemes(RefinementLabelTheme)}
 `;
 
-const RefinementClearButton = styled.button`
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
-  color: ${color.nobel};
-  width: 0.8rem;
+const RefinementClearButtonTheme = {
+  default: css`
+    font: ${fontSize.md}/${lineHeight.sm} ${font.pnr};
+    color: ${color.nobel};
+    width: 0.8rem;
 
-  svg {
-    height: 0.8rem;
-  }
+    svg {
+      height: 0.8rem;
+    }
+  `,
+  kidsSearch: css`
+    svg g {
+      stroke: ${color.black};
+    }
+  `,
+};
+
+const RefinementClearButton = styled.button`
+  ${withThemes(RefinementClearButtonTheme)}
 `;
 
 const labelMap = {
@@ -61,33 +108,38 @@ const labelMap = {
   shop: 'ATK Shop',
 };
 
+// NOTE: when `category.items` is undefined, that means the underlying
+// facet only allows one value at a time. Exampel is NumericInput
 export const CustomCurrentRefinements = ({ handleClick, items, refine }) => (
   <>
     {
-      items.map(category => (
-        category.items.map(({ label, value }) => (
-          <Refinement
-            className="current-refinement-item"
-            key={`clear-refinement--${label}`}
-          >
-            <RefinementLabel>
-              {labelMap[label] || label}
-            </RefinementLabel>
-            <RefinementClearButton
-              onClick={(e) => {
-                e.preventDefault();
-                refine(value);
-                if (handleClick) handleClick(label);
-              }}
+      items.map((category) => {
+        const items = category.items || [{ ...category, label: category.currentRefinement }];
+        return (
+          items.map(({ label, value }) => (
+            <Refinement
+              className="current-refinement-item"
+              key={`clear-refinement--${label}`}
             >
-              <Close
-                ariaLabel={`Remove ${label} refinement`}
-                fill={color.nobel}
-              />
-            </RefinementClearButton>
-          </Refinement>
-        ))
-      ))
+              <RefinementLabel>
+                {labelMap[label] || label}
+              </RefinementLabel>
+              <RefinementClearButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  refine(value);
+                  if (handleClick) handleClick(label);
+                }}
+              >
+                <Close
+                  ariaLabel={`Remove ${label} refinement`}
+                  fill={color.nobel}
+                />
+              </RefinementClearButton>
+            </Refinement>
+          ))
+        );
+      })
     }
   </>
 );

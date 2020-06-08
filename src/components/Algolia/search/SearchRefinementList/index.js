@@ -5,15 +5,26 @@ import { connectRefinementList } from 'react-instantsearch-dom';
 import RefinementList from '../../shared/RefinementList';
 import Accordion from '../../../Accordion';
 
-const SearchRefinementList = ({ attribute, showHideLabel, items, ...restProps }) => (
+const SearchRefinementList = ({
+  attribute,
+  icon,
+  iconSize,
+  initialCount,
+  items,
+  showHideLabel,
+  ...restProps
+}) => (
   items && items.length > 0 ? (
     <Accordion
       icon={icon}
+      iconSize={iconSize}
       isFieldset
       label={showHideLabel}
     >
       <RefinementList
         attribute={attribute}
+        initialCount={initialCount}
+        items={items}
         {...restProps}
       />
     </Accordion>
@@ -25,6 +36,10 @@ SearchRefinementList.propTypes = {
   attribute: PropTypes.string.isRequired,
   /* Name of icon */
   icon: PropTypes.string,
+  /* Size of icon */
+  iconSize: PropTypes.oneOf(['default', 'large']),
+  /** Number of menu items to show by default */
+  initialCount: PropTypes.number,
   /** Refinement filter values from algolia */
   items: PropTypes.array.isRequired,
   /** Used to pass click functionality from jarvis etc. */
@@ -38,6 +53,8 @@ SearchRefinementList.propTypes = {
 SearchRefinementList.defaultProps = {
   handleClick: null,
   icon: null,
+  iconSize: 'default',
+  initialCount: 3,
   transformItems: null,
 };
 

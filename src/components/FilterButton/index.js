@@ -1,13 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { color, font, fontSize, lineHeight, spacing } from '../../styles';
+import styled, { css } from 'styled-components';
+import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../styles';
 import Filter from '../DesignTokens/Icon/svgs/Filter';
 
+const StyledFilterButtonTheme = {
+  default: css`
+    color: ${color.eclipse};
+    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+    padding: ${spacing.xsm};
+  `,
+  kidsSearch: css`
+    color: ${color.black};
+    font: 2.2rem/${lineHeight.sm} ${font.cwf};
+    letter-spacing: 1.2px;
+    padding-top: 0;
+    text-transform: lowercase;
+  `,
+};
+
 const StyledFilterButton = styled.button`
-  color: ${color.eclipse};
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
-  padding: ${spacing.xsm};
+  ${withThemes(StyledFilterButtonTheme)}
 `;
 
 const StyledFilter = styled(Filter)`

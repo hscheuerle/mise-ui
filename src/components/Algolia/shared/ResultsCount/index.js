@@ -8,7 +8,6 @@ import {
   color,
   font,
   fontSize,
-  letterSpacing,
   lineHeight,
   spacing,
   withThemes,
@@ -24,13 +23,15 @@ const StatsWrapperTheme = {
       float: left;
     `}
   `,
-  kids: css`
-    font: ${fontSize.xl}/${lineHeight.sm} ${font.cwf};
-    letter-spacing: ${letterSpacing.sm};
+  kidsSearch: css`
+    color: ${color.black};
+    font: 2.2rem/${lineHeight.sm} ${font.cwf};
+    letter-spacing: 1.2px;
+    margin-right: 1rem;
     text-transform: lowercase;
 
-    ${breakpoint('md')`
-      float: none;
+    ${breakpoint('lg')`
+      font-size: 2rem;
     `}
   `,
 };

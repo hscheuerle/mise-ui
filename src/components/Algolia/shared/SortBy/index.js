@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { connectSortBy } from 'react-instantsearch-dom';
 
-import { color, font, fontSize, lineHeight, spacing, withThemes } from '../../../../styles';
+import {
+  color,
+  font,
+  fontSize,
+  lineHeight,
+  spacing,
+  withThemes,
+} from '../../../../styles';
 
 const SearchSortByList = styled.ul``;
 
@@ -15,7 +22,7 @@ const SearchSortByItemTheme = {
       margin-bottom: 0;
     }
   `,
-  kids: css`
+  kidsSearch: css`
     margin-bottom: ${spacing.xsm};
   `,
 };
@@ -43,7 +50,7 @@ const SearchSortByButtonTheme = {
       }
     }
   `,
-  kids: css`
+  kidsSearch: css`
     background-color: ${color.greySmoke};
     border-radius: 1rem;
     color: ${color.black};
@@ -52,6 +59,10 @@ const SearchSortByButtonTheme = {
     text-align: left;
     padding: 0.4rem 1.3rem;
     width: 100%;
+
+    .search-sort-by__label {
+      color: ${color.black};
+    }
 
     &:hover {
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -66,6 +77,7 @@ const SearchSortByButtonTheme = {
 
       .search-sort-by__label {
         color: ${color.white};
+        font-family: ${font.pnb};
       }
     }
   `,
@@ -89,7 +101,7 @@ const SearchSortByCircleTheme = {
     margin-right: 0.6rem;
     width: 1.2rem;
   `,
-  kids: css`
+  kidsSearch: css`
     display: none;
   `,
 };
@@ -104,7 +116,7 @@ const SearchSortByLabelTheme = {
     font: ${fontSize.md}/1.38 ${font.pnr};
     font-size: ${fontSize.md};
   `,
-  kids: css``,
+  kidsSearch: css``,
 };
 
 const SearchSortByLabel = styled.span.attrs({

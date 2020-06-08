@@ -1,9 +1,10 @@
+import breakpoint from 'styled-components-breakpoint';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { connectCurrentRefinements, connectSearchBox } from 'react-instantsearch-dom';
 
-import { color, font, fontSize, withThemes } from '../../styles';
+import { color, font, fontSize, lineHeight, withThemes } from '../../styles';
 import { SearchIcon, Close } from '../DesignTokens/Icon';
 
 const StyledSearchInputContainerTheme = {
@@ -13,11 +14,11 @@ const StyledSearchInputContainerTheme = {
     position: relative;
     width: 100%;
   `,
-  kids: css`
+  kidsSearch: css`
     background-color: transparent;
     border-color: transparent;
     border-radius: 2rem;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.2rem;
   `,
 };
 
@@ -34,7 +35,7 @@ const StyledSearchTheme = {
       border: none;
       color: ${color.eclipse};
       font: ${fontSize.lg} ${font.mwr};
-      padding: 1.35rem 3.5rem 1.35rem 4.5rem;
+      padding: 1.35rem 2.5rem 1.35rem 4.5rem;
       width: 100%;
 
       &::placeholder {
@@ -42,6 +43,11 @@ const StyledSearchTheme = {
         font: ${fontSize.lg} ${font.mwr};
         font-style: italic;
         text-align: left;
+      }
+
+      &:-moz-placeholder,
+      &::-moz-placeholder {
+        opacity: 1;
       }
 
       &::-webkit-search-cancel-button {
@@ -64,10 +70,34 @@ const StyledSearchTheme = {
       }
     }
   `,
-  kids: css`
-    input[type="search"] {
-      border-radius: 2rem;
+  kidsSearch: css`
+    svg path {
+      fill: ${color.jade};
     }
+
+    input[type="search"] {
+      color: ${color.black};
+      font: ${fontSize.md}/${lineHeight.md} ${font.pnr};
+      border-radius: 2rem;
+
+      &::placeholder {
+        color: ${color.black};
+        font: 1.5rem/1.4 ${font.pnr};
+        font-style: normal;
+      }
+    }
+
+    ${breakpoint('sm')`
+      input[type="search"] {
+        &::placeholder {
+          font-size: ${fontSize.md};
+        }
+      }
+    `}
+
+    ${breakpoint('md')`
+      font-size: ${fontSize.lg};
+    `}
   `,
 };
 const StyledSearch = styled.form`
@@ -203,9 +233,13 @@ const StyledResetButtonTheme = {
       background-color: ${color.white};
     }
   `,
-  kids: css`
+  kidsSearch: css`
     && {
       background-color: transparent;
+    }
+
+    &:hover svg g {
+      stroke: ${color.jade};
     }
   `,
 };

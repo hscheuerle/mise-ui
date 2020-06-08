@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
 
-import { Content, Cookbook, Plus, Sort } from '../DesignTokens/Icon/svgs';
+import { ChefHat, Content, Cookbook, Knife, Plus, Sort, Time } from '../DesignTokens/Icon/svgs';
 import { color, font, fontSize, letterSpacing, spacing, withThemes } from '../../styles';
 
 const AccordionDivWrapper = styled.div``;
@@ -35,9 +35,21 @@ const AccordionButtonTheme = {
       width: 85%;
     `}
   `,
-  kids: css`
-    font: ${fontSize.xl}/1 ${font.cwf};
+  kidsSearch: css`
+    font: 2.5rem/1 ${font.cwf};
+    letter-spacing: 2.5px;
     text-transform: lowercase;
+
+    @media(hover: hover) {
+      &:hover {
+        cursor: pointer;
+
+        svg,
+        svg path {
+          fill: ${color.jade};
+        }
+      }
+    }
 
     ${breakpoint('xlg')`
       width: 100%;
@@ -73,11 +85,22 @@ const AccordionLabelWrapperTheme = {
       width: 1.6rem;
     }
   `,
-  kids: css`
+  kidsSearch: css`
     flex-direction: row-reverse;
 
+    legend {
+      max-width: none;
+    }
+
     svg {
+      height: 1.6rem;
       margin-right: 0.5rem;
+      width: 1.8rem;
+
+      &:not(.sort-icon) {
+        height: 2rem;
+        width: auto;
+      }
     }
   `,
 };
@@ -114,15 +137,26 @@ const AccordionContent = styled.div`
 `;
 
 const icons = {
+  chefHat: ChefHat,
   content: Content,
   cookbook: Cookbook,
+  knife: Knife,
   sort: Sort,
+  time: Time,
 };
 
-function Accordion({ children, icon, isFieldset, isHidden, label }) {
+function Accordion({
+  children,
+  icon,
+  iconSize,
+  isFieldset,
+  isHidden,
+  label,
+}) {
   const [hidden, toggleHidden] = useState(isHidden);
   const AccordionWrapper = isFieldset ? AccordionFieldsetWrapper : AccordionDivWrapper;
   const Icon = icon ? icons[icon] : null;
+
   return (
     <AccordionWrapper>
       <AccordionButton
@@ -140,7 +174,7 @@ function Accordion({ children, icon, isFieldset, isHidden, label }) {
           ) : label
         }
         <AccordionSvgWrapper isExpanded={!hidden}>
-          <Plus />
+          <Plus size={iconSize} />
         </AccordionSvgWrapper>
       </AccordionButton>
       <AccordionContent
@@ -162,6 +196,8 @@ Accordion.propTypes = {
   ]).isRequired,
   /** Unique id string for svg icon to render next to label */
   icon: PropTypes.string,
+  /* Size of icon */
+  iconSize: PropTypes.oneOf(['default', 'large']),
   /** For accessability we need a fieldset version of this component. */
   isFieldset: PropTypes.bool,
   /** Sets initial state of the hidden content. */
@@ -172,6 +208,7 @@ Accordion.propTypes = {
 
 Accordion.defaultProps = {
   icon: null,
+  iconSize: 'default',
   isFieldset: false,
   isHidden: false,
 };
