@@ -15,7 +15,7 @@ import SearchRefinementList from './components/Algolia/search/SearchRefinementLi
 import SearchSortBy from './components/Algolia/search/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';
 import fonts from './styles/fonts';
-import { GlobalStyle } from './styles/global';
+import globalStyle from './styles/global';
 
 export {
   Accordion,
@@ -27,7 +27,7 @@ export {
   FilterButton,
   fonts,
   Icons,
-  GlobalStyle,
+  globalStyle,
   ResultsCount,
   SearchBanner,
   SearchInput,
