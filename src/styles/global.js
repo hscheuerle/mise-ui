@@ -1,8 +1,8 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { css } from 'styled-components';
 import styledNormalize from 'styled-normalize';
 import fonts from './fonts';
 
-export const globalStyles = css`
+export default css`
   ${styledNormalize}
   ${fonts}
 
@@ -111,8 +111,4 @@ export const globalStyles = css`
   ins::after {
     content: " [insertion end] ";
   }
-`;
-
-export const GlobalStyle = createGlobalStyle`
-  ${globalStyles}
 `;
