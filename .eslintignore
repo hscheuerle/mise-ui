@@ -2,3 +2,4 @@ node_modules
 dist
 src/serviceWorker.js
 src/setupTests.js
+src/**/*.stories.js
