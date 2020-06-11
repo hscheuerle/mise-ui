@@ -1,12 +1,14 @@
 import React from 'react';
 import { addDecorator, addParameters } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withHTML } from '@whitespace/storybook-addon-html/react';
 import { breakpoints } from '../src/styles';
-import { GlobalStyle } from '../src/styles/global';
+import globalStyles from '../src/styles/global';
 
 const theme = { breakpoints };
+
+const GlobalStyle = createGlobalStyle`${globalStyles}`;
 
 addDecorator(
   withHTML({
