@@ -1,19 +1,42 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import breakpoint from 'styled-components-breakpoint';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { connectStats } from 'react-instantsearch-dom';
 
-import { color, font, fontSize, lineHeight, spacing } from '../../../../styles';
+import {
+  color,
+  font,
+  fontSize,
+  lineHeight,
+  spacing,
+  withThemes,
+} from '../../../../styles';
 
+const StatsWrapperTheme = {
+  default: css`
+    color: ${color.eclipse};
+    font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
+    margin-bottom: ${spacing.xsm};
+
+    ${breakpoint('md')`
+      float: left;
+    `}
+  `,
+  kidsSearch: css`
+    color: ${color.black};
+    font: 2.2rem/${lineHeight.sm} ${font.cwf};
+    letter-spacing: 1.2px;
+    margin-right: 1rem;
+    text-transform: lowercase;
+
+    ${breakpoint('lg')`
+      font-size: 2rem;
+    `}
+  `,
+};
 const StatsWrapper = styled.p`
-  color: ${color.eclipse};
-  font: ${fontSize.md}/${lineHeight.sm} ${font.pnb};
-  margin-bottom: ${spacing.xsm};
-
-  ${breakpoint('md')`
-    float: left;
-  `}
+  ${withThemes(StatsWrapperTheme)}
 `;
 
 export const Stats = ({ nbHits }) => (

@@ -5,6 +5,7 @@ const color = {
   tomato: '#d73a15',
   rust: '#a72e12',
   whiteSmoke: '#f5f5f5',
+  greySmoke: '#ebebeb',
   eclipse: '#3d3d3d',
   mint: '#6ba6aa',
   darkerMint: '#5a8e91',

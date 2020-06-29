@@ -6,14 +6,17 @@ import Button from './components/Button';
 import ClearRefinements from './components/Algolia/shared/ClearRefinements';
 import CurrentRefinements from './components/Algolia/shared/CurrentRefinements';
 import FilterButton from './components/FilterButton';
-import * as Icons from './components/DesignTokens/Icon';
+import RefinementListBasic from './components/Algolia/shared/RefinementListBasic';
 import ResultsCount from './components/Algolia/shared/ResultsCount';
 import StandardCard from './components/Cards/StandardCard';
 import SearchBanner from './components/SearchBanner';
 import SearchInput from './components/SearchInput';
+import SearchNumericMenu from './components/Algolia/search/SearchNumericMenu';
+import SearchNumericMenuBasic from './components/Algolia/search/SearchNumericMenuBasic';
 import SearchRefinementList from './components/Algolia/search/SearchRefinementList';
 import SearchSortBy from './components/Algolia/search/SearchSortBy';
 import ShowMoreLess from './components/ShowMoreLess';
+import * as Icons from './components/DesignTokens/Icon';
 import fonts from './styles/fonts';
 import globalStyle from './styles/global';
 
@@ -28,9 +31,12 @@ export {
   fonts,
   Icons,
   globalStyle,
+  RefinementListBasic,
   ResultsCount,
   SearchBanner,
   SearchInput,
+  SearchNumericMenu,
+  SearchNumericMenuBasic,
   SearchRefinementList,
   SearchSortBy,
   ShowMoreLess,

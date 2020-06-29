@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ShowMoreLess from '../../../ShowMoreLess';
-import RefinementFilter from './components/RefinementFilter/RefinementFilter';
+import RefinementFilter from '../RefinementFilter/RefinementFilter';
 import { color } from '../../../../styles';
 
 const RefinementListRefinements = styled.div`
   border: none;
   margin: 0;
   padding: 0;
+
+  label:last-child {
+    margin: 0;
+  }
 `;
 
 const siteMap = [
@@ -48,6 +52,7 @@ const siteMap = [
 export const CustomRefinementList = ({
   attribute,
   currentRefinement,
+  initialCount,
   items,
   refine,
   handleClick,
@@ -74,7 +79,7 @@ export const CustomRefinementList = ({
       ) : (
         <ShowMoreLess
           id={`show-more-less--${attribute}`}
-          initialCount={3}
+          initialCount={initialCount}
           items={
             items.map(item => (
               <RefinementFilter
@@ -96,12 +101,15 @@ CustomRefinementList.propTypes = {
   attribute: PropTypes.string.isRequired,
   currentRefinement: PropTypes.array.isRequired,
   handleClick: PropTypes.func,
+  /** Number of menu items to show by default */
+  initialCount: PropTypes.number,
   items: PropTypes.array,
   refine: PropTypes.func.isRequired,
 };
 
 CustomRefinementList.defaultProps = {
   handleClick: null,
+  initialCount: 3,
   items: null,
 };
 

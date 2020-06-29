@@ -22,6 +22,7 @@ const lineHeight = {
   sm: '1.13',
   md: '1.25',
   lg: '1.63',
+  xlg: '1.75',
 };
 
 const letterSpacing = {

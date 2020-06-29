@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { color, font, spacing } from '../../styles';
+import { color, font, spacing, withThemes } from '../../styles';
 
 const ShowMoreLessInitial = styled.div`
   margin-bottom: ${spacing.xsm};
@@ -12,15 +12,26 @@ const ShowMoreLessRest = styled.div`
   margin-bottom: 1.2rem;
 `;
 
-export const ShowMoreLessButton = styled.button`
-  color: ${color.nobel};
-  font: 1.2rem/1 ${font.pnb};
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
+export const ShowMoreLessButtonTheme = {
+  default: css`
+    color: ${color.nobel};
+    font: 1.2rem/1 ${font.pnb};
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
 
-  &:hover {
-    color: ${color.mint};
-  }
+    &:hover {
+      color: ${color.mint};
+    }
+  `,
+  kidsSearch: css`
+    &:hover {
+      color: ${color.jade};
+    }
+  `,
+};
+
+const ShowMoreLessButton = styled.button`
+  ${withThemes(ShowMoreLessButtonTheme)}
 `;
 
 const ShowMoreLess = ({ initialCount, items, id }) => {
