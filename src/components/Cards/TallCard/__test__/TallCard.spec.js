@@ -6,6 +6,7 @@ import 'jest-styled-components';
 
 import TallCard from '../index';
 import breakpoints from '../../../../styles/breakpoints';
+import { cards } from '../../../../styles';
 
 describe('TallCard component should', () => {
   const renderComponent = () => (
@@ -55,8 +56,8 @@ describe('TallCard component should', () => {
   // width and height are fixed for these cards
   it('have correct width and height', () => {
     renderComponent();
-    const featureCard = screen.getByTestId('tall-card');
-    expect(featureCard).toHaveStyle('width: 27.2rem');
-    expect(featureCard).toHaveStyle('height: 60rem');
+    const tallCard = screen.getByTestId('tall-card');
+    expect(tallCard).toHaveStyle(`width: ${cards.standard.width.lg}`);
+    expect(tallCard).toHaveStyle('height: 60rem');
   });
 });
