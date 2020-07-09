@@ -1,10 +1,19 @@
 import React from 'react';
+import LoadableVisibility from "react-loadable-visibility/react-loadable";
+
 import styled, { css, ThemeProvider } from 'styled-components';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import StandardCard from './index';
+// import StandardCard from './index';
+import LoadingCard from '../LoadingCard';
 import { breakpoints, color, spacing, withThemes } from '../../../styles';
+
+const StandardCard = LoadableVisibility({
+  loader: () => import("./index"),
+  loading: () => (<LoadingCard type="standard" />),
+  delay: 50,
+});
 
 export default {
   title: 'Components|Cards/StandardCard',
