@@ -11,8 +11,25 @@ export default {
   component: LoadingCard,
 };
 
+const StoryWrapperTheme = {
+  default: css`
+    padding: 12rem;
+  `,
+  dark: css`
+    background-color: ${color.nero};
+  `,
+}
+
+const StoryWrapper = styled.div`
+  ${withThemes(StoryWrapperTheme)}
+`;
+
 export const StandardCard = () => (
-  <LoadingCard type="standard" />
+  <ThemeProvider theme={{breakpoints, mode: 'dark'}}>
+    <StoryWrapper>
+      <LoadingCard type="standard" />
+    </StoryWrapper>
+  </ThemeProvider>
 );
 
 export const FeatureCard = () => (

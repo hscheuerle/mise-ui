@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import breakpoint from 'styled-components-breakpoint';
-import { cards, color, spacing, grid } from '../../../styles';
+import { cards, color, grid, mixins, spacing } from '../../../styles';
 
 const featureCardWidth = grid.columnWidth;
 const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`;
@@ -12,28 +12,50 @@ const tallCardWidth = grid.columnWidth;
 const tallCardWideWidth = '36.8rem';
 
 const StyledLoadingCard = styled.div`
-  background-color: ${color.black};
+  // background-color: ${color.black};
+  ${mixins.loadingGradientAnimation()};
 
   &.standard-card {
     background-color: transparent;
     width: ${cards.standard.width.base};
+    padding-bottom: ${spacing.sm};
+
+    & > div > * {
+      // border: 1px solid gray;
+    }
 
     .standard-card {
       &__image {
-        background-color: ${color.black};
+        // background-color: ${color.nero};
+        background-color: transparent;
         height: ${cards.standard.width.base};
+        // margin-bottom: ${spacing.xsm};
       }
 
       &__title {
-        background-color: ${color.black};
-        height: 2.1rem;
-        margin: ${spacing.xsm} 0;
+        background-color: ${color.nero};
+        height: ${spacing.xsm};
+        margin: 0 0 ${spacing.sm} 0;
+        position: relative;
       }
 
       &__cta {
-        background-color: ${color.black};
-        width: 64%;
-        height: 2.1rem;
+        background-color: ${color.nero};
+        // width: 36%;
+        height: ${spacing.sm};
+        // margin-top: ${spacing.lg};
+        margin-left: auto;
+        position: relative;
+
+        &::before {
+          background-color: ${color.nero};
+          content: '';
+          position: absolute;
+          right: 0;
+          top: ${spacing.sm};
+          height: ${spacing.sm};
+          width: 9.9rem;
+        }
       }
     }
 
@@ -74,7 +96,7 @@ const StyledLoadingCard = styled.div`
   &.feature-card {
     height: ${featureCardWideHeight};
     width: ${featureCardWidth};
-    
+
     ${breakpoint('lg')`
       height: ${featureCardWideHeight};
       width: ${featureCardWidth};
@@ -118,15 +140,17 @@ const StyledLoadingCard = styled.div`
 
 const LoadingCard = ({ type }) => (
   <StyledLoadingCard className={`${type}-card card`}>
-    {
-      (type === 'standard' || type === 'queue') && (
-        <>
-          <div className={`${type}-card__image`} />
-          <div className={`${type}-card__title`} />
-          <div className={`${type}-card__cta`} />
-        </>
-      )
-    }
+    <div className="c-animated-background">
+      {
+        (type === 'standard' || type === 'queue') && (
+          <>
+            <div className={`${type}-card__image`} />
+            <div className={`${type}-card__title`} />
+            <div className={`${type}-card__cta`} />
+          </>
+        )
+      }
+    </div>
   </StyledLoadingCard>
 );
 

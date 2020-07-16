@@ -26,4 +26,32 @@ export default {
       }
     `;
   },
+
+  loadingGradientAnimation() {
+    return `
+      @keyframes gradientWave {
+        0% {
+          background-position: 0 0
+        }
+        100% {
+          background-position: 462px 0
+        }
+      }
+
+      .c-animated-background {
+        animation-duration: 3.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: gradientWave;
+        animation-timing-function: linear;
+        background: fff;
+        background: linear-gradient(to right, transparent 8%, #3d3d3d 38%, transparent 83%);
+        height: 100%;
+        min-height: 336px;
+        width: 100%;
+        position: relative;
+        -webkit-backface-visibility: hidden
+      }
+    `;
+  },
 };
