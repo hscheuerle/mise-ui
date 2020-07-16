@@ -31,24 +31,23 @@ export default {
     return `
       @keyframes gradientWave {
         0% {
-          background-position: 0 0
+          background-position: -500px 0
         }
         100% {
-          background-position: 462px 0
+          background-position: 500px 0
         }
       }
 
       .c-animated-background {
-        animation-duration: 3.5s;
+        animation-duration: 2.5s;
         animation-fill-mode: forwards;
         animation-iteration-count: infinite;
         animation-name: gradientWave;
         animation-timing-function: linear;
-        background: fff;
-        background: linear-gradient(to right, transparent 8%, #3d3d3d 38%, transparent 83%);
+        background: #121212;
+        background: linear-gradient(to right, #121212 8%, transparent 18%, #121212 33%);
         height: 100%;
-        min-height: 336px;
-        width: 100%;
+        min-height: 328px;
         position: relative;
         -webkit-backface-visibility: hidden
       }
