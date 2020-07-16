@@ -156,6 +156,31 @@ const TextWrapper = styled.div`
 `;
 
 class PodcastEpisodeCard extends Component {
+  componentDidMount() {
+    const { imageId } = this.props;
+    async function fetchData() {
+      const response = await fetch(
+        `https://art19.com/images/${imageId}`,
+        {
+          method: 'GET',
+          headers: {
+            Accept: 'application/vnd.art19.v0+json;q=0.9,application/json;q=0.8',
+            Authorization: 'Token token="jQ-ldsLx7USTQ4mjtOEBPIOsEXAno8UTh8l2KomNLQM5B75NUL-P9iFVGd1lF6c9-Lcq1dmUFTmhZTBsb09BmA", credential="14c39803-3e99-47c4-a4d3-d79398e74089"',
+          },
+          mode: 'cors',
+        },
+      );
+
+      const imageData = await response.json().catch((err) => {
+        console.error('REQUEST RESPONSE.JSON PARSING ERROR', url); // eslint-disable-line
+        console.error(err); // eslint-disable-line
+      });
+      const image = imageData.media_assets.filter(image => image.size_height === 640);
+      this.imageUrl = image.cdn_url;
+    }
+    fetchData();
+  }
+
   setEpisode = (episode) => {
     const { setEpisode } = this.props;
     setEpisode(episode); // call method
@@ -169,7 +194,7 @@ class PodcastEpisodeCard extends Component {
       href,
       id,
       imageAlt,
-      imageUrl,
+      imageId,
       siteKey,
       stickers,
     } = this.props;
@@ -183,7 +208,7 @@ class PodcastEpisodeCard extends Component {
             <Image
               aria-hidden="true"
               imageAlt={imageAlt}
-              imageUrl={imageUrl}
+              imageUrl={this.imageUrl}
             />
             <StyledBadge
               type={siteKey}
@@ -207,7 +232,7 @@ class PodcastEpisodeCard extends Component {
                 href,
                 id,
                 imageAlt,
-                imageUrl,
+                imageId,
                 siteKey,
                 stickers,
               })}
@@ -238,7 +263,7 @@ PodcastEpisodeCard.propTypes = {
   /** episode id */
   id: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
-  imageUrl: PropTypes.string,
+  imageId: PropTypes.string,
   siteKey: PropTypes.string.isRequired,
   stickers: PropTypes.array,
   setEpisode: PropTypes.func,
@@ -246,7 +271,7 @@ PodcastEpisodeCard.propTypes = {
 
 PodcastEpisodeCard.defaultProps = {
   imageAlt: ' ',
-  imageUrl: '',
+  imageId: '',
   stickers: [],
   setEpisode: null,
 };
