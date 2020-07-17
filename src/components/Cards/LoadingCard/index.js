@@ -17,6 +17,8 @@ const StyledLoadingCard = styled.div`
 
   &.standard-card {
     background-color: transparent;
+    // height: 19.8rem;
+    // overflow: hidden;
     width: ${cards.standard.width.base};
     padding-bottom: ${spacing.sm};
 
@@ -26,10 +28,8 @@ const StyledLoadingCard = styled.div`
 
     .standard-card {
       &__image {
-        // background-color: ${color.nero};
         background-color: transparent;
         height: ${cards.standard.width.base};
-        // margin-bottom: ${spacing.xsm};
       }
 
       &__title {
@@ -41,13 +41,11 @@ const StyledLoadingCard = styled.div`
 
       &__cta {
         background-color: ${color.nero};
-        // width: 36%;
         height: ${spacing.sm};
-        // margin-top: ${spacing.lg};
         margin-left: auto;
         position: relative;
 
-        &::before {
+        &::after {
           background-color: ${color.nero};
           content: '';
           position: absolute;
@@ -60,6 +58,7 @@ const StyledLoadingCard = styled.div`
     }
 
     ${breakpoint('lg')`
+      // height: 2.8rem;
       width: ${cards.standard.width.lg};
 
       .standard-card__image {

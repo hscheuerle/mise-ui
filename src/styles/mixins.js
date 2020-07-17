@@ -1,3 +1,5 @@
+import { cards, color } from './index';
+
 export default {
   styledLink(underlineColor, backgroundColor, textColor = 'inherit') {
     return `
@@ -27,27 +29,28 @@ export default {
     `;
   },
 
-  loadingGradientAnimation() {
+  loadingGradientAnimation(width = cards.standard.width.lg, backgroundColor = color.charcoal) {
     return `
       @keyframes gradientWave {
         0% {
-          background-position: -500px 0
+          background-position: -${width} 0;
         }
+
         100% {
-          background-position: 500px 0
+          background-position: ${width} 0;
         }
       }
 
       .c-animated-background {
-        animation-duration: 2.5s;
+        animation-duration: 1.5s;
         animation-fill-mode: forwards;
         animation-iteration-count: infinite;
         animation-name: gradientWave;
         animation-timing-function: linear;
-        background: #121212;
-        background: linear-gradient(to right, #121212 8%, transparent 18%, #121212 33%);
+        background: ${backgroundColor};
+        background: linear-gradient(to right, ${backgroundColor} 4%, transparent 40%, ${backgroundColor} 83%, ${backgroundColor} 100%);
         height: 100%;
-        min-height: 328px;
+        height: 32.8rem;
         position: relative;
         -webkit-backface-visibility: hidden
       }
