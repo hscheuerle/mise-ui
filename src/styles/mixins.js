@@ -31,28 +31,33 @@ export default {
 
   loadingGradientAnimation(width = cards.standard.width.lg, backgroundColor = color.charcoal) {
     return `
-      @keyframes gradientWave {
-        0% {
-          background-position: -${width} 0;
-        }
-
-        100% {
-          background-position: ${width} 0;
-        }
-      }
-
       .c-animated-background {
         animation-duration: 1.5s;
         animation-fill-mode: forwards;
         animation-iteration-count: infinite;
-        animation-name: gradientWave;
+        animation-name: loading;
         animation-timing-function: linear;
-        background: ${backgroundColor};
-        background: linear-gradient(to right, ${backgroundColor} 4%, transparent 40%, ${backgroundColor} 83%, ${backgroundColor} 100%);
+        background-color: ${backgroundColor};
+        background-repeat: no-repeat;
+        background-image:
+          linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 50%,
+            rgba(0, 0, 0, 0) 100%
+          );
+        background-position: -${width} 0;
+        background-size: 100%;
         height: 100%;
         height: 32.8rem;
         position: relative;
-        -webkit-backface-visibility: hidden
+        -webkit-backface-visibility: hidden;
+      }
+
+      @keyframes loading {
+        to {
+          background-position: calc(${width} * 3) 0;
+        }
       }
     `;
   },
