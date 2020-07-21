@@ -5,7 +5,6 @@ import breakpoint from 'styled-components-breakpoint';
 import { cards, color, grid, mixins, spacing } from '../../../styles';
 
 const featureCardWidth = grid.columnWidth;
-const featureCardWideWidth = `${parseFloat(grid.columnWidth) * 2 + parseFloat(grid.gutterWidth)}rem`; // 56rem
 const featureCardWideHeight = '40rem';
 
 const tallCardWidth = grid.columnWidth;
@@ -17,7 +16,7 @@ const StyledLoadingCard = styled.div`
 
   &.standard-card {
     background-color: transparent;
-    height: 21.8rem;
+    height: 34.4rem;
     width: ${cards.standard.width.base};
     padding-bottom: ${spacing.sm};
 
@@ -54,7 +53,7 @@ const StyledLoadingCard = styled.div`
 
     ${breakpoint('lg')`
       ${mixins.loadingGradientAnimation(cards.standard.width.lg, color.charcoal)};
-      height: 32.8rem;
+      height: 34.4rem;
       width: ${cards.standard.width.lg};
 
       .standard-card__image {
@@ -167,7 +166,8 @@ const StyledLoadingCard = styled.div`
     width: ${cards.tallWide.width.base};
 
     ${breakpoint('md')`
-      width: ${cards.tallWide.width.base};
+      ${mixins.loadingGradientAnimation(cards.tallWide.width.lg)};
+      width: ${cards.tallWide.width.lg};
     `}
   }
 `;

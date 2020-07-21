@@ -29,7 +29,10 @@ export default {
     `;
   },
 
-  loadingGradientAnimation(width = cards.standard.width.lg, backgroundColor = color.charcoal) {
+  loadingGradientAnimation(
+    width = cards.standard.width.lg,
+    backgroundColor = color.charcoal,
+  ) {
     return `
       .c-animated-background {
         animation-duration: 1.5s;
@@ -42,14 +45,13 @@ export default {
         background-image:
           linear-gradient(
             90deg,
-            rgba(0, 0, 0, 0) 0%,
+            ${backgroundColor} 0%,
             rgba(0, 0, 0, 1) 50%,
-            rgba(0, 0, 0, 0) 100%
+            ${backgroundColor} 100%
           );
         background-position: -${width} 0;
         background-size: 100%;
         height: 100%;
-        height: 32.8rem;
         position: relative;
         -webkit-backface-visibility: hidden;
       }
